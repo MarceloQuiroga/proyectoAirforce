@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 19-10-2021 a las 09:36:09
+-- Tiempo de generación: 21-10-2021 a las 12:53:01
 -- Versión del servidor: 10.4.21-MariaDB
--- Versión de PHP: 8.0.10
+-- Versión de PHP: 8.0.11
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -26,43 +26,66 @@ USE `airforce`;
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `users`
+-- Estructura de tabla para la tabla `clientes`
 --
 
-CREATE TABLE `users` (
-  `id` int(5) NOT NULL,
-  `username` varchar(25) NOT NULL,
-  `password` varchar(25) NOT NULL,
-  `role` int(2) NOT NULL COMMENT '1 = Admin\r\n2 = Common',
-  `status` tinyint(1) NOT NULL DEFAULT 0 COMMENT '0 = Inactive\r\n1 = Active'
+CREATE TABLE `clientes` (
+  `cod` int(5) NOT NULL,
+  `dni` varchar(9) NOT NULL,
+  `nombre` varchar(25) NOT NULL,
+  `apellidos` varchar(50) NOT NULL,
+  `direccion` varchar(50) NOT NULL,
+  `email` varchar(50) DEFAULT NULL,
+  `telefono` int(9) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `productos`
+--
+
+CREATE TABLE `productos` (
+  `cod` int(5) NOT NULL,
+  `nombre` varchar(25) NOT NULL,
+  `descripcion` varchar(50) NOT NULL,
+  `stock` int(5) NOT NULL,
+  `precio` decimal(6,2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Volcado de datos para la tabla `users`
+-- Volcado de datos para la tabla `productos`
 --
 
-INSERT INTO `users` (`id`, `username`, `password`, `role`, `status`) VALUES
-(1, 'admin', 'admin', 1, 1);
+INSERT INTO `productos` (`cod`, `nombre`, `descripcion`, `stock`, `precio`) VALUES
+(1, 'test', 'test', 10, '250.99');
 
 --
 -- Índices para tablas volcadas
 --
 
 --
--- Indices de la tabla `users`
+-- Indices de la tabla `clientes`
 --
-ALTER TABLE `users`
-  ADD PRIMARY KEY (`id`);
+ALTER TABLE `clientes`
+  ADD PRIMARY KEY (`cod`),
+  ADD UNIQUE KEY `dni` (`dni`);
+
+--
+-- Indices de la tabla `productos`
+--
+ALTER TABLE `productos`
+  ADD PRIMARY KEY (`cod`);
 
 --
 -- AUTO_INCREMENT de las tablas volcadas
 --
 
 --
--- AUTO_INCREMENT de la tabla `users`
+-- AUTO_INCREMENT de la tabla `productos`
 --
-ALTER TABLE `users`
-  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+ALTER TABLE `productos`
+  MODIFY `cod` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
