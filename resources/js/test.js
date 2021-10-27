@@ -74,12 +74,10 @@ function genLeasing(event) {
 
 function genTableInfo(datos) {
 
-    var txt = document.getElementById("tableInfo");
-    txt.innerHTML = "";
-
     if (datos["dataType"] == "prestamo") { //Bloque de datos procede desde Prestamos
 
         /******************************VARIABLES***********************************/
+        txt = document.getElementById("tableInfoPrestamo");
         var genTxt = "";
         var interesCuota;
         var amortizacionCuota;
