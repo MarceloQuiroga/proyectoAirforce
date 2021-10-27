@@ -77,65 +77,59 @@ function genTableInfo(datos) {
     var txt = document.getElementById("tableInfo");
     txt.innerHTML = "";
 
-    if (datos[dataType] == "prestamo") { //Bloque de datos procede desde Prestamos
+    if (datos["dataType"] == "prestamo") { //Bloque de datos procede desde Prestamos
 
+        /******************************VARIABLES***********************************/
+        var genTxt = "";
+        var interesCuota;
+        var amortizacionCuota;
+        var amortizacionCapital;
+        var CapitalxAmortizar = datos["cantidad"];
         /*************************************************************************/
 
-    } else if (datos[dataType] == "leasing") { //Bloque de datos procede desde Leasing
+        for (var i = 0; i <= datos["tiempo"]; i++) {
 
-    }
-
-    var genTxt = "";
-    var interesCuota;
-    var amortizacionCuota;
-    var amortizacionCapital;
-    var CapitalxAmortizar = formulario[1].value;
-
-    for (var i = 0; i <= formulario[2].value; i++) {
-
-        if (i == 0) {
-            genTxt = "<tr>"
-           +     "<th scope='row'>" + i + "</th>"
-           +     "<td>---</td>"
-           +     "<td>---</td>"
-           +     "<td>---</td>"
-           +     "<td>---</td>"
-           +     "<td>" + formulario[1].value + " € </td>";
-
-           txt.innerHTML = genTxt;
-
-        } else {
-
-            //FORMULAS
-            interesCuota = CapitalxAmortizar * (formulario[3].value/100);
-            amortizacionCuota = cuota - interesCuota;
-            CapitalxAmortizar = CapitalxAmortizar - amortizacionCuota;
-            amortizacionCapital = ((i == 1)?amortizacionCuota:amortizacionCuota + amortizacionCapital);
-            //FORMULAS
+            if (i == 0) {
+                genTxt = "<tr>"
+               +     "<th scope='row'>" + i + "</th>"
+               +     "<td>---</td>"
+               +     "<td>---</td>"
+               +     "<td>---</td>"
+               +     "<td>---</td>"
+               +     "<td>" + datos["cantidad"] + " € </td>";
+    
+               txt.innerHTML = genTxt;
+    
+            } else {
+    
+                /****************************************FORMULAS*******************************************/
+                interesCuota = CapitalxAmortizar * datos["interes"];
+                amortizacionCuota = datos["cuota"] - interesCuota;
+                CapitalxAmortizar = CapitalxAmortizar - amortizacionCuota;
+                amortizacionCapital = ((i == 1)?amortizacionCuota:amortizacionCuota + amortizacionCapital);
+                /*******************************************************************************************/
+                
+                genTxt  +=    "<tr>"
+                        +     "<th>" + i + "</th>"
+                        +     "<td>" + parseFloat(datos["cuota"]).toFixed(2) + " € </td>"
+                        +     "<td>" + parseFloat(interesCuota).toFixed(2) + " € </td>"
+                        +     "<td>" + parseFloat(amortizacionCuota).toFixed(2) + " € </td>"
+                        +     "<td>" + parseFloat(amortizacionCapital).toFixed(2) + " € </td>"
+                        +     "<td>" + parseFloat(CapitalxAmortizar).toFixed(2) + " € </td>";
+    
+                console.log("debug: " + datos["cuota"]) //DEBUG TOOL
+    
+            }
             
-            genTxt += "<tr>"
-                    +     "<th>" + i + "</th>"
-                    +     "<td>" + parseFloat(cuota).toFixed(2) + " € </td>"
-                    +     "<td>" + parseFloat(interesCuota).toFixed(2) + " € </td>"
-                    +     "<td>" + parseFloat(amortizacionCuota).toFixed(2) + " € </td>"
-                    +     "<td>" + parseFloat(amortizacionCapital).toFixed(2) + " € </td>"
-                    +     "<td>" + parseFloat(CapitalxAmortizar).toFixed(2) + " € </td>";
-
-            console.log("interesCuota: " + i + " " +  interesCuota);
-            console.log("amortizacionCuota: " + i + " " +  amortizacionCuota);
-            console.log("amortizacionCapital: " + i + " " +  amortizacionCapital);
-            console.log("CapitalxAmortizar: " + i + " " +  CapitalxAmortizar);
-
-            console.log("debug: " + cuota)
-
         }
-        
-        
-        
-    }
 
-    txt.innerHTML = genTxt;
+    } else if (datos["dataType"] == "leasing") { //Bloque de datos procede desde Leasing
+
+        
+
+    }
 
     console.log(txt);
+    txt.innerHTML = genTxt; //INYECTA EL CODIGO GENERADO EN LA TABLA
 
 }
