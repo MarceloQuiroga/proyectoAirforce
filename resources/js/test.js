@@ -15,6 +15,9 @@ function scriptMarcelo(){
   $('form#genPrestamo')
     .off('click')
     .on('submit', genPrestamo);
+  $('form#genLeasing')
+    .off('click')
+    .on('submit', genLeasing);
 }
 
 function genPrestamo(event) {
@@ -36,6 +39,30 @@ function genPrestamo(event) {
     console.log(salida);
 
     genTableInfo(formulario, salida);
+
+    return false;
+}
+
+function genLeasing(event) {
+    event.preventClick;
+    var formulario = Array.from($("form#genLeasing .form-control"));
+    
+    formulario.forEach(element => {
+        //console.log(element.value);
+    });
+
+    var cantidad = formulario[1].value;
+    var tiempo = formulario[2].value * formulario[3].value;
+    var interes = (formulario[4].value/100)/tiempo;
+    var bez = formulario[5].value;
+
+    var calculo = (1-Math.pow(1+interes,-tiempo+1)) / interes;
+
+    var salida = (cantidad * (1-Math.pow(1+interes,-1)));
+
+    console.log(salida);
+
+    //genTableInfo(formulario, salida);
 
     return false;
 }
@@ -75,7 +102,7 @@ function genTableInfo(formulario, cuota) {
             //FORMULAS
             
             genTxt += "<tr>"
-                    +    "<th scope='row'>" + i + "</th>"
+                    +     "<th>" + i + "</th>"
                     +     "<td>" + parseFloat(cuota).toFixed(2) + " € </td>"
                     +     "<td>" + parseFloat(interesCuota).toFixed(2) + " € </td>"
                     +     "<td>" + parseFloat(amortizacionCuota).toFixed(2) + " € </td>"

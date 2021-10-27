@@ -18,6 +18,9 @@
     <button type="button" class="w-100 btn btn-primary" data-bs-toggle="modal" data-bs-target="#formPrestamo">
     GENERAR PRESTAMO
     </button>
+    <button type="button" class="w-100 btn btn-primary" data-bs-toggle="modal" data-bs-target="#formLeasing">
+      GENERAR LEASING
+    </button>
      <!--MODAL-->
 
      <div id="info">
@@ -35,12 +38,12 @@
             </thead>
             <tbody id="tableInfo">
               <tr>
-                <th class="row">1</th>
-                <td>test</td>
-                <td>test</td>
-                <td>test</td>
-                <td>test</td>
-                <td>test</td>
+                <th>0</th>
+                <td>---</td>
+                <td>---</td>
+                <td>---</td>
+                <td>---</td>
+                <td>---</td>
               </tr>
             </tbody>
           </table>
@@ -83,6 +86,59 @@
                 <label class="form-label" for="formInteres">Interes</label>
                 <input type="number" id="formInteres" class="form-control" />
             </div>
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-primary">Solicitar</button>
+        </div>
+        </form> <!--FORMULARIO CIERRE-->
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="formLeasing" tabindex="-1">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">GENERAR LEASING</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <form id="genLeasing"> <!--FORMULARIO-->
+        <div class="modal-body">
+          
+            <div class="form-outline mb-4"> 
+                <label class="form-label" for="formIBAN">Cuenta Bancaria</label>
+                <select id="formIBAN" class="form-control">
+                    <option value="1">IBAN</option>
+                    <option value="2">IBAN2</option>
+                </select>
+            </div>
+
+            <div class="form-outline mb-4"> <!--CANTIDAD-->
+                <label class="form-label" for="formCantidad">Cantidad</label>
+                <input type="number" id="formCantidad" class="form-control" />
+            </div>
+
+            <div class="form-outline mb-4"> <!--TIEMPO-->
+                <label class="form-label" for="formTiempo">Tiempo</label>
+                <input type="number" id="formTiempo" class="form-control" />
+            </div>
+
+            <div class="form-outline mb-4"> <!--CUOTA-->
+              <label class="form-label" for="formCuotas">Cuota</label>
+              <input type="number" id="formCuotas" class="form-control" />
+            </div>
+
+            <div class="form-outline mb-4"> <!--INTERES-->
+                <label class="form-label" for="formInteres">Interes</label>
+                <input type="number" id="formInteres" class="form-control" />
+            </div>
+
+            <div class="form-outline mb-4"> <!--BEZ-->
+              <label class="form-label" for="formBez">Bez</label>
+              <input type="number" id="formBez" class="form-control" />
+          </div>
 
         </div>
         <div class="modal-footer">
