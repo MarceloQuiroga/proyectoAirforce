@@ -118,35 +118,19 @@ h1, h2, h3, h4, h5, h6 {
   transition: all 0.5s;
   z-index: 997;
   background: rgba(0, 0, 0, 0.9);
-  height: 80px;
+  height: 100px;
 }
 #header.header-transparent {
   background: transparent;
 }
 #header.header-scrolled {
   background: rgba(0, 0, 0, 0.9);
-  height: 60px;
+  height: 80px;
 }
-#header .logo {
-  font-size: 34px;
-  margin: 0;
-  padding: 0;
-  font-family: "Montserrat", sans-serif;
-  font-weight: 700;
-  letter-spacing: 3px;
-  padding-left: 10px;
-  border-left: 4px solid #18d26e;
-}
-#header .logo a {
-  color: #fff;
-}
-#header .logo img {
-  max-height: 40px;
-}
+
+
 @media (max-width: 992px) {
-  #header .logo {
-    font-size: 28px;
-  }
+
 }
 
 /*--------------------------------------------------------------
@@ -1840,4 +1824,14 @@ section {
   text-align: center;
   font-size: 13px;
   color: #ddd;
+}
+
+
+
+/*---------------------------------------*/
+
+.logoimg{
+  margin-top: 10px;
+  width: 230px;
+  height: 200px ;
 }
