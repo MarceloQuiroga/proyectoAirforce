@@ -33,12 +33,17 @@ function genPrestamo(event) {
     var interes = formulario[3].value/100;
 
     var calculo = (1-Math.pow(1+interes,-tiempo)) / interes;
+    var cuota = (cantidad / calculo);
 
-    var salida = (cantidad / calculo);
+    var datos = {
+        "dataType" : "prestamo",   
+        "cantidad" : cantidad,
+        "tiempo" : tiempo,
+        "interes" : interes,
+        "cuota" : cuota
+    };
 
-    console.log(salida);
-
-    genTableInfo(formulario, salida);
+    genTableInfo(datos);
 
     return false;
 }
@@ -67,11 +72,18 @@ function genLeasing(event) {
     return false;
 }
 
-function genTableInfo(formulario, cuota) {
+function genTableInfo(datos) {
 
     var txt = document.getElementById("tableInfo");
     txt.innerHTML = "";
-    console.log(formulario[2].value)
+
+    if (datos[dataType] == "prestamo") { //Bloque de datos procede desde Prestamos
+
+        /*************************************************************************/
+
+    } else if (datos[dataType] == "leasing") { //Bloque de datos procede desde Leasing
+
+    }
 
     var genTxt = "";
     var interesCuota;
