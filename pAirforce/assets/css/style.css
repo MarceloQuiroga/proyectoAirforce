@@ -585,6 +585,10 @@ section {
 #about .container {
   position: relative;
   z-index: 10;
+  margin-top: -20px;
+}
+.about-cols{
+  margin-top: -40px;
 }
 #about .about-col {
   background: #fff;
@@ -1834,4 +1838,15 @@ section {
   margin-top: 10px;
   width: 230px;
   height: 200px ;
+}
+
+
+
+body{
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+body::-webkit-scrollbar {
+  display: none;
 }
