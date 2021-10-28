@@ -203,13 +203,27 @@
   window.addEventListener('load', () => {
     let portfolioContainer = select('.portfolio-container');
     if (portfolioContainer) {
+
       let portfolioIsotope = new Isotope(portfolioContainer, {
         itemSelector: '.portfolio-item',
         layoutMode: 'fitRows'
       });
 
       let portfolioFilters = select('#portfolio-flters li', true);
+      
+      //Cargar por defecto los productos del filter "app" 
+      portfolioFilters.forEach(function(el) {
+          el.classList.remove('filter-active');
+      });
+      portfolioFilters[0].classList.add('filter-active');
+      portfolioIsotope.arrange({
+        filter: portfolioFilters[0].getAttribute('data-filter')
+      });
+      portfolioIsotope.on('arrangeComplete', function() {
+        AOS.refresh()
+      });
 
+      // Cargar los productos del filter al que se clique encima
       on('click', '#portfolio-flters li', function(e) {
         e.preventDefault();
         portfolioFilters.forEach(function(el) {
