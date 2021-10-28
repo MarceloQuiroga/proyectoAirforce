@@ -57,17 +57,27 @@ function genLeasing(event) {
     });
 
     var cantidad = formulario[1].value;
-    var tiempo = formulario[2].value * formulario[3].value;
-    var interes = (formulario[4].value/100)/tiempo;
-    var bez = formulario[5].value;
+    var timeLapse = formulario[3].value;
+    var tiempo = formulario[2].value * (12/timeLapse);
+    var interes = (formulario[4].value / 100) / formulario[2].value;
 
-    var calculo = (1-Math.pow(1+interes,-tiempo+1)) / interes;
+    var calculo1 = cantidad * Math.pow((1+interes),-1);
+    var calculo2 = (1-Math.pow(1+interes,-(tiempo+1))) / interes;
+    
+    var cuota = (calculo1 / calculo2);
+    var BEZ = cuota * (formulario[5].value/100);
 
-    var salida = (cantidad * (1-Math.pow(1+interes,-1)));
+    var datos = {
+        "dataType" : "leasing",
+        "cantidad" : cantidad,   
+        "timeLapse" : timeLapse,
+        "tiempo" : tiempo,
+        "interes" : interes,
+        "BEZ" : BEZ,
+        "cuota" : cuota
+    };
 
-    console.log(salida);
-
-    //genTableInfo(formulario, salida);
+    genTableInfo(datos);
 
     return false;
 }
@@ -123,7 +133,45 @@ function genTableInfo(datos) {
 
     } else if (datos["dataType"] == "leasing") { //Bloque de datos procede desde Leasing
 
-        
+         /******************************VARIABLES***********************************/
+         txt = document.getElementById("tableInfoLeasing");
+         var genTxt = "";
+         var interesCuota;
+         var amortizacion;
+         var CapitalxAmortizar = datos["cantidad"];
+         /*************************************************************************/
+
+         genTxt = "<tr>"
+               +     "<th scope='row'>" + i + "</th>"
+               +     "<td>---</td>"
+               +     "<td>---</td>"
+               +     "<td>---</td>"
+               +     "<td>---</td>"
+               +     "<td>---</td>"
+               +     "<td>" + datos["cantidad"] + " € </td>";
+    
+         txt.innerHTML = genTxt;
+
+         for (var i = 0; i <= datos["tiempo"]; i++) {
+         
+            /****************************************FORMULAS*******************************************/
+            interesCuota =  ((i == 0)?0:CapitalxAmortizar * datos["interes"]);
+            amortizacion = ((i == 0)?datos["cuota"]:datos["cuota"]-interesCuota);
+            CapitalxAmortizar = CapitalxAmortizar -amortizacion;
+            /*******************************************************************************************/
+
+            genTxt  +=    "<tr>"
+                        +     "<th>" + i + "</th>"
+                        +     "<td>" + parseFloat(datos["cuota"]).toFixed(2) + " € </td>"
+                        +     "<td>" + parseFloat(datos["BEZ"]).toFixed(2) + " € </td>"
+                        +     "<td>" + parseFloat((datos["cuota"]-datos["BEZ"])).toFixed(2) + " € </td>"
+                        +     "<td>" + parseFloat(interesCuota).toFixed(2) + " € </td>"
+                        +     "<td>" + parseFloat(amortizacion).toFixed(2) + " € </td>"
+                        +     "<td>" + parseFloat(CapitalxAmortizar).toFixed(2) + " € </td>";
+
+        }
+
+        console.log("debug: " + datos["BEZ"]) //DEBUG TOOL
 
     }
 
