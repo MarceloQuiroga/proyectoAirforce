@@ -1,5 +1,5 @@
 ---
 deployment:
   task:
-    - export DEPLOYPATH=/home/batzerbi/public_html/
-    - /bin/cp -R /home/batzerbi/repositories/proyectoAirforce $DEPLOYPATH
+    - export DEPLOYPATH=/home/batzerbi/public_html/.
+    - /bin/cp -r /home/batzerbi/repositories/proyectoAirforce/* $DEPLOYPATH
