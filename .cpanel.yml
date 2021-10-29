@@ -1,5 +1,9 @@
 ---
 deployment:
-  task:
-    - export DEPLOYPATH=/home/batzerbi/public_html/.
-    - /bin/cp -r /home/batzerbi/repositories/proyectoAirforce/* $DEPLOYPATH
+      tasks:
+        - export DEPLOYPATH=/home/batzerbi/public_html  # Add /<app_folder> if required
+        #- /bin/cp <file_name> $DEPLOYPATH                 Copy specific file to destination from root
+        #- /bin/cp /<sub_folder>/<file_name> $DEPLOYPATH   copy specific file from source sub folder
+        #- /bin cp * $DEPLOYPATH                           copy all from root 
+        - /bin cp /home/batzerbi/repositories/proyectoAirforce* $DEPLOYPATH             #copy all from sub folder root
+        #- /bin/cp -r * $DEPLOYPATH                        copy all recursively to $DEPLOYPATH
