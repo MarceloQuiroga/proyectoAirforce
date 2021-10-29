@@ -1,6 +1,6 @@
 <?php
 
-class usuarios {
+class usuario {
     private $cod;
     private $username;
     private $password;
