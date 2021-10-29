@@ -34,15 +34,14 @@ public function login() {
      
      $username=$this->username;
      $password=$this->password;
-     
-     $sql = "CALL spLogin('$username', '$password')";
-     
-     $this->link->query($sql);
-     
-     if ($this->link->affected_rows == 1) {
-         return $sql."Login completado con exito.";
+
+     $sql = "CALL spExistUser('$username')";
+
+     if ($sql == "true") {
+          $sql = "CALL spLogin('$username', '$password')";
+          return $this->link->query($sql);
      } else {
-         return $sql."Fallo al intentar logearte: (" . $this->link->errno . ") " . $this->link->error;
+          return "Error:Wrong Username";
      }
      
      $this->CloseConnect();

@@ -2,4 +2,4 @@
 deployment:
       tasks:
         - export DEPLOYPATH=/home/batzerbi/public_html/
-        - /bin/cp -R /home/batzerbi/repositories/proyectoAirforce $DEPLOYPATH #copy all from repo
+        - cp -R /home/batzerbi/repositories/proyectoAirforce/* $DEPLOYPATH #copy all from repo

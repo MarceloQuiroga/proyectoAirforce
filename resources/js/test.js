@@ -12,6 +12,9 @@ function preventClick(event){
   }
 
 function scriptMarcelo(){
+  $('form#login')
+    .off('click')
+    .on('submit', login);
   $('form#genPrestamo')
     .off('click')
     .on('submit', genPrestamo);
@@ -177,5 +180,28 @@ function genTableInfo(datos) {
 
     console.log(txt);
     txt.innerHTML = genTxt; //INYECTA EL CODIGO GENERADO EN LA TABLA
+
+}
+
+function login() {
+    event.preventClick;
+
+    console.log();
+    
+    $.ajax({
+        url: "controller/controllerUSerVerify.php",
+        method: "GET",
+        dataType: 'JSON',
+        contentType: 'json',
+        data:{
+            username: $("form#login input")[0].value,
+            password: $("form#login input")[1].value
+        },
+        success:function(response){
+        console.log(response);
+        }
+    })
+    
+    return false;
 
 }
