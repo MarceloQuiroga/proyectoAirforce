@@ -1,4 +1,5 @@
 ---
 deployment:
       tasks:
-        - cp -Rf /home/batzerbi/repositories/proyectoAirforce/ /home/batzerbi/public_html/
+        - rm -rf /home/batzerbi/public_html/*
+        - cp -Rf /home/batzerbi/repositories/proyectoAirforce/* /home/batzerbi/public_html/.
