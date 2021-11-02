@@ -51,11 +51,12 @@ class usuarios_model extends usuarios_class{
 
         if ($this->link->affected_rows == 1) {
             $msg = $sql." El usuario se ha registrado correctamente, numero de usuarios insertados: ".$this->link->affected_rows;
-        }  else{
-            $msg = $sql." Fallo al registrar el usuario
+        } else {
+            $msg = $sql." Fallo al registrar el usuario";
         }
 
-
+        mysqli_free_result($result);
+        $this->CloseConnect();
 
 
     }
