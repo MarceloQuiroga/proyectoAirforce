@@ -42,7 +42,13 @@ class usuario_model extends usuario_class {
           $password=$this->password;
 
           $sql = "CALL spLogin('$username', '$password')";
-          mysqli_free_result ($this->link->query($sql));
+          $result = $this->link->query($sql);
+          
+          if ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+               return $row["Logged"];
+          }     
+
+          mysqli_free_result($result);
           $this->CloseConnect();
 
      }
@@ -53,9 +59,12 @@ class usuario_model extends usuario_class {
           $contrasenia = $this->contrasenia;
 
           $sql = "SELECT * FROM usuarios WHERE username='$usuario' AND `password`=$contrasenia";
-
           $result = $this->link->query($sql);
 
+          if ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+               return $row["Logged"];
+          }          
+          
           mysqli_free_result($result);
           $this->CloseConnect();
 

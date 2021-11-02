@@ -9,12 +9,13 @@ $user = new usuario_model();
 
 $response = array(); //RETURN
 
-if (isset($username) && isset($password)) {
+if ($username != null && $password != null) {
     $user -> username = $username;
     $user -> password = $password;
+    
     $login = $user -> login(); //VALIDACION LOGIN
     
-    if ($login == "true") {
+    if ($login == true) {
         $response['logged'] = true;
         $response['error'] = "No Error";
     } else {
