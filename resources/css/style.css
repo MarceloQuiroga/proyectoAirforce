@@ -795,7 +795,7 @@ section {
 /* Portfolio Section
 --------------------------------*/
 #portfolio {
-  padding: 60px 0;
+  padding-bottom: 200px;
 }
 #portfolio #portfolio-flters {
   padding: 0;
@@ -833,7 +833,7 @@ section {
 }
 #portfolio .portfolio-item {
   position: relative;
-  height: 360px;
+  height:auto;
   overflow: hidden;
 }
 #portfolio .portfolio-item figure {
