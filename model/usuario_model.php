@@ -35,14 +35,8 @@ public function login() {
      $username=$this->username;
      $password=$this->password;
 
-     $sql = "CALL spExistUser('$username')";
-
-     if ($sql == "true") {
-          $sql = "CALL spLogin('$username', '$password')";
-          return $this->link->query($sql);
-     } else {
-          return "Error:Wrong Username";
-     }
+     $sql = "CALL spLogin('$username', '$password')";
+     return $this->link->query($sql);
      
      $this->CloseConnect();
 

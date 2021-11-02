@@ -184,12 +184,11 @@ function genTableInfo(datos) {
 }
 
 function login() {
-    event.preventClick;
 
-    console.log();
+    event.preventClick;
     
     $.ajax({
-        url: "controller/controllerUSerVerify.php",
+        url: "controller/controllerLogin.php",
         method: "GET",
         dataType: 'JSON',
         contentType: 'json',
@@ -198,7 +197,7 @@ function login() {
             password: $("form#login input")[1].value
         },
         success:function(response){
-        console.log(response);
+        console.log(1);
         }
     })
     
