@@ -190,14 +190,17 @@ function login() {
     $.ajax({
         url: "controller/controllerLogin.php",
         method: "GET",
-        dataType: 'JSON',
-        contentType: 'json',
         data:{
             username: $("form#login input")[0].value,
             password: $("form#login input")[1].value
         },
         success:function(response){
-        console.log(1);
+        console.log(response);
+        },
+        error: function(xhr, textStatus, error){
+            console.log(xhr.statusText);
+            console.log(textStatus);
+            console.log(error);
         }
     })
     
