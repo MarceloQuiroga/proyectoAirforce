@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Blog - BizPage Bootstrap Template</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="resources/img/favicon.png" rel="icon">
+  <link href="resources/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Montserrat:300,400,500,700" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="resources/vendor/animate.css/animate.min.css" rel="stylesheet">
+  <link href="resources/vendor/aos/aos.css" rel="stylesheet">
+  <link href="resources/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="resources/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="resources/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="resources/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="resources/css/style.css" rel="stylesheet">
+
+  <!-- =======================================================
+  * Template Name: BizPage - v5.7.0
+  * Template URL: https://bootstrapmade.com/bizpage-bootstrap-business-template/
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+</head>
+
+<body>
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="fixed-top d-flex align-items-center ">
+    <div class="container-fluid">
+
+      <div class="row justify-content-center align-items-center">
+        <div class="col-xl-11 d-flex align-items-center justify-content-between">
+          <a href="index.html"><img class="logoimg" src="resources/img/LOGO AirForce blanco.png" alt=""></a>
+          <!-- Uncomment below if you prefer to use an image logo -->
+          <!-- <a href="index.html" class="logo"><img src="resources/img/logo.png" alt="" class="img-fluid"></a>-->
+
+          <nav id="navbar" class="navbar">
+            <ul>
+              <li><a class="nav-link scrollto active" href="index.html#hero">Inicio</a></li>
+              <li><a class="nav-link scrollto" href="index.html#about">About</a></li>
+              <li><a class="nav-link scrollto" href="index.html#services">Servicios</a></li>
+              <li><a class="nav-link scrollto " href="index.html#portfolio">Productos</a></li>
+              <li><a class="nav-link scrollto" href="index.html#team">Equipo</a></li>
+              <li><a class="nav-link  " href="blog.html">Tienda</a></li>
+              
+              <!--IF LOGEADO Y USUARIO=ADMIN-->
+              <li><a class="nav-link  " href="banca.html">Banca</a></li>
+              <!--
+              <li class="dropdown"><a href="#"><span>Drop Down</span> <i class="bi bi-chevron-down"></i></a>
+                <ul>
+                  <li><a href="#">Drop Down 1</a></li>
+                  <li class="dropdown"><a href="#"><span>Deep Drop Down</span> <i class="bi bi-chevron-right"></i></a>
+                    <ul>
+                      <li><a href="#">Deep Drop Down 1</a></li>
+                      <li><a href="#">Deep Drop Down 2</a></li>
+                      <li><a href="#">Deep Drop Down 3</a></li>
+                      <li><a href="#">Deep Drop Down 4</a></li>
+                      <li><a href="#">Deep Drop Down 5</a></li>
+                    </ul>
+                  </li>
+                  <li><a href="#">Drop Down 2</a></li>
+                  <li><a href="#">Drop Down 3</a></li>
+                  <li><a href="#">Drop Down 4</a></li>
+                </ul>
+              </li> -->
+
+              <li><a class="nav-link scrollto" href="index.html#contact">Contact</a></li>
+            </ul>
+            <i class="bi bi-list mobile-nav-toggle"></i>
+          </nav><!-- .navbar -->
+        </div>
+      </div>
+
+    </div>
+  </header><!-- End Header -->
+
+  <main id="main">
+
+    <!-- ======= Breadcrumbs ======= -->
+    <section id="breadcrumbs" class="breadcrumbs">
+      <div class="container">
+
+        <h2 class="mt-4">Banca</h2>
+
+      </div>
+    </section><!-- End Breadcrumbs -->
+
+    <!-- ======= Blog Section ======= -->
+    <section id="blog" class="blog">
+      <div class="container mx-auto bg-light text-center">
+
+        <!--MODAL-->
+        <button type="button" class="w-100 btn btn-primary" data-bs-toggle="modal" data-bs-target="#login">
+          LOGIN
+          </button>
+        <button type="button" class="w-100 btn btn-primary" data-bs-toggle="modal" data-bs-target="#formPrestamo">
+        GENERAR PRESTAMO
+        </button>
+        <button type="button" class="w-100 btn btn-primary" data-bs-toggle="modal" data-bs-target="#formLeasing">
+          GENERAR LEASING
+        </button>
+         <!--MODAL-->
+    
+         <div id="info">
+    
+            <table class="table mt-5"> <!--BLOQUE DE PRESTAMO-->
+                <thead>
+                  <tr>  
+                    <th class="col">N</th>
+                    <th class="col">Anual</th>
+                    <th class="col">Cuota Interes</th>
+                    <th class="col">Cuota de Amortización</th>
+                    <th class="col">Amortización Capital</th>
+                    <th class="col">Amortización Capital Faltante</th>
+                  </tr>
+                </thead>
+                <tbody id="tableInfoPrestamo">
+                  <tr>
+                    <th>0</th>
+                    <td>---</td>
+                    <td>---</td>
+                    <td>---</td>
+                    <td>---</td>
+                    <td>---</td>
+                  </tr>
+                </tbody>
+            </table>
+    
+            <table class="table mt-5"> <!--BLOQUE DE LEASING-->
+              <thead>
+                <tr>  
+                  <th class="col">N</th>
+                  <th class="col">Cuota</th>
+                  <th class="col">BEZ-a</th>
+                  <th class="col">Cuota a Pagar</th>
+                  <th class="col">Interes</th>
+                  <th class="col">Amortización</th>
+                  <th class="col">Amortización Capital Faltante</th>
+                </tr>
+              </thead>
+              <tbody id="tableInfoLeasing">
+                <tr>
+                  <th>0</th>
+                  <td>---</td>
+                  <td>---</td>
+                  <td>---</td>
+                  <td>---</td>
+                  <td>---</td>
+                </tr>
+              </tbody>
+            </table>
+              
+         </div>
+    
+    </div>
+    
+    
+      
+      <!-- MODAL -->
+      <div class="modal fade" id="login" tabindex="-1">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <!--modalHeader-->
+            <div class="modal-header">
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <!--modalBody-->
+            <div class="modal-body">
+              <ul class="nav nav-pills row mx-auto p-0" id="pills-tab" role="tablist">
+                <li class="nav-item col-6 pe-1" role="presentation">
+                  <button class="nav-link w-100 active" data-bs-toggle="pill" data-bs-target="#pills_Login">Login</button>
+                </li>
+                <li class="nav-item col-6 ps-1" role="presentation">
+                  <button class="nav-link w-100" data-bs-toggle="pill" data-bs-target="#pills_Register">Register</button>
+                </li>
+              </ul>
+              <hr>
+              <div class="tab-content">
+                <!--Login Block-->
+                <div class="tab-pane fade show active px-3" id="pills_Login">
+                <form id="login">
+                  <!-- Email input -->
+                  <div class="form-outline mb-4">
+                    <label class="form-label" for="formEmail">Email address</label>
+                    <input type="text" id="formEmail" class="form-control" />
+                  </div>
+                  <!-- Password input -->
+                  <div class="form-outline mb-4">
+                    <label class="form-label" for="formPassword">Password</label>
+                    <input type="password" id="formPassword" class="form-control" />
+                  </div>
+                  <!-- 2 column grid layout for inline styling -->
+                  <div class="row mb-4">
+                    <div class="col d-flex justify-content-center">
+                      <!-- Checkbox -->
+                      <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="formRemember" checked/>
+                        <label class="form-check-label" for="formRemember"> Remember me </label>
+                      </div>
+                    </div>
+                
+                    <div class="col">
+                      <!-- Simple link -->
+                      <a href="#!">Forgot password?</a>
+                    </div>
+                  </div>
+                  <hr>
+                  <button type="submit" class="btn btn-primary w-100">Login</button>
+                </form>
+                </div>
+                <!--Register Block-->
+                <div class="tab-pane fade px-3" id="pills_Register">
+                <form id="register">
+                  <!--User input -->
+                  <div class="form-outline mb-4">
+                    <label class="form-label" for="formUser">Username <span class="text-danger">*</span></label>
+                    <input type="text" id="formUser" class="form-control" required/>
+                  </div>
+                  <!-- Email input -->
+                  <div class="form-outline mb-4">
+                    <label class="form-label" for="formEmail">Email address <span class="text-danger">*</span></label>
+                    <input type="email" id="formEmail" class="form-control" required/>
+                  </div>
+                  <!-- Password input -->
+                  <div class="form-outline mb-4">
+                    <label class="form-label" for="formPassword">Password <span class="text-danger">*</span></label>
+                    <input type="password" id="formPassword" class="form-control" required/>
+                    
+                  </div>
+                  <!-- Password_Verify input -->
+                  <div class="form-outline mb-4">
+                    <label class="form-label" for="formPasswordVerify">Confirm Password <span class="text-danger">*</span></label>
+                    <input type="password" id="formPasswordVerify" class="form-control" required/>
+                    <span class="validation text-danger position-absolute d-none">Wrong Password</span>
+                  </div>
+                  <hr>
+                  <button type="submit" class="btn btn-primary w-100">Register</button>
+                </form>
+              
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+      <div class="modal fade" id="formPrestamo" tabindex="-1">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">GENERAR PRESTAMO</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form id="genPrestamo"> <!--FORMULARIO-->
+            <div class="modal-body">
+              
+                <div class="form-outline mb-4"> 
+                    <label class="form-label" for="formIBAN">Cuenta Bancaria</label>
+                    <select id="formIBAN" class="form-control">
+                        <option value="1">IBAN</option>
+                        <option value="2">IBAN2</option>
+                    </select>
+                </div>
+    
+                <div class="form-outline mb-4"> <!--CANTIDAD-->
+                    <label class="form-label" for="formCantidad">Cantidad</label>
+                    <input type="number" id="formCantidad" class="form-control" />
+                </div>
+    
+                <div class="form-outline mb-4"> <!--CUOTAS-->
+                    <label class="form-label" for="formCuotas">Cuotas</label>
+                    <input type="number" id="formCuotas" class="form-control" />
+                </div>
+    
+                <div class="form-outline mb-4"> <!--INTERES-->
+                    <label class="form-label" for="formInteres">Interes</label>
+                    <input type="number" id="formInteres" class="form-control" />
+                </div>
+    
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button type="submit" class="btn btn-primary">Solicitar</button>
+            </div>
+            </form> <!--FORMULARIO CIERRE-->
+          </div>
+        </div>
+      </div>
+    
+      <div class="modal fade" id="formLeasing" tabindex="-1">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">GENERAR LEASING</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form id="genLeasing"> <!--FORMULARIO-->
+            <div class="modal-body">
+              
+                <div class="form-outline mb-4"> 
+                    <label class="form-label" for="formIBAN">Cuenta Bancaria</label>
+                    <select id="formIBAN" class="form-control">
+                        <option value="1">IBAN</option>
+                        <option value="2">IBAN2</option>
+                    </select>
+                </div>
+    
+                <div class="form-outline mb-4"> <!--CANTIDAD-->
+                    <label class="form-label" for="formCantidad">Cantidad</label>
+                    <input type="number" id="formCantidad" class="form-control" />
+                </div>
+    
+                <div class="form-outline mb-4"> <!--TIEMPO-->
+                    <label class="form-label" for="formTiempo">Tiempo</label>
+                    <input type="number" id="formTiempo" class="form-control" />
+                </div>
+    
+                <div class="form-outline mb-4"> <!--CUOTA-->
+                  <label class="form-label" for="formCuotas">Cuota</label>
+                  <input type="number" id="formCuotas" class="form-control" />
+                </div>
+    
+                <div class="form-outline mb-4"> <!--INTERES-->
+                    <label class="form-label" for="formInteres">Interes</label>
+                    <input type="number" id="formInteres" class="form-control" />
+                </div>
+    
+                <div class="form-outline mb-4"> <!--BEZ-->
+                  <label class="form-label" for="formBez">Bez</label>
+                  <input type="number" id="formBez" class="form-control" />
+              </div>
+    
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button type="submit" class="btn btn-primary">Solicitar</button>
+            </div>
+            </form> <!--FORMULARIO CIERRE-->
+          </div>
+        </div>
+      </div>
+      <!--MODAL-->
+    </section><!-- End Blog Section -->
+
+  </main><!-- End #main -->
+
+  <!-- ======= Footer ======= -->
+  <footer id="footer">
+    <div class="footer-top">
+      <div class="container">
+        <div class="row">
+
+          <div class="col-lg-3 col-md-6 footer-info">
+            <h3>BizPage</h3>
+            <p>Cras fermentum odio eu feugiat lide par naso tierra. Justo eget nada terra videa magna derita valies darta donna mare fermentum iaculis eu non diam phasellus. Scelerisque felis imperdiet proin fermentum leo. Amet volutpat consequat mauris nunc congue.</p>
+          </div>
+
+          <div class="col-lg-3 col-md-6 footer-links">
+            <h4>Useful Links</h4>
+            <ul>
+              <li><i class="bi bi-chevron-right"></i> <a href="#">Home</a></li>
+              <li><i class="bi bi-chevron-right"></i> <a href="#">About us</a></li>
+              <li><i class="bi bi-chevron-right"></i> <a href="#">Services</a></li>
+              <li><i class="bi bi-chevron-right"></i> <a href="#">Terms of service</a></li>
+              <li><i class="bi bi-chevron-right"></i> <a href="#">Privacy policy</a></li>
+            </ul>
+          </div>
+
+          <div class="col-lg-3 col-md-6 footer-contact">
+            <h4>Contact Us</h4>
+            <p>
+              A108 Adam Street <br>
+              New York, NY 535022<br>
+              United States <br>
+              <strong>Phone:</strong> +1 5589 55488 55<br>
+              <strong>Email:</strong> info@example.com<br>
+            </p>
+
+            <div class="social-links">
+              <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
+              <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
+              <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
+              <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
+              <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>
+            </div>
+
+          </div>
+
+          <div class="col-lg-3 col-md-6 footer-newsletter">
+            <h4>Our Newsletter</h4>
+            <p>Tamen quem nulla quae legam multos aute sint culpa legam noster magna veniam enim veniam illum dolore legam minim quorum culpa amet magna export quem marada parida nodela caramase seza.</p>
+            <form action="" method="post">
+              <input type="email" name="email"><input type="submit" value="Subscribe">
+            </form>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="copyright">
+        &copy; Copyright <strong>BizPage</strong>. All Rights Reserved
+      </div>
+      <div class="credits">
+        <!--
+        All the links in the footer should remain intact.
+        You can delete the links only if you purchased the pro version.
+        Licensing information: https://bootstrapmade.com/license/
+        Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/buy/?theme=BizPage
+      -->
+        Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+      </div>
+    </div>
+  </footer><!-- End Footer -->
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+  <!-- Uncomment below i you want to use a preloader -->
+  <!-- <div id="preloader"></div> -->
+
+  <!-- Vendor JS Files -->
+  <script src="resources/vendor/aos/aos.js"></script>
+  <script src="resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="resources/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="resources/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="resources/vendor/php-email-form/validate.js"></script>
+  <script src="resources/vendor/purecounter/purecounter.js"></script>
+  <script src="resources/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="resources/vendor/waypoints/noframework.waypoints.js"></script>
+
+      <!--JAVASCRIPT links-->
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+      <script src="resources/js/jquery-3.6.0.js"></script>
+      <script src="resources/js/test.js"></script>
+      <!--JAVASCRIPT links-->
+
+</body>
+
+</html>
