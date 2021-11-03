@@ -1037,10 +1037,12 @@ section {
   opacity: 0;
   line-height: 1;
   text-align: center;
-  width: 36px;
-  height: 36px;
+  width: auto;
+  height: auto;
   background: #fff;
-  border-radius: 50%;
+  color: #000;
+  border-radius: 30px;
+  padding: 10px;
   transition: 0.2s linear;
 }
 #banca .banca-item figure .link-preview i, #banca .banca-item figure .link-details i {
@@ -1050,6 +1052,8 @@ section {
 }
 #banca .banca-item figure .link-preview:hover, #banca .banca-item figure .link-details:hover {
   background: #18d26e;
+  color: white;
+  cursor: pointer;
 }
 #banca .banca-item figure .link-preview:hover i, #banca .banca-item figure .link-details:hover i {
   color: #fff;

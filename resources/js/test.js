@@ -90,7 +90,19 @@ function genTableInfo(datos) {
     if (datos["dataType"] == "prestamo") { //Bloque de datos procede desde Prestamos
 
         /******************************VARIABLES***********************************/
-        txt = document.getElementById("tableInfoPrestamo");
+        /*txt = document.getElementById("tableInfoPrestamo");*/
+        txt = "<table class='table mt-5>'"
+            +   "<thead>"
+            +       "<tr>" 
+            +         "<th class='col'>N</th>"
+            +         "<th class='col'>a</th>"
+            +         "<th class='col'>I ᵢ</th>"
+            +         "<th class='col'>A ᵢ</th>"
+            +         "<th class='col'>K ᵢ</th>"
+            +         "<th class='col'>C ᵢ</th>"
+            +       "</tr>"
+            +   "</thead>"
+            +   "<tbody id='tableInfoPrestamo'>"
         var genTxt = "";
         var interesCuota;
         var amortizacionCuota;
@@ -109,7 +121,7 @@ function genTableInfo(datos) {
                +     "<td>---</td>"
                +     "<td>" + datos["cantidad"] + " € </td>";
     
-               txt.innerHTML = genTxt;
+                txt += genTxt;                   
     
             } else {
     
@@ -120,7 +132,7 @@ function genTableInfo(datos) {
                 amortizacionCapital = ((i == 1)?amortizacionCuota:amortizacionCuota + amortizacionCapital);
                 /*******************************************************************************************/
                 
-                genTxt  +=    "<tr>"
+                txt  +=    "<tr>"
                         +     "<th>" + i + "</th>"
                         +     "<td>" + parseFloat(datos["cuota"]).toFixed(2) + " € </td>"
                         +     "<td>" + parseFloat(interesCuota).toFixed(2) + " € </td>"
@@ -128,32 +140,42 @@ function genTableInfo(datos) {
                         +     "<td>" + parseFloat(amortizacionCapital).toFixed(2) + " € </td>"
                         +     "<td>" + parseFloat(CapitalxAmortizar).toFixed(2) + " € </td>";
     
+                        
                 console.log("debug: " + datos["cuota"]) //DEBUG TOOL
     
             }
             
+            
         }
+
+        txt += "</tbody>"
+            + "</table>";
+
+        document.getElementById("ComparacionTablas").innerHTML=txt;
 
     } else if (datos["dataType"] == "leasing") { //Bloque de datos procede desde Leasing
 
          /******************************VARIABLES***********************************/
-         txt = document.getElementById("tableInfoLeasing");
-         var genTxt = "";
+         txt = "<table class='table mt-5>'"
+            +   "<thead>"
+            +       "<tr>" 
+            +         "<th class='col'>N</th>"
+            +         "<th class='col'>a</th>"
+            +         "<th class='col'>IVA</th>"
+            +         "<th class='col'>tot</th>"
+            +         "<th class='col'>I ᵢ</th>"
+            +         "<th class='col'>K ᵢ</th>"
+            +         "<th class='col'>C ᵢ</th>"
+            +       "</tr>"
+            +   "</thead>"
+            +   "<tbody id='tableInfoLeasing'>"
+        var genTxt = "";
          var interesCuota;
          var amortizacion;
          var CapitalxAmortizar = datos["cantidad"];
          /*************************************************************************/
 
-         genTxt = "<tr>"
-               +     "<th scope='row'>" + i + "</th>"
-               +     "<td>---</td>"
-               +     "<td>---</td>"
-               +     "<td>---</td>"
-               +     "<td>---</td>"
-               +     "<td>---</td>"
-               +     "<td>" + datos["cantidad"] + " € </td>";
-    
-         txt.innerHTML = genTxt;
+         
 
          for (var i = 0; i <= datos["tiempo"]; i++) {
          
@@ -163,7 +185,31 @@ function genTableInfo(datos) {
             CapitalxAmortizar = CapitalxAmortizar -amortizacion;
             /*******************************************************************************************/
 
-            genTxt  +=    "<tr>"
+            if (i == 0) {
+
+                genTxt = "<tr>"
+                +     "<th scope='row'>---</th>"
+                +     "<td>---</td>"
+                +     "<td>---</td>"
+                +     "<td>---</td>"
+                +     "<td>---</td>"
+                +     "<td>---</td>"
+                +     "<td>" + datos["cantidad"] + " € </td>";
+     
+                txt += genTxt; 
+                
+                txt  +=    "<tr>"
+                        +     "<th>" + i + "</th>"
+                        +     "<td>" + parseFloat(datos["cuota"]).toFixed(2) + " € </td>"
+                        +     "<td>" + parseFloat(datos["BEZ"]).toFixed(2) + " € </td>"
+                        +     "<td>" + parseFloat((datos["cuota"]-datos["BEZ"])).toFixed(2) + " € </td>"
+                        +     "<td> - </td>"
+                        +     "<td>" + parseFloat(amortizacion).toFixed(2) + " € </td>"
+                        +     "<td>" + parseFloat(CapitalxAmortizar).toFixed(2) + " € </td>";
+                
+            }
+
+            txt  +=    "<tr>"
                         +     "<th>" + i + "</th>"
                         +     "<td>" + parseFloat(datos["cuota"]).toFixed(2) + " € </td>"
                         +     "<td>" + parseFloat(datos["BEZ"]).toFixed(2) + " € </td>"
@@ -176,10 +222,14 @@ function genTableInfo(datos) {
 
         console.log("debug: " + datos["BEZ"]) //DEBUG TOOL
 
+        txt += "</tbody>"
+            + "</table>";
+
+        document.getElementById("ComparacionTablas").innerHTML=txt;
+
     }
 
     console.log(txt);
-    txt.innerHTML = genTxt; //INYECTA EL CODIGO GENERADO EN LA TABLA
 
 }
 
