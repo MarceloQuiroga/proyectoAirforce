@@ -795,7 +795,7 @@ section {
 /* Portfolio Section
 --------------------------------*/
 #portfolio {
-  padding-bottom: 200px;
+  padding: 60px 0;
 }
 #portfolio #portfolio-flters {
   padding: 0;
@@ -971,6 +971,188 @@ section {
 .portfolio-details .portfolio-description p {
   padding: 0;
 }
+
+
+/* Banca Section
+--------------------------------*/
+#banca {
+  padding: 60px 0;
+}
+#banca #banca-flters {
+  padding: 0;
+  margin: 5px 0 35px 0;
+  list-style: none;
+  text-align: center;
+}
+#banca #banca-flters li {
+  cursor: pointer;
+  margin: 15px 15px 15px 0;
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 12px;
+  line-height: 20px;
+  color: #666666;
+  border-radius: 4px;
+  text-transform: uppercase;
+  background: #fff;
+  margin-bottom: 5px;
+  transition: all 0.3s ease-in-out;
+}
+#banca #banca-flters li:hover, #banca #banca-flters li.filter-active {
+  background: #18d26e;
+  color: #fff;
+}
+#banca #banca-flters li:last-child {
+  margin-right: 0;
+}
+#banca .banca-wrap {
+  box-shadow: 0px 2px 12px rgba(0, 0, 0, 0.08);
+  transition: 0.3s;
+}
+#banca .banca-wrap:hover {
+  box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.16);
+}
+#banca .banca-item {
+  position: relative;
+  height:auto;
+  overflow: hidden;
+}
+#banca .banca-item figure {
+  background: #000;
+  overflow: hidden;
+  height: 240px;
+  position: relative;
+  border-radius: 4px 4px 0 0;
+  margin: 0;
+}
+#banca .banca-item figure:hover img {
+  opacity: 0.4;
+  transition: 0.3s;
+}
+#banca .banca-item figure .link-preview, #banca .banca-item figure .link-details {
+  position: absolute;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  line-height: 1;
+  text-align: center;
+  width: 36px;
+  height: 36px;
+  background: #fff;
+  border-radius: 50%;
+  transition: 0.2s linear;
+}
+#banca .banca-item figure .link-preview i, #banca .banca-item figure .link-details i {
+  font-size: 22px;
+  color: #333;
+  line-height: 0;
+}
+#banca .banca-item figure .link-preview:hover, #banca .banca-item figure .link-details:hover {
+  background: #18d26e;
+}
+#banca .banca-item figure .link-preview:hover i, #banca .banca-item figure .link-details:hover i {
+  color: #fff;
+}
+#banca .banca-item figure .link-preview {
+  left: calc(50% - 38px);
+  top: calc(50% - 18px);
+}
+#banca .banca-item figure .link-details {
+  right: calc(50% - 38px);
+  top: calc(50% - 18px);
+}
+#banca .banca-item figure:hover .link-preview {
+  opacity: 1;
+  left: calc(50% - 44px);
+}
+#banca .banca-item figure:hover .link-details {
+  opacity: 1;
+  right: calc(50% - 44px);
+}
+#banca .banca-item .banca-info {
+  background: rgb(238, 238, 238);
+  text-align: center;
+  padding: 30px;
+  height: 90px;
+  border-radius: 0 0 3px 3px;
+}
+#banca .banca-item .banca-info h4 {
+  font-size: 18px;
+  line-height: 1px;
+  font-weight: 700;
+  margin-bottom: 18px;
+  padding-bottom: 0;
+}
+#banca .banca-item .banca-info h4 a {
+  color: #333;
+}
+#banca .banca-item .banca-info h4 a:hover {
+  color: #18d26e;
+}
+#banca .banca-item .banca-info p {
+  padding: 0;
+  margin: 0;
+  color: #b8b8b8;
+  font-weight: 500;
+  font-size: 14px;
+  text-transform: uppercase;
+}
+
+/*--------------------------------------------------------------
+# Banca Details
+--------------------------------------------------------------*/
+.banca-details {
+  padding-top: 40px;
+}
+.banca-details .banca-details-slider img {
+  width: 100%;
+}
+.banca-details .banca-details-slider .swiper-pagination {
+  margin-top: 20px;
+  position: relative;
+}
+.banca-details .banca-details-slider .swiper-pagination .swiper-pagination-bullet {
+  width: 12px;
+  height: 12px;
+  background-color: #fff;
+  opacity: 1;
+  border: 1px solid #18d26e;
+}
+.banca-details .banca-details-slider .swiper-pagination .swiper-pagination-bullet-active {
+  background-color: #18d26e;
+}
+.banca-details .banca-info {
+  padding: 30px;
+  box-shadow: 0px 0 30px rgba(51, 51, 51, 0.08);
+}
+.banca-details .banca-info h3 {
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #eee;
+}
+.banca-details .banca-info ul {
+  list-style: none;
+  padding: 0;
+  font-size: 15px;
+}
+.banca-details .banca-info ul li + li {
+  margin-top: 10px;
+}
+.banca-details .banca-description {
+  padding-top: 30px;
+}
+.banca-details .banca-description h2 {
+  font-size: 26px;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+.banca-details .banca-description p {
+  padding: 0;
+}
+
 
 /* Clients Section
 --------------------------------*/

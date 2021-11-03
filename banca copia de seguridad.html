@@ -98,166 +98,75 @@
       </div>
     </section><!-- End Breadcrumbs -->
 
-    <!-- ======= Banca Section ======= -->
     <section id="banca" class="">
       <div class="container" data-aos="fade-up">
-
-        <header class="section-header">
-          <h3 class="section-title">GESTION DE BANCA</h3>
-        </header>
 
         <div class="row" data-aos="fade-up" data-aos-delay="100">
           <div class=" col-lg-12">
             <ul id="banca-flters">
-              <li data-filter=".filter-prest">PRESTAMOS</li>
-              <li data-filter=".filter-mov">MOVIMIENTOS</li>
-              <li data-filter=".filter-trans">TRANSFERENCIAS</li>
-              <li data-filter=".filter-ing">Ingreso</li>
+              <li data-filter=".filter-app">Prestamo</li>
+              <li data-filter=".filter-card">Leasing</li>
             </ul>
           </div>
         </div>
 
         <div class="row banca-container" data-aos="fade-up" data-aos-delay="200">
 
-          <div class="col-lg-4 col-md-6 banca-item filter-prest">
-            <div class="banca-wrap">
-              
-              <div class="banca-info">
-                <h4><a href="portfolio-details.html">PRESTAMO FRANCES</a></h4>
-                <p>Prestamo Frances</p>
-              </div>
-
-              <figure>
-                <img src="resources/img/portfolio/app1.jpg" class="img-fluid" alt="">
-                <a href="resources/img/portfolio/app1.jpg" data-lightbox="banca" data-title="App 1" class="link-preview"><i class="bi bi-plus"></i></a>
-                <a href="portfolio-details.html" class="link-details" title="More Details"><i class="bi bi-link"></i></a>
-              </figure>
-
-              
-            </div>
+          <div class="col-lg-12 col-md-12 banca-item filter-app">
+            <button type="button" class="w-100 btn btn-primary" data-bs-toggle="modal" data-bs-target="#formPrestamo">
+              GENERAR
+            </button>
+            <table class="table mt-5"> <!--BLOQUE DE PRESTAMO-->
+              <thead>
+                <tr>  
+                  <th class="col">N</th>
+                  <th class="col">Anual</th>
+                  <th class="col">Cuota Interes</th>
+                  <th class="col">Cuota de Amortización</th>
+                  <th class="col">Amortización Capital</th>
+                  <th class="col">Amortización Capital Faltante</th>
+                </tr>
+              </thead>
+              <tbody id="tableInfoPrestamo">
+                <tr>
+                  <th>0</th>
+                  <td>---</td>
+                  <td>---</td>
+                  <td>---</td>
+                  <td>---</td>
+                  <td>---</td>
+                </tr>
+              </tbody>
+            </table>
           </div>
 
-          <div class="col-lg-4 col-md-6 banca-item filter-prest">
-            <div class="banca-wrap">
-              
-              <div class="banca-info">
-                <h4><a href="portfolio-details.html">LEASING</a></h4>
-                <p>Leasing</p>
-              </div>
-
-              <figure>
-                <img src="resources/img/portfolio/web3.jpg" class="img-fluid" alt="">
-                <a href="resources/img/portfolio/web3.jpg" data-lightbox="banca" data-title="App 1" class="link-preview"><i class="bi bi-plus"></i></a>
-                <a href="portfolio-details.html" class="link-details" title="More Details"><i class="bi bi-link"></i></a>
-              </figure>
-
-              
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 banca-item filter-prest">
-            <div class="banca-wrap">
-              <figure>
-                <img src="resources/img/portfolio/app2.jpg" class="img-fluid" alt="">
-                <a href="resources/img/portfolio/app2.jpg" class="link-preview banca-lightbox" data-gallery="bancaGallery" title="App 2"><i class="bi bi-plus"></i></a>
-                <a href="portfolio-details.html" class="link-details" title="More Details"><i class="bi bi-link"></i></a>
-              </figure>
-
-              <div class="banca-info">
-                <h4><a href="portfolio-details.html">App 2</a></h4>
-                <p>App</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 banca-item filter-mov">
-            <div class="banca-wrap">
-              <figure>
-                <img src="resources/img/portfolio/card2.jpg" class="img-fluid" alt="">
-                <a href="resources/img/portfolio/card2.jpg" class="link-preview banca-lightbox" data-gallery="bancaGallery" title="Card 2"><i class="bi bi-plus"></i></a>
-                <a href="portfolio-details.html" class="link-details" title="More Details"><i class="bi bi-link"></i></a>
-              </figure>
-
-              <div class="banca-info">
-                <h4><a href="portfolio-details.html">Card 2</a></h4>
-                <p>Card</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 banca-item filter-mov">
-            <div class="banca-wrap">
-              <figure>
-                <img src="resources/img/portfolio/web2.jpg" class="img-fluid" alt="">
-                <a href="resources/img/portfolio/web2.jpg" class="link-preview banca-lightbox" data-gallery="bancaGallery" title="Web 2"><i class="bi bi-plus"></i></a>
-                <a href="portfolio-details.html" class="link-details" title="More Details"><i class="bi bi-link"></i></a>
-              </figure>
-
-              <div class="banca-info">
-                <h4><a href="portfolio-details.html">Web 2</a></h4>
-                <p>Web</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 banca-item filter-mov">
-            <div class="banca-wrap">
-              <figure>
-                <img src="resources/img/portfolio/app3.jpg" class="img-fluid" alt="">
-                <a href="resources/img/portfolio/app3.jpg" class="link-preview banca-lightbox" data-gallery="bancaGallery" title="App 3"><i class="bi bi-plus"></i></a>
-                <a href="portfolio-details.html" class="link-details" title="More Details"><i class="bi bi-link"></i></a>
-              </figure>
-
-              <div class="banca-info">
-                <h4><a href="portfolio-details.html">App 3</a></h4>
-                <p>App</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 banca-item filter-trans">
-            <div class="banca-wrap">
-              <figure>
-                <img src="resources/img/portfolio/card1.jpg" class="img-fluid" alt="">
-                <a href="resources/img/portfolio/card1.jpg" class="link-preview banca-lightbox" data-gallery="bancaGallery" title="Card 1"><i class="bi bi-plus"></i></a>
-                <a href="portfolio-details.html" class="link-details" title="More Details"><i class="bi bi-link"></i></a>
-              </figure>
-
-              <div class="banca-info">
-                <h4><a href="portfolio-details.html">Card 1</a></h4>
-                <p>Card</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 banca-item filter-trans">
-            <div class="banca-wrap">
-              <figure>
-                <img src="resources/img/portfolio/card3.jpg" class="img-fluid" alt="">
-                <a href="assresourcesets/img/portfolio/card3.jpg" class="link-preview banca-lightbox" data-gallery="bancaGallery" title="Card 3"><i class="bi bi-plus"></i></a>
-                <a href="portfolio-details.html" class="link-details" title="More Details"><i class="bi bi-link"></i></a>
-              </figure>
-
-              <div class="banca-info">
-                <h4><a href="portfolio-details.html">Card 3</a></h4>
-                <p>Card</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 banca-item filter-trans">
-            <div class="banca-wrap">
-              <figure>
-                <img src="resources/img/portfolio/web1.jpg" class="img-fluid" alt="">
-                <a href="resources/img/portfolio/web1.jpg" class="link-preview banca-lightbox" data-gallery="bancaGallery" title="Web 1"><i class="bi bi-plus"></i></a>
-                <a href="portfolio-details.html" class="link-details" title="More Details"><i class="bi bi-link"></i></a>
-              </figure>
-
-              <div class="banca-info">
-                <h4><a href="portfolio-details.html">Web 1</a></h4>
-                <p>Web</p>
-              </div>
-            </div>
+          <div class="col-lg-12 col-md-12 banca-item filter-card">
+            <button type="button" class="w-100 btn btn-primary" data-bs-toggle="modal" data-bs-target="#formLeasing">
+              GENERAR
+            </button>
+            <table class="table mt-5"> <!--BLOQUE DE LEASING-->
+              <thead>
+                <tr>  
+                  <th class="col">N</th>
+                  <th class="col">Cuota</th>
+                  <th class="col">BEZ-a</th>
+                  <th class="col">Cuota a Pagar</th>
+                  <th class="col">Interes</th>
+                  <th class="col">Amortización</th>
+                  <th class="col">Amortización Capital Faltante</th>
+                </tr>
+              </thead>
+              <tbody id="tableInfoLeasing">
+                <tr>
+                  <th>0</th>
+                  <td>---</td>
+                  <td>---</td>
+                  <td>---</td>
+                  <td>---</td>
+                  <td>---</td>
+                </tr>
+              </tbody>
+            </table>
           </div>
 
         </div>

@@ -266,6 +266,77 @@
     }
   });
 
+
+  /**
+   * Banca isotope and filter
+   */
+   window.addEventListener('load', () => {
+    let bancaContainer = select('.banca-container');
+    if (bancaContainer) {
+
+      let bancaIsotope = new Isotope(bancaContainer, {
+        itemSelector: '.banca-item',
+        layoutMode: 'fitRows'
+      });
+
+      let bancaFilters = select('#banca-flters li', true);
+      
+      //Cargar por defecto los productos del filter "app" 
+      bancaFilters.forEach(function(el) {
+          el.classList.remove('filter-active');
+      });
+      bancaFilters[0].classList.add('filter-active');
+      bancaIsotope.arrange({
+        filter: bancaFilters[0].getAttribute('data-filter')
+      });
+      bancaIsotope.on('arrangeComplete', function() {
+        AOS.refresh()
+      });
+
+      // Cargar los productos del filter al que se clique encima
+      on('click', '#banca-flters li', function(e) {
+        e.preventDefault();
+        bancaFilters.forEach(function(el) {
+          el.classList.remove('filter-active');
+        });
+        this.classList.add('filter-active');
+
+        bancaIsotope.arrange({
+          filter: this.getAttribute('data-filter')
+        });
+        bancaIsotope.on('arrangeComplete', function() {
+          AOS.refresh()
+        });
+      }, true);
+    }
+
+  });
+
+  /**
+   * Initiate banca lightbox 
+   */
+  const bancaLightbox = GLightbox({
+    selector: '.banca-lightbox'
+  });
+
+  /**
+   * banca details slider
+   */
+  new Swiper('.banca-details-slider', {
+    speed: 400,
+    loop: true,
+    autoplay: {
+      delay: 5000,
+      disableOnInteraction: false
+    },
+    pagination: {
+      el: '.swiper-pagination',
+      type: 'bullets',
+      clickable: true
+    }
+  });
+
+
   /**
    * Clients Slider
    */
