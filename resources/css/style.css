@@ -986,13 +986,12 @@ section {
 }
 #banca #banca-flters li {
   cursor: pointer;
-  margin: 15px 15px 15px 0;
   display: inline-block;
-  padding: 10px 20px;
-  font-size: 12px;
+  padding: 20px 30px;
+  font-size: 20px;
   line-height: 20px;
-  color: #666666;
-  border-radius: 4px;
+  color: #000000;
+  border-radius: 1px;
   text-transform: uppercase;
   background: #fff;
   margin-bottom: 5px;
@@ -2035,4 +2034,9 @@ body{
 
 body::-webkit-scrollbar {
   display: none;
+}
+
+
+#ComparacionTablas{
+  margin-top: 100px !important;
 }
