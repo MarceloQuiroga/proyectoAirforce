@@ -78,6 +78,8 @@
               </li> -->
 
               <li><a class="nav-link scrollto" href="index.html#contact">Contact</a></li>
+              <li data-bs-toggle="modal" data-bs-target="#login"><a class="nav-link scrollto" href="#">Login</a></li>
+              
             </ul>
             <i class="bi bi-list mobile-nav-toggle"></i>
           </nav><!-- .navbar -->
@@ -90,13 +92,20 @@
   <main id="main">
 
     <!-- ======= Breadcrumbs ======= -->
-    <section id="breadcrumbs" class="breadcrumbs">
-      <div class="container">
-
+    <section id="breadcrumbs" class="breadcrumbs2">
+      <div class="">
         <h2 class="mt-4">Banca</h2>
-
+      </div>
+      <div id="CuentaBanca">
+        <select name="potencial" id="potencial" class="custom-select sources" placeholder="Elige una cuenta">
+          <option value="DH" selected>ES12 3443 4343 3434 5665</option>
+          <option value="A">ES32 3443 4343 3434 5665</option>
+          <option value="B">ES68 5672 5673 8964 9642</option>
+          <option value="C">ES16 2222 3424 4566 7453</option>
+        </select>
       </div>
     </section><!-- End Breadcrumbs -->
+
 
     <!-- ======= Banca Section ======= -->
     <section id="banca" class="">
@@ -112,7 +121,7 @@
               <li id="botonPrestamos" data-filter=".filter-prest">PRESTAMOS</li>
               <li data-filter=".filter-mov">MOVIMIENTOS</li>
               <li data-filter=".filter-trans">TRANSFERENCIAS</li>
-              <li id="botonIngreso">Ingreso</li>
+              <li data-filter=".filter-ingr">Ingreso</li>
             </ul>
           </div>
         </div>
@@ -276,17 +285,8 @@
     </section>
 
     <!-- ======= Blog Section ======= -->
-    <section id="blog" class="blog">
-      <div class="container mx-auto bg-light text-center">
-
-        <!--BOTONES-->
-          <button type="button" class="w-100 btn btn-primary" data-bs-toggle="modal" data-bs-target="#login">
-            LOGIN
-          </button>
-
-        <!--BOTONES-->
     
-      </div>
+    <section id="modals">
     
       <!-- MODAL -->
       <div class="modal fade" id="login" tabindex="-1">

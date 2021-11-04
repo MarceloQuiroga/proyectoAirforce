@@ -80,6 +80,8 @@
               -->
 
               <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
+              <li data-bs-toggle="modal" data-bs-target="#login"><a class="nav-link scrollto" href="#">Login</a></li>
+
             </ul>
             <i class="bi bi-list mobile-nav-toggle"></i>
           </nav><!-- .navbar -->
@@ -869,6 +871,98 @@
       </div>
     </div>
   </footer><!-- End Footer -->
+
+  <section id="modals">
+    
+    <!-- MODAL -->
+    <div class="modal fade" id="login" tabindex="-1">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <!--modalHeader-->
+          <div class="modal-header">
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <!--modalBody-->
+          <div class="modal-body">
+            <ul class="nav nav-pills row mx-auto p-0" id="pills-tab" role="tablist">
+              <li class="nav-item col-6 pe-1" role="presentation">
+                <button class="nav-link w-100 active" data-bs-toggle="pill" data-bs-target="#pills_Login">Login</button>
+              </li>
+              <li class="nav-item col-6 ps-1" role="presentation">
+                <button class="nav-link w-100" data-bs-toggle="pill" data-bs-target="#pills_Register">Register</button>
+              </li>
+            </ul>
+            <hr>
+            <div class="tab-content">
+              <!--Login Block-->
+              <div class="tab-pane fade show active px-3" id="pills_Login">
+              <form id="login">
+                <!-- Email input -->
+                <div class="form-outline mb-4">
+                  <label class="form-label" for="formEmail">Email address</label>
+                  <input type="text" id="formEmail" class="form-control" />
+                </div>
+                <!-- Password input -->
+                <div class="form-outline mb-4">
+                  <label class="form-label" for="formPassword">Password</label>
+                  <input type="password" id="formPassword" class="form-control" />
+                </div>
+                <!-- 2 column grid layout for inline styling -->
+                <div class="row mb-4">
+                  <div class="col d-flex justify-content-center">
+                    <!-- Checkbox -->
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" value="" id="formRemember" checked/>
+                      <label class="form-check-label" for="formRemember"> Remember me </label>
+                    </div>
+                  </div>
+              
+                  <div class="col">
+                    <!-- Simple link -->
+                    <a href="#!">Forgot password?</a>
+                  </div>
+                </div>
+                <hr>
+                <button type="submit" class="btn btn-primary w-100">Login</button>
+              </form>
+              </div>
+              <!--Register Block-->
+              <div class="tab-pane fade px-3" id="pills_Register">
+              <form id="register">
+                <!--User input -->
+                <div class="form-outline mb-4">
+                  <label class="form-label" for="formUser">Username <span class="text-danger">*</span></label>
+                  <input type="text" id="formUser" class="form-control" required/>
+                </div>
+                <!-- Email input -->
+                <div class="form-outline mb-4">
+                  <label class="form-label" for="formEmail">Email address <span class="text-danger">*</span></label>
+                  <input type="email" id="formEmail" class="form-control" required/>
+                </div>
+                <!-- Password input -->
+                <div class="form-outline mb-4">
+                  <label class="form-label" for="formPassword">Password <span class="text-danger">*</span></label>
+                  <input type="password" id="formPassword" class="form-control" required/>
+                  
+                </div>
+                <!-- Password_Verify input -->
+                <div class="form-outline mb-4">
+                  <label class="form-label" for="formPasswordVerify">Confirm Password <span class="text-danger">*</span></label>
+                  <input type="password" id="formPasswordVerify" class="form-control" required/>
+                  <span class="validation text-danger position-absolute d-none">Wrong Password</span>
+                </div>
+                <hr>
+                <button type="submit" class="btn btn-primary w-100">Register</button>
+              </form>
+            
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--MODAL-->
+  </section><!-- End Blog Section -->
 
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
   <!-- Uncomment below i you want to use a preloader -->

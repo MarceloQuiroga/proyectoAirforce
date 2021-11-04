@@ -269,6 +269,7 @@ function login() {
     return false;
 
 }
+
 function scroll(params) {
     document.getElementById('tablas').scrollIntoView({behavior: "smooth", block: "start", inline: "nearest"});
 }
