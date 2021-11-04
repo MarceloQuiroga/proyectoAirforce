@@ -50,7 +50,12 @@ function genPrestamo(event) {
 
     document.getElementById("botonPrestamos").click();
 
-    
+    if(document.getElementById("tableInfoPrestamo")){
+        document.getElementById('tablas').scrollIntoView({behavior: "smooth", block: "start", inline: "nearest"});
+        console.log("weeeeee");
+    }else{
+        alert("no se encutnra tabla");
+    }
 
     return false;
 }
@@ -264,8 +269,8 @@ function login() {
     return false;
 
 }
-
-function scroll() {
+function scroll(params) {
     document.getElementById('tablas').scrollIntoView({behavior: "smooth", block: "start", inline: "nearest"});
 }
-document.getElementById("botonPrestamos").onclick=scroll;
+document.getElementById("tablas").onclick=scroll;
+
