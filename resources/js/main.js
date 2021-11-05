@@ -520,3 +520,24 @@ $(".custom-option").on("click", function() {
     .find(".custom-select-trigger")
     .text($(this).text());
 });
+
+/**---------------------------------------Animacion login------------------------------ */
+
+$('#login').on('hidden.bs.modal', function () {
+  $("#formPasswordVerify").val('');
+  $("#formPassword").val('');
+})
+
+$(".log-in").click(function(){
+  $(".signIn").addClass("active-dx");
+  $(".signUp").addClass("inactive-sx");
+  $(".signUp").removeClass("active-sx");
+  $(".signIn").removeClass("inactive-dx");
+});
+
+$(".back").click(function(){
+  $(".signUp").addClass("active-sx");
+  $(".signIn").addClass("inactive-dx");
+  $(".signIn").removeClass("active-dx");
+  $(".signUp").removeClass("inactive-sx");
+});
