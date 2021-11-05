@@ -78,6 +78,8 @@
               </li> -->
 
               <li><a class="nav-link scrollto" href="index.html#contact">Contact</a></li>
+              <li data-bs-toggle="modal" data-bs-target="#login"><a class="nav-link scrollto" href="#">Login</a></li>
+              
             </ul>
             <i class="bi bi-list mobile-nav-toggle"></i>
           </nav><!-- .navbar -->
@@ -90,13 +92,20 @@
   <main id="main">
 
     <!-- ======= Breadcrumbs ======= -->
-    <section id="breadcrumbs" class="breadcrumbs">
-      <div class="container">
-
+    <section id="breadcrumbs" class="breadcrumbs2">
+      <div class="">
         <h2 class="mt-4">Banca</h2>
-
+      </div>
+      <div id="CuentaBanca">
+        <select name="potencial" id="potencial" class="custom-select sources" placeholder="Elige una cuenta">
+          <option value="DH" selected>ES12 3443 4343 3434 5665</option>
+          <option value="A">ES32 3443 4343 3434 5665</option>
+          <option value="B">ES68 5672 5673 8964 9642</option>
+          <option value="C">ES16 2222 3424 4566 7453</option>
+        </select>
       </div>
     </section><!-- End Breadcrumbs -->
+
 
     <!-- ======= Banca Section ======= -->
     <section id="banca" class="">
@@ -109,13 +118,15 @@
         <div class="row" data-aos="fade-up" data-aos-delay="100">
           <div class=" col-lg-12">
             <ul id="banca-flters">
-              <li data-filter=".filter-prest">PRESTAMOS</li>
+              <li id="botonPrestamos" data-filter=".filter-prest">PRESTAMOS</li>
               <li data-filter=".filter-mov">MOVIMIENTOS</li>
               <li data-filter=".filter-trans">TRANSFERENCIAS</li>
-              <li data-filter=".filter-ing">Ingreso</li>
+              <li data-filter=".filter-ingr">Ingreso</li>
             </ul>
           </div>
         </div>
+
+        
 
         <div class="row banca-container" data-aos="fade-up" data-aos-delay="200">
 
@@ -260,26 +271,22 @@
 
         </div>
 
+        
+
       </div>
     </section><!-- End Banca Section -->
 
+    
     <section id="tablas">
-      <div id="ComparacionTablas">
+      <div id="containerTablas" class="row container2">
+        <div id="ComparacionTablas" class="banca-item filter-prest">
+        </div>
       </div>
     </section>
 
     <!-- ======= Blog Section ======= -->
-    <section id="blog" class="blog">
-      <div class="container mx-auto bg-light text-center">
-
-        <!--BOTONES-->
-          <button type="button" class="w-100 btn btn-primary" data-bs-toggle="modal" data-bs-target="#login">
-            LOGIN
-          </button>
-
-        <!--BOTONES-->
     
-      </div>
+    <section id="modals">
     
       <!-- MODAL -->
       <div class="modal fade" id="login" tabindex="-1">
@@ -374,7 +381,7 @@
           <div class="modal-content">
             <div class="modal-header">
               <h5 class="modal-title" id="exampleModalLabel">GENERAR PRESTAMO</h5>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              <button type="button" class="btn-close botoncerrar" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <form id="genPrestamo"> <!--FORMULARIO-->
             <div class="modal-body">
@@ -404,8 +411,8 @@
     
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-              <button type="submit" class="btn btn-primary">Solicitar</button>
+              <button type="button" class="btn btn-secondary botoncerrar" data-bs-dismiss="modal">Close</button>
+              <button id="submitPrestamo" type="submit" class="btn btn-primary" data-bs-dismiss="modal">Solicitar</button>
             </div>
             </form> <!--FORMULARIO CIERRE-->
           </div>
@@ -458,7 +465,7 @@
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-              <button type="submit" class="btn btn-primary">Solicitar</button>
+              <button id="submitPrestamo" type="submit" class="btn btn-primary">Solicitar</button>
             </div>
             </form> <!--FORMULARIO CIERRE-->
           </div>

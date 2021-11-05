@@ -48,6 +48,15 @@ function genPrestamo(event) {
 
     genTableInfo(datos);
 
+    document.getElementById("botonPrestamos").click();
+
+    if(document.getElementById("tableInfoPrestamo")){
+        document.getElementById('tablas').scrollIntoView({behavior: "smooth", block: "start", inline: "nearest"});
+        console.log("weeeeee");
+    }else{
+        alert("no se encutnra tabla");
+    }
+
     return false;
 }
 
@@ -81,6 +90,9 @@ function genLeasing(event) {
     };
 
     genTableInfo(datos);
+    
+    //Cargar los productos del filter tambien despues de dar submit en el modal de prestamos y que asi nos aparezca la tabla;
+    document.getElementById("botonPrestamos").click();
 
     return false;
 }
@@ -257,3 +269,9 @@ function login() {
     return false;
 
 }
+
+function scroll(params) {
+    document.getElementById('tablas').scrollIntoView({behavior: "smooth", block: "start", inline: "nearest"});
+}
+document.getElementById("tablas").onclick=scroll;
+
