@@ -1,8 +1,8 @@
 <?php
+include_once ("../model/usuario_model.php");
 
 session_start();
 
-include_once ("../model/usuario_model.php");
 
 $username = $_GET["username"];
 $password = $_GET["password"];
@@ -32,8 +32,8 @@ if ($username != null && $password != null) {
     $response['error']="Ez da username edo password pasatu/No se ha pasado el usuario o la contrasena";
 }
 
-if(isset($_SESSION['role'])) { // Magic, ns pork, pero la session no termina en el mismo timelapse es asincrono?
-    $response['Debug'] = $_SESSION['role'];
+if(isset($_SESSION) != null) { // Magic, ns pork, pero la session no termina en el mismo timelapse es asincrono?
+    $response['Debug'] = $_SESSION;
 }
 
 echo json_encode($response);
