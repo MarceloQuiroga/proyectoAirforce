@@ -16,7 +16,6 @@ if ($username != null && $password != null) {
     $user -> password = $password;
     
     $login = $user -> login(); //VALIDACION LOGIN
-    $response['Debug: '] = $login;
     if ($login == true) {
         $response['logged'] = true;
         $response['error'] = "No Error";
