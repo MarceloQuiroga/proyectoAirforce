@@ -14,7 +14,7 @@ if ($username != null && $password != null) {
     $user -> password = $password;
     
     $login = $user -> login(); //VALIDACION LOGIN
-    
+    $response['Debug: '] = $login;
     if ($login == true) {
         $response['logged'] = true;
         $response['error'] = "No Error";
@@ -26,6 +26,8 @@ if ($username != null && $password != null) {
     $response['Logged'] = false;
     $response['error']="Ez da username edo password pasatu/No se ha pasado el usuario o la contraseña";
 }
+
+
  
 echo json_encode($response);
 

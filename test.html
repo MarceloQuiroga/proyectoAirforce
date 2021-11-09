@@ -104,7 +104,7 @@
           <div class="tab-content">
             <!--Login Block-->
             <div class="tab-pane fade show active px-3" id="pills_Login">
-            <form id="login">
+            <form id="login" autocomplete="off">
               <!-- Email input -->
               <div class="form-outline mb-4">
                 <label class="form-label" for="formEmail">Email address</label>
@@ -136,27 +136,27 @@
             </div>
             <!--Register Block-->
             <div class="tab-pane fade px-3" id="pills_Register">
-            <form id="register">
+            <form id="register" autocomplete="off">
               <!--User input -->
               <div class="form-outline mb-4">
                 <label class="form-label" for="formUser">Username <span class="text-danger">*</span></label>
-                <input type="text" id="formUser" class="form-control" required/>
+                <input type="text" id="formUser" class="form-control" />
               </div>
-              <!-- Email input -->
+              <!-- Email input
               <div class="form-outline mb-4">
                 <label class="form-label" for="formEmail">Email address <span class="text-danger">*</span></label>
-                <input type="email" id="formEmail" class="form-control" required/>
-              </div>
+                <input type="email" id="formEmail" class="form-control" />
+              </div> -->
               <!-- Password input -->
               <div class="form-outline mb-4">
                 <label class="form-label" for="formPassword">Password <span class="text-danger">*</span></label>
-                <input type="password" id="formPassword" class="form-control" required/>
+                <input type="password" id="formPassword" class="form-control" />
                 
               </div>
               <!-- Password_Verify input -->
               <div class="form-outline mb-4">
                 <label class="form-label" for="formPasswordVerify">Confirm Password <span class="text-danger">*</span></label>
-                <input type="password" id="formPasswordVerify" class="form-control" required/>
+                <input type="password" id="formPasswordVerify" class="form-control" />
                 <span class="validation text-danger position-absolute d-none">Wrong Password</span>
               </div>
               <hr>

@@ -70,25 +70,20 @@ class usuario_model extends usuario_class {
 
      }
 
-     public function insertUser(){
+     public function register(){
 
           $this->OpenConnect();
-          $usuario = $this->usuario;
+          $usuario = $this->username;
           $contrasenia = $this->contrasenia;
 
           $sql = "INSERT INTO `usuarios`(`username`, `password`) VALUES ('$usuario','$contrasenia')";
 
           $result = $this->link->query($sql);
 
-          if ($this->link->affected_rows == 1) {
-          $msg = $sql." El usuario se ha registrado correctamente, numero de usuarios insertados: ".$this->link->affected_rows;
-          } else {
-          $msg = $sql." Fallo al registrar el usuario";
-          }
-
           mysqli_free_result($result);
-          $this->CloseConnect();
 
+          $this->CloseConnect();
+          return $result;
 
      }
 

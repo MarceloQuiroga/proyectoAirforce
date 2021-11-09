@@ -15,6 +15,9 @@ function scriptMarcelo(){
   $('form#login')
     .off('click')
     .on('submit', login);
+  $('form#register')
+    .off('click')
+    .on('submit', register);
   $('form#genPrestamo')
     .off('click')
     .on('submit', genPrestamo);
@@ -273,5 +276,36 @@ function login() {
 function scroll(params) {
     document.getElementById('tablas').scrollIntoView({behavior: "smooth", block: "start", inline: "nearest"});
 }
-document.getElementById("tablas").onclick=scroll;
 
+// document.getElementById("tablas").onclick=scroll;
+
+function register(event) {
+
+    event.preventClick;
+
+    var data = $("form#register input");
+
+    if (data[1].value == data[2].value) {
+        $.ajax({
+            url: "controller/controllerRegister.php",
+            method: "POST",
+            data:{
+                username: data[0].value,
+                password: data[1].value
+            },
+            success:function(response){
+            console.log(response);
+            },
+            error: function(xhr, textStatus, error){
+                console.log(xhr.statusText);
+                console.log(textStatus);
+                console.log(error);
+            }
+        })
+    }else{
+        alert("Lo siento las contraseñas no son iguales por favor introduzca las contraseñas iguales.");
+    }
+    
+
+    return false;
+}

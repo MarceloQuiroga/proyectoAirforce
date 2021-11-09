@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 27-10-2021 a las 09:14:27
+-- Tiempo de generación: 08-11-2021 a las 13:20:48
 -- Versión del servidor: 10.4.21-MariaDB
 -- Versión de PHP: 8.0.11
 
@@ -22,6 +22,14 @@ SET time_zone = "+00:00";
 --
 CREATE DATABASE IF NOT EXISTS `airforce` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
 USE `airforce`;
+
+DELIMITER $$
+--
+-- Procedimientos
+--
+CREATE DEFINER=`root`@`localhost` PROCEDURE `spLogin` (IN `user` VARCHAR(25), IN `pass` VARCHAR(50))  SELECT "true" AS Logged FROM usuarios WHERE username = user && password = pass$$
+
+DELIMITER ;
 
 -- --------------------------------------------------------
 
@@ -134,8 +142,15 @@ CREATE TABLE `usuarios` (
   `password` varchar(50) NOT NULL,
   `status` tinyint(1) NOT NULL,
   `role` tinyint(1) NOT NULL,
-  `cod_cliente` int(5) NOT NULL
+  `cod_cliente` int(5) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `usuarios`
+--
+
+INSERT INTO `usuarios` (`cod`, `username`, `password`, `status`, `role`, `cod_cliente`) VALUES
+(3, 'prueba', 'prueba', 1, 1, NULL);
 
 --
 -- Índices para tablas volcadas
@@ -218,7 +233,7 @@ ALTER TABLE `registro`
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `cod` int(5) NOT NULL AUTO_INCREMENT;
+  MODIFY `cod` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Restricciones para tablas volcadas
