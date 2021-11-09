@@ -37,20 +37,26 @@ class usuario_model extends usuario_class {
      public function login() {
 
           $this->OpenConnect();
-          
-          $username=$this->username;
-          $password=$this->password;
 
-          $sql = "CALL spLogin('$username', '$password')";
+          $sql = "CALL spLogin('$this->username', '$this->password')";
           $result = $this->link->query($sql);
+          $loged = false;          
           
           if ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
-               return $row["Logged"];
-          }     
+            
+            
+               $this->cod=$row['cod'];
+               $this->username=$row['username'];
+               $this->password=$row['password'];
+               $this->role=$row['role'];
+               $this->cod_cliente=$row['cod_cliente'];
 
-          mysqli_free_result($result);
-          $this->CloseConnect();
-
+               $loged = true;
+            
+          }
+        mysqli_free_result($result);
+        $this->CloseConnect();
+        return $loged;
      }
 
      public function getUser(){

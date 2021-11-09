@@ -16,9 +16,19 @@
 <div class="container mx-auto bg-light text-center">
 
   <!--BOTONES-->
-    <button type="button" class="w-100 btn btn-primary" data-bs-toggle="modal" data-bs-target="#login">
+  <div class="dropdown">
+    <button id="loginbtn" type="button" class="w-100 btn btn-primary" data-bs-toggle="modal" data-bs-target="#login">
       LOGIN
     </button>
+    <!-- <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+      Dropdown button
+    </button> -->
+    <ul class="dropdown-menu" aria-labelledby="dropdownloginbtn">
+      <li><a class="dropdown-item" href="#">Action</a></li>
+      <li><a class="dropdown-item" href="#">Another action</a></li>
+      <li><a class="dropdown-item" href="#">Something else here</a></li>
+    </ul>
+  </div>
     <button type="button" class="w-100 btn btn-primary" data-bs-toggle="modal" data-bs-target="#formPrestamo">
       GENERAR PRESTAMO
     </button>

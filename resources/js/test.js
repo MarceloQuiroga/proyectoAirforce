@@ -255,12 +255,18 @@ function login() {
     $.ajax({
         url: "controller/controllerLogin.php",
         method: "GET",
+        dataType: 'JSON',
         data:{
             username: $("form#login input")[0].value,
             password: $("form#login input")[1].value
         },
         success:function(response){
         console.log(response);
+            
+            if (response['logged']) {
+                $('#loginbtn')[0].dataset.bsToggle = 'dropdown';
+            }
+
         },
         error: function(xhr, textStatus, error){
             console.log(xhr.statusText);
