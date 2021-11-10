@@ -1,50 +1,65 @@
 <?php
+session_start();
 
 include_once ("../model/usuario_model.php");
+error_reporting(E_ERROR | E_WARNING | E_PARSE); // <-- Esto solo muestra errores de ejecución
 $response = array();
 
-if (isset($_GET["request"])) {
-    if ($_GET["request"] == "login") {
+if (empty($_SESSION)) {
+    $_SESSION['status'] = 'active';
 
-        $username = $_GET["username"];
-        $password = $_GET["password"];
-
-        $user = new usuario_model();
-
-        if ($username != null && $password != null) {
-            $user -> username = $username;
-            $user -> password = $password;
-            
-            $login = $user -> login(); //VALIDACION LOGIN
-            if ($login == true) {
-                $response['logged'] = true;
-                $response['error'] = "No Error";
-
-                session_start();
-                $_SESSION['role'] = $user->role;
-
+    if (isset($_GET["request"])) {
+        if ($_GET["request"] == "login") {
+            $username = $_GET["username"];
+            $password = $_GET["password"];
+    
+            $user = new usuario_model();
+    
+            if ($username != null && $password != null) {
+                $user -> username = $username;
+                $user -> password = $password;
+                
+                $login = $user -> login(); //VALIDACION LOGIN
+                if ($login == true) {
+                    $response['logged'] = true;
+                    $response['error'] = "No Error";
+                    
+                    $_SESSION['user'] = $user->username;
+                    $_SESSION['role'] = $user->role; // <-- SESSION variables
+    
+                } else {
+                    session_unset();
+                    session_destroy();
+                    $response['logged'] = false;
+                    $response['error'] = "Error: Wrong Password";
+                }
             } else {
+                session_unset();
+                session_destroy();
                 $response['logged'] = false;
-                $response['error'] = "Error: Wrong Password";
+                $response['error']="Ez da username edo password pasatu/No se ha pasado el usuario o la contrasena";
             }
-        } else {
+    
+        } else if ($_GET["request"] == "logout") {
+            session_unset();
+            session_destroy();
             $response['logged'] = false;
-            $response['error']="Ez da username edo password pasatu/No se ha pasado el usuario o la contrasena";
+            $response['error'] = "No Error";
         }
-
-    } else if ($_GET["request"] == "logout") {
-
+        
+    } else {
+        session_unset();
         session_destroy();
         $response['logged'] = false;
-        $response['error'] = "No Error";
-
+        $response['error'] = "Solicitud 'Login/Logout' no recibida";
     }
-    
+
 } else {
-    $response['logged'] = false;
-    $response['error'] = "Solicitud 'Login/Logout' no recibida";
+    session_unset();
+    session_destroy();
 }
 
+$response['SESSION_Content'] = $_SESSION;
 echo json_encode($response);
 
 ?>

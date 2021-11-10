@@ -76,17 +76,32 @@ class usuario_model extends usuario_class {
 
      }
 
+     public function findUser(){
+          $this->OpenConnect();
+          $username = $this->username;
+
+          $sql = "SELECT * FROM usuarios WHERE username='$username'";
+          $result = $this->link->query($sql);
+
+          if ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+               return $row["Exists"] = true;
+          }else{
+               return $row["Exists"] = false;
+          }
+          
+          $this->CloseConnect();
+
+     }
+
      public function register(){
 
           $this->OpenConnect();
-          $usuario = $this->username;
-          $contrasenia = $this->contrasenia;
+          $usuario = $this -> username;
+          $password = $this -> password;
 
-          $sql = "INSERT INTO `usuarios`(`username`, `password`) VALUES ('$usuario','$contrasenia')";
+          $sql = "INSERT INTO `usuarios`(`username`, `password`) VALUES ('$usuario','$password')";
 
           $result = $this->link->query($sql);
-
-          mysqli_free_result($result);
 
           $this->CloseConnect();
           return $result;

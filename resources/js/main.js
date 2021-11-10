@@ -526,7 +526,7 @@ $(".custom-option").on("click", function() {
 $('#login').on('hidden.bs.modal', function () {
   $("#formPasswordVerify").val('');
   $("#formPassword").val('');
-})
+});
 
 $(".log-in").click(function(){
   $(".signIn").addClass("active-dx");
