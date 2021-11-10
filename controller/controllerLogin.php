@@ -1,39 +1,48 @@
 <?php
+
 include_once ("../model/usuario_model.php");
+$response = array();
 
-session_start();
+if (isset($_GET["request"])) {
+    if ($_GET["request"] == "login") {
 
+        $username = $_GET["username"];
+        $password = $_GET["password"];
 
-$username = $_GET["username"];
-$password = $_GET["password"];
+        $user = new usuario_model();
 
-$user = new usuario_model();
+        if ($username != null && $password != null) {
+            $user -> username = $username;
+            $user -> password = $password;
+            
+            $login = $user -> login(); //VALIDACION LOGIN
+            if ($login == true) {
+                $response['logged'] = true;
+                $response['error'] = "No Error";
 
-$response = array(); //RETURN
+                session_start();
+                $_SESSION['role'] = $user->role;
 
-if ($username != null && $password != null) {
-    $user -> username = $username;
-    $user -> password = $password;
-    
-    $login = $user -> login(); //VALIDACION LOGIN
-    if ($login == true) {
-        $response['logged'] = true;
-        $response['error'] = "No Error";
-        
-        $_SESSION['role'] = $user->role;
-    } else {
+            } else {
+                $response['logged'] = false;
+                $response['error'] = "Error: Wrong Password";
+            }
+        } else {
+            $response['logged'] = false;
+            $response['error']="Ez da username edo password pasatu/No se ha pasado el usuario o la contrasena";
+        }
+
+    } else if ($_GET["request"] == "logout") {
+
         session_destroy();
         $response['logged'] = false;
-        $response['error'] = "Error: Wrong Password";
-    }
-} else {
-    session_destroy();
-    $response['logged'] = false;
-    $response['error']="Ez da username edo password pasatu/No se ha pasado el usuario o la contrasena";
-}
+        $response['error'] = "No Error";
 
-if(isset($_SESSION) != null) { // Magic, ns pork, pero la session no termina en el mismo timelapse es asincrono?
-    $response['Debug'] = $_SESSION;
+    }
+    
+} else {
+    $response['logged'] = false;
+    $response['error'] = "Solicitud 'Login/Logout' no recibida";
 }
 
 echo json_encode($response);

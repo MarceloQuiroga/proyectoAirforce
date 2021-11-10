@@ -12,7 +12,7 @@ $(".log-in").click(function(){
     $(".signUp").removeClass("inactive-sx");
   });
 
-
+//-----Login
 $('form.signIn').on('submit',()=>{
 
   var username = $('form.signIn input')[0].value;
@@ -23,6 +23,7 @@ $('form.signIn').on('submit',()=>{
     method: "GET",
     dataType: 'JSON',
     data:{
+      request: 'login',
       username: username,
       password: password
     },
@@ -44,7 +45,9 @@ $('form.signIn').on('submit',()=>{
   return false;
 
 })
+//-----End Login
 
+//-----Logout
 $("#dropdownLogin [name=logout]").on('click', ()=>{
   
   $.ajax({
@@ -52,7 +55,7 @@ $("#dropdownLogin [name=logout]").on('click', ()=>{
     method: "GET",
     dataType: 'JSON',
     data:{
-      logout: true
+      request: 'logout'
     },
     success:function(response){
       console.log(response);
@@ -66,3 +69,4 @@ $("#dropdownLogin [name=logout]").on('click', ()=>{
 })
 
 })
+//-----End Logout
