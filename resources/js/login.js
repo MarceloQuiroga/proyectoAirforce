@@ -122,8 +122,6 @@ function register () {
 $('#formContra').on('input',()=>{
   var password = $('#formContra').val(); 
   var progressPass = 0;
-  
-  console.log();
 
   //* TAMAÑO
   if($('#formContra').val().length < 8) {
@@ -210,12 +208,12 @@ $('#formContra').on('input',()=>{
     $('.progressPass').addClass('bg-success')
     $('.progressPass').css('width','100%')
     $('.progressPass').html('Password hard')
-  }
-  
+  } 
 
 })
 
 $('form.signUp').on('submit',(event)=>{
+  console.log(1)
   event.preventClick;
 
   var user = $('#formUser').val();
@@ -223,58 +221,36 @@ $('form.signUp').on('submit',(event)=>{
   var passwordV = $('#formPasswordVerify').val();
 
   if(password != passwordV) { //Diferentes Password
-    $("span.validation").removeClass("d-none");
-    $("span.validation")[0].innerHTML = "Error Contraseña Diferentes";
+    alert("Error Contraseña Diferentes")
   } else {
-    if (password.length < 8) { //Verifica si la contraseña es mayor a 8
-      $("span.validation").removeClass("d-none");
-      $("span.validation")[0].innerHTML = "La contraseña tiene que tener minimo 8 digitos.";
-    } else {
-      var character = false;
-      for(var i = 0; i < Array.from(password).length && character == false; i++) {
-        if(Array.from(specialsChar).indexOf(Array.from(password)[i]) != "-1"){//Verifica si contiene un caracter especial
-          character = true;
+
+    $.ajax({
+      url: "controller/controllerRegister.php",
+      method: "POST",
+      dataType: 'JSON',
+      data:{
+          username: user,
+          password: password
+      },
+      success:function(response){
+        console.log(response);
+        
+        if(response['registered']) {
+          login(user,password)
         }
-      }
-      var passwordVerify = false;
-      for(var i = 0; i < Array.from(password).length && passwordVerify == false; i++) {
-        if(!isNaN(Array.from(password)[i])){ //Verifica si contiene un numero
-          passwordVerify = true;
-        }
-      }
   
-      if (passwordVerify == false || character == false){
-        $("span.validation").removeClass("d-none");
-        $("span.validation")[0].innerHTML = "La contraseña requiere de minimo un numero y un caracter especial.";
-      } else {
-        $.ajax({
-          url: "controller/controllerRegister.php",
-          method: "POST",
-          dataType: 'JSON',
-          data:{
-              username: user,
-              password: password
-          },
-          success:function(response){
-            console.log(response);
-            
-            if(response['registered']) {
-              login(user,password)
-            }
-      
-            if (response['debug'] != null) {
-              alert(response['debug']);
-            }
-      
-          },
-          error: function(xhr, textStatus, error){
-              console.log(xhr.statusText);
-              console.log(textStatus);
-              console.log(error);
-          }
-        })
+        if (response['debug'] != null) {
+          alert(response['debug']);
+        }
+  
+      },
+      error: function(xhr, textStatus, error){
+          console.log(xhr.statusText);
+          console.log(textStatus);
+          console.log(error);
       }
-    }
+    })
+
   }
 
   return false;
