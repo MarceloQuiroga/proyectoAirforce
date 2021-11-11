@@ -1,5 +1,7 @@
 $(document).ready(getSession);
 
+var specialsChar = "!@#$%^&*()+=-[]\\\';,./{}|\":<>?";
+
 function getSession() { //RECOGE LAS VARIABLES DE SESSION
   var session;
   $.ajax({
@@ -40,6 +42,7 @@ function loadContent(session) { //GENERA EL COTENIDO EN FUNCION DE LA SESSION
   } else { //FIRST TIME
     console.log('First Time Mode')
     $("#dropdownLogin ul").addClass("d-none");
+    $("#botonBanca").addClass("d-none");
     $("#dropdownLogin > a")[0].dataset.bsTarget = '#login';
     $("#dropdownLogin > a")[0].dataset.bsToggle = 'modal';
 
@@ -50,9 +53,12 @@ function loadContent(session) { //GENERA EL COTENIDO EN FUNCION DE LA SESSION
 
 //-----Login
 $('form.signIn').on('submit',()=>{
-
   var username = $('form.signIn input')[0].value;
   var password = $('form.signIn input')[1].value;
+  login(username, password);
+})
+
+function login(username, password) {
 
   $.ajax({
     url: "controller/controllerLogin.php",
@@ -67,7 +73,7 @@ $('form.signIn').on('submit',()=>{
       console.log(response);
       // $("[data-bs-target='#login'] a")[0].innerHTML = "hola"; //! ESTO SERIA OTRA MANERA DE HACERLO
       if (response['logged']) {
-        $('#login').show('hidden');
+        $('#login').modal('hide');
         //cerrar modal
       } else {
         alert(response['error']);
@@ -78,11 +84,9 @@ $('form.signIn').on('submit',()=>{
         console.log(textStatus);
         console.log(error);
     }
-}).then(getSession)
+  }).then(getSession)
+}
 
-  return false;
-
-})
 //-----End Login
 
 //-----Logout
@@ -119,31 +123,59 @@ $('form.signUp').on('submit',(event)=>{
   var password = $('#formContra').val();
   var passwordV = $('#formPasswordVerify').val();
 
-  if (password == passwordV) {
-    $.ajax({
-        url: "controller/controllerRegister.php",
-        method: "POST",
-        dataType: 'JSON',
-        data:{
-            username: user,
-            password: password
-        },
-        success:function(response){
-          console.log(response);
-        
-          if (response['debug'] != null) {
-            alert(response['debug']);
-          }
-
-        },
-        error: function(xhr, textStatus, error){
-            console.log(xhr.statusText);
-            console.log(textStatus);
-            console.log(error);
+  if(password != passwordV) { //Diferentes Password
+    $("span.validation").removeClass("d-none");
+    $("span.validation")[0].innerHTML = "Error Contraseña Diferentes";
+  } else {
+    if (password.length < 8) { //Verifica si la contraseña es mayor a 8
+      $("span.validation").removeClass("d-none");
+      $("span.validation")[0].innerHTML = "La contraseña tiene que tener minimo 8 digitos.";
+    } else {
+      var character = false;
+      for(var i = 0; i < Array.from(password).length && character == false; i++) {
+        if(Array.from(specialsChar).indexOf(Array.from(password)[i]) != "-1"){//Verifica si contiene un caracter especial
+          character = true;
         }
-    })
-  }else{
-    alert("Lo siento las contraseñas no son iguales por favor introduzca las contraseñas iguales.");
+      }
+      var passwordVerify = false;
+      for(var i = 0; i < Array.from(password).length && passwordVerify == false; i++) {
+        if(!isNaN(Array.from(password)[i])){ //Verifica si contiene un numero
+          passwordVerify = true;
+        }
+      }
+  
+      if (passwordVerify == false || character == false){
+        $("span.validation").removeClass("d-none");
+        $("span.validation")[0].innerHTML = "La contraseña requiere de minimo un numero y un caracter especial.";
+      } else {
+        $.ajax({
+          url: "controller/controllerRegister.php",
+          method: "POST",
+          dataType: 'JSON',
+          data:{
+              username: user,
+              password: password
+          },
+          success:function(response){
+            console.log(response);
+            
+            if(response['registered']) {
+              login(user,password)
+            }
+      
+            if (response['debug'] != null) {
+              alert(response['debug']);
+            }
+      
+          },
+          error: function(xhr, textStatus, error){
+              console.log(xhr.statusText);
+              console.log(textStatus);
+              console.log(error);
+          }
+        })
+      }
+    }
   }
 
   return false;

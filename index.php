@@ -26,6 +26,7 @@
 
   <!-- Template Main CSS File -->
   <link href="resources/css/style.css" rel="stylesheet">
+  <!-- <script src="resources/js/jquery-3.6.0.js"></script> -->
 
   <!-- =======================================================
   * Template Name: BizPage - v5.7.0
@@ -37,44 +38,9 @@
 
 <body>
 
-  <!-- ======= Header ======= -->
-  <header id="header" class="fixed-top d-flex align-items-center header-transparent">
-    <div class="container-fluid">
-
-      <div class="row justify-content-center align-items-center">
-        <div class="col-xl-11 d-flex align-items-center justify-content-between">
-          <a href="index.html"><img class="logoimg" src="resources/img/LOGO AirForce blanco.png" alt=""></a>
-          <!-- Uncomment below if you prefer to use an image logo -->
-          <!-- <a href="index.html" class="logo"><img src="resources/img/logo.png" alt="" class="img-fluid"></a>-->
-
-          <nav id="navbar" class="navbar">
-            <ul>
-              <li><a class="nav-link scrollto active" href="#hero">Inicio</a></li>
-              <li><a class="nav-link scrollto" href="#about">About</a></li>
-              <li><a class="nav-link scrollto" href="#services">Servicios</a></li>
-              <li><a class="nav-link scrollto " href="#portfolio">Productos</a></li>
-              <li><a class="nav-link scrollto" href="#team">Equipo</a></li>
-              <li><a class="nav-link" href="blog.html">Tienda</a></li>
-              
-              <!--IF LOGEADO Y USUARIO=ADMIN-->
-              <li><a id="botonBanca" class="nav-link d-none" data-target="banca" href="banca.html">Banca</a></li>
-              <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
-
-              <li id="dropdownLogin" class="dropdown"><a href="#" data-bs-toggle="modal" data-bs-target="#login"><span>Login</span></a>
-                <ul class="d-none">
-                  <li><a href="#" name="perfil">Perfil</a></li>
-                  <li><a href="#" name="logout">Logout</a></li>
-                </ul>
-              </li> 
-
-            </ul>
-            <i class="bi bi-list mobile-nav-toggle"></i>
-          </nav><!-- .navbar -->
-        </div>
-      </div>
-
-    </div>
-  </header><!-- End Header -->
+  <!-- ============== Header =============== -->
+  <?php include('resources/pages/navbar.php');?>
+  <!-- ============== Header =============== -->
 
   <!-- ======= hero Section ======= -->
   <section id="hero">
@@ -787,75 +753,13 @@
 
   </main><!-- End #main -->
 
-  <!-- ======= Footer ======= -->
-  <footer id="footer">
-    <div class="footer-top">
-      <div class="container">
-        <div class="row">
+  <!-- ============== Footer =============== -->
+  <?php include('resources/pages/footer.php');?>
+  <!-- ============== Footer =============== -->
 
-          <div class="col-lg-3 col-md-6 footer-info">
-            <h3>BizPage</h3>
-            <p>Cras fermentum odio eu feugiat lide par naso tierra. Justo eget nada terra videa magna derita valies darta donna mare fermentum iaculis eu non diam phasellus. Scelerisque felis imperdiet proin fermentum leo. Amet volutpat consequat mauris nunc congue.</p>
-          </div>
 
-          <div class="col-lg-3 col-md-6 footer-links">
-            <h4>Useful Links</h4>
-            <ul>
-              <li><i class="bi bi-chevron-right"></i> <a href="#">Home</a></li>
-              <li><i class="bi bi-chevron-right"></i> <a href="#">About us</a></li>
-              <li><i class="bi bi-chevron-right"></i> <a href="#">Services</a></li>
-              <li><i class="bi bi-chevron-right"></i> <a href="#">Terms of service</a></li>
-              <li><i class="bi bi-chevron-right"></i> <a href="#">Privacy policy</a></li>
-            </ul>
-          </div>
 
-          <div class="col-lg-3 col-md-6 footer-contact">
-            <h4>Contact Us</h4>
-            <p>
-              A108 Adam Street <br>
-              New York, NY 535022<br>
-              United States <br>
-              <strong>Phone:</strong> +1 5589 55488 55<br>
-              <strong>Email:</strong> info@example.com<br>
-            </p>
 
-            <div class="social-links">
-              <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
-              <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
-              <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
-              <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
-              <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>
-            </div>
-
-          </div>
-
-          <div class="col-lg-3 col-md-6 footer-newsletter">
-            <h4>Our Newsletter</h4>
-            <p>Tamen quem nulla quae legam multos aute sint culpa legam noster magna veniam enim veniam illum dolore legam minim quorum culpa amet magna export quem marada parida nodela caramase seza.</p>
-            <form action="" method="post">
-              <input type="email" name="email"><input type="submit" value="Subscribe">
-            </form>
-          </div>
-
-        </div>
-      </div>
-    </div>
-
-    <div class="container">
-      <div class="copyright">
-        &copy; Copyright <strong>BizPage</strong>. All Rights Reserved
-      </div>
-      <div class="credits">
-        <!--
-        All the links in the footer should remain intact.
-        You can delete the links only if you purchased the pro version.
-        Licensing information: https://bootstrapmade.com/license/
-        Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/buy/?theme=BizPage
-      -->
-        Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
-      </div>
-    </div>
-  </footer><!-- End Footer -->
 
   <section id="modals">
     
@@ -886,7 +790,11 @@
                   <input id="formUser" class="w100" type="text" placeholder="Username" reqired autocomplete='off' />
                   <input autocomplete="one-time-code" id="formContra" type="password" placeholder="Insert Password" reqired />
                   <input autocomplete="one-time-code" id="formPasswordVerify" type="password" placeholder="Verify Password" reqired />
-                  <span class="validation text-danger position-absolute d-none">Wrong Password</span>
+                  <div class="d-flex flex-column">
+                    <span class="validation text-danger position-absolute ">min 8</span>
+                    <span class="validation text-danger position-absolute ">especial char</span>
+                    <span class="validation text-danger position-absolute ">number</span>
+                  </div>
                   <button class="form-btn sx log-in" type="button">Iniciar Sesion</button>
                   <button class="form-btn dx" type="submit">Registrarme</button>
               </form>
@@ -905,7 +813,7 @@
 
 
   <!---------------------------------------------MODALS----------------------------------------------->
-  
+  <link rel="stylesheet" href="banca.html">
   <!---------------------------------------------MODALS----------------------------------------------->
 
 
@@ -923,6 +831,8 @@
   <script src="resources/js/jquery-3.6.0.js"></script>
   <script src="resources/js/login.js"></script>
   <script src="resources/js/main.js"></script>
+
+  
 
 </body>
 
