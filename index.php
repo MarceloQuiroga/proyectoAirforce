@@ -799,7 +799,7 @@
                     <span class="validation v-pass v-pass-num list-group-item list-group-item-danger p-1">number</span>
                   </div>
                   <button class="form-btn sx log-in" type="button">Iniciar Sesion</button>
-                  <button class="form-btn dx" type="submit">Registrarme</button>
+                  <button class="form-btn dx" type="submit" disabled>Registrarme</button>
               </form>
             </div>
 

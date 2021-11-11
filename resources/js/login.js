@@ -120,7 +120,6 @@ function register () {
 }
 
 $('#formContra').on('input',()=>{
-  
   var password = $('#formContra').val(); 
   var progressPass = 0;
   
