@@ -1,7 +1,5 @@
 $(document).ready(getSession);
 
-var specialsChar = "!@#$%^&*()+=-[]\\\';,./{}|\":<>?";
-
 function getSession() { //RECOGE LAS VARIABLES DE SESSION
   var session;
   $.ajax({
@@ -116,6 +114,67 @@ $("#dropdownLogin [name=logout]").on('click', ()=>{
 
 
 //-----Register
+
+function register () {
+
+}
+
+$('#formContra').on('input',()=>{
+
+  var key = event.data;
+  var password = $('#formContra').val();
+
+  /*TAMAÑO*/
+  if($('#formContra').val().length >= 8) {
+    $('.v-pass')[0].classList.remove('list-group-item-danger')
+    $('.v-pass')[0].classList.add('list-group-item-success')
+  } else {
+    $('.v-pass')[0].classList.add('list-group-item-danger')
+    $('.v-pass')[0].classList.remove('list-group-item-success')
+  }
+
+
+  /*ESPECIAL CHARACTER*/
+  var specialsChar = "!@#$%^&*()+=-[]\\\';,./{}|\":<>?";
+  var specialCharacterStatus = false;
+  for(var i = 0; i < Array.from(password).length && !specialCharacterStatus; i++) {
+    if(Array.from(specialsChar).indexOf(Array.from(password)[i]) != "-1"){//Verifica si contiene un caracter especial
+      specialCharacterStatus = true;
+    } else {
+      specialCharacterStatus = false;
+    }
+  }
+  if(specialCharacterStatus){
+    $('.v-pass')[1].classList.remove('list-group-item-danger')
+    $('.v-pass')[1].classList.add('list-group-item-success')
+  } else {
+    $('.v-pass')[1].classList.add('list-group-item-danger')
+    $('.v-pass')[1].classList.remove('list-group-item-success')
+  }
+
+  /*NUMBER*/
+  var hasNumber = false;
+  for(var i = 0; i < Array.from($('#formContra').val()).length && !hasNumber; i++) {
+    if (!isNaN(Array.from(password)[i])) {
+      hasNumber = true;
+    } else {
+      hasNumber = false;
+    }
+  }
+  if (hasNumber) {
+    $('.v-pass')[2].classList.remove('list-group-item-danger')
+    $('.v-pass')[2].classList.add('list-group-item-success')
+  } else {
+    $('.v-pass')[2].classList.add('list-group-item-danger')
+    $('.v-pass')[2].classList.remove('list-group-item-success')
+  }
+
+  
+  
+  
+
+})
+
 $('form.signUp').on('submit',(event)=>{
   event.preventClick;
 

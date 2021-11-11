@@ -787,13 +787,16 @@
                   <p>Just enter your Username</br>
                       and your password for join.
                   </p>
-                  <input id="formUser" class="w100" type="text" placeholder="Username" reqired autocomplete='off' />
-                  <input autocomplete="one-time-code" id="formContra" type="password" placeholder="Insert Password" reqired />
-                  <input autocomplete="one-time-code" id="formPasswordVerify" type="password" placeholder="Verify Password" reqired />
-                  <div class="d-flex flex-column">
-                    <span class="validation text-danger position-absolute ">min 8</span>
-                    <span class="validation text-danger position-absolute ">especial char</span>
-                    <span class="validation text-danger position-absolute ">number</span>
+                  <input id="formUser" class="w100 my-0" type="text" placeholder="Username" reqired autocomplete='off' />
+                  <input autocomplete="one-time-code" id="formContra"  class="my-2" type="password" placeholder="Insert Password" reqired />
+                  <input autocomplete="one-time-code" id="formPasswordVerify"  class="my-2" type="password" placeholder="Verify Password" reqired />
+                  <div class="progress mx-4">
+                    <div class="progress-bar bg-danger" role="progressbar" style="width: 33.3%;">Password Weak</div>
+                  </div>
+                  <div class="list-group mx-4 mt-2">
+                    <span class="validation v-pass list-group-item list-group-item-danger p-1">min 8 char</span>
+                    <span class="validation v-pass list-group-item list-group-item-danger p-1">especial char</span>
+                    <span class="validation v-pass list-group-item list-group-item-danger p-1">number</span>
                   </div>
                   <button class="form-btn sx log-in" type="button">Iniciar Sesion</button>
                   <button class="form-btn dx" type="submit">Registrarme</button>
