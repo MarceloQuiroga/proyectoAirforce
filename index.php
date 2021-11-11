@@ -10,7 +10,7 @@
   <meta content="" name="keywords">
 
   <!-- Favicons -->
-  <link href="resources/img/favicon.png" rel="icon">
+  <link href="resources/img/solo Logo.png" rel="icon">
   <link href="resources/img/apple-touch-icon.png" rel="apple-touch-icon">
 
   <!-- Google Fonts -->
@@ -791,12 +791,12 @@
                   <input autocomplete="one-time-code" id="formContra"  class="my-2" type="password" placeholder="Insert Password" reqired />
                   <input autocomplete="one-time-code" id="formPasswordVerify"  class="my-2" type="password" placeholder="Verify Password" reqired />
                   <div class="progress mx-4">
-                    <div class="progress-bar bg-danger" role="progressbar" style="width: 33.3%;">Password Weak</div>
+                    <div class="progress-bar bg-secondary progressPass" role="progressbar" style="width: 33.3%;">Password Weak</div>
                   </div>
                   <div class="list-group mx-4 mt-2">
-                    <span class="validation v-pass list-group-item list-group-item-danger p-1">min 8 char</span>
-                    <span class="validation v-pass list-group-item list-group-item-danger p-1">especial char</span>
-                    <span class="validation v-pass list-group-item list-group-item-danger p-1">number</span>
+                    <span class="validation v-pass v-pass-size list-group-item list-group-item-danger p-1">min 8 char</span>
+                    <span class="validation v-pass v-pass-char list-group-item list-group-item-danger p-1">especial char</span>
+                    <span class="validation v-pass v-pass-num list-group-item list-group-item-danger p-1">number</span>
                   </div>
                   <button class="form-btn sx log-in" type="button">Iniciar Sesion</button>
                   <button class="form-btn dx" type="submit">Registrarme</button>

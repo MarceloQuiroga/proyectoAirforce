@@ -120,21 +120,27 @@ function register () {
 }
 
 $('#formContra').on('input',()=>{
+  
+  var password = $('#formContra').val(); 
+  var progressPass = 0;
+  
+  console.log();
 
-  var key = event.data;
-  var password = $('#formContra').val();
-
-  /*TAMAÑO*/
-  if($('#formContra').val().length >= 8) {
-    $('.v-pass')[0].classList.remove('list-group-item-danger')
-    $('.v-pass')[0].classList.add('list-group-item-success')
-  } else {
+  //* TAMAÑO
+  if($('#formContra').val().length < 8) {
     $('.v-pass')[0].classList.add('list-group-item-danger')
     $('.v-pass')[0].classList.remove('list-group-item-success')
+    $('.v-pass-size').fadeIn('slow');
+  } else {
+    $('.v-pass')[0].classList.remove('list-group-item-danger')
+    $('.v-pass')[0].classList.add('list-group-item-success')
+    $('.v-pass-size').fadeOut('slow');
+    
+    progressPass++;
   }
 
 
-  /*ESPECIAL CHARACTER*/
+  //TODO ESPECIAL CHARACTER
   var specialsChar = "!@#$%^&*()+=-[]\\\';,./{}|\":<>?";
   var specialCharacterStatus = false;
   for(var i = 0; i < Array.from(password).length && !specialCharacterStatus; i++) {
@@ -147,12 +153,16 @@ $('#formContra').on('input',()=>{
   if(specialCharacterStatus){
     $('.v-pass')[1].classList.remove('list-group-item-danger')
     $('.v-pass')[1].classList.add('list-group-item-success')
+    $('.v-pass-char').fadeOut('slow');
+    progressPass++;
   } else {
     $('.v-pass')[1].classList.add('list-group-item-danger')
     $('.v-pass')[1].classList.remove('list-group-item-success')
+    $('.v-pass-char').fadeIn('slow');
   }
 
-  /*NUMBER*/
+
+  //? NUMBER
   var hasNumber = false;
   for(var i = 0; i < Array.from($('#formContra').val()).length && !hasNumber; i++) {
     if (!isNaN(Array.from(password)[i])) {
@@ -164,13 +174,44 @@ $('#formContra').on('input',()=>{
   if (hasNumber) {
     $('.v-pass')[2].classList.remove('list-group-item-danger')
     $('.v-pass')[2].classList.add('list-group-item-success')
+    $('.v-pass-num').fadeOut('slow');
+    progressPass++;
   } else {
     $('.v-pass')[2].classList.add('list-group-item-danger')
     $('.v-pass')[2].classList.remove('list-group-item-success')
+    $('.v-pass-num').fadeIn('slow');
   }
 
-  
-  
+  // PROGRESS
+  if (progressPass == 0) {
+    $('.progressPass').addClass('bg-secondary')
+    $('.progressPass').removeClass('bg-danger')
+    $('.progressPass').removeClass('bg-warning')
+    $('.progressPass').removeClass('bg-success')
+    $('.progressPass').css('width','33.3%')
+    $('.progressPass').html('Password weak')
+  } else if (progressPass == 1) {
+    $('.progressPass').removeClass('bg-secondary')
+    $('.progressPass').addClass('bg-danger')
+    $('.progressPass').removeClass('bg-warning')
+    $('.progressPass').removeClass('bg-success')
+    $('.progressPass').css('width','33.3%')
+    $('.progressPass').html('Password soft')
+  } else if (progressPass == 2) {
+    $('.progressPass').removeClass('bg-secondary')
+    $('.progressPass').removeClass('bg-danger')
+    $('.progressPass').addClass('bg-warning')
+    $('.progressPass').removeClass('bg-success')
+    $('.progressPass').css('width','66.6%')
+    $('.progressPass').html('Password medium')
+  } else if (progressPass == 3) {
+    $('.progressPass').removeClass('bg-secondary')
+    $('.progressPass').removeClass('bg-danger')
+    $('.progressPass').removeClass('bg-warning')
+    $('.progressPass').addClass('bg-success')
+    $('.progressPass').css('width','100%')
+    $('.progressPass').html('Password hard')
+  }
   
 
 })
