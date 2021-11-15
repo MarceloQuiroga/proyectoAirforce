@@ -24,7 +24,7 @@ $(document).ready(() => {
         console.log($(''));
         switch (currentPosition) {
             //!ESTA ES POR QUE NO TENEMOS EL HTML BIEN PUESTO EN SUSITIO Y LA REFERECIA CAMBIA PERO LUEGO USAREMOS LA DE ABAJO
-            case 'index.html':
+            default:
                 $('#casaR').attr('href', "");
                 $('#logoR').attr('src','resources/img/LOGO AirForce.png');
                 $('#botonBanca').attr('href', "resources/pages/banca.html");
