@@ -41,6 +41,7 @@ $(document).ready(() => {
 
             case 'banca.html':
                 $('#casaR').attr('href', "../../");
+                $('#casaI').attr('href', "../../");
                 $(this).removeClass('header-transparent')
                 $('#logoR').attr('src','../img/LOGO AirForce blanco.png');
                 $('#botonBanca').attr('href', "");
