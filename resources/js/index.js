@@ -1,43 +1,52 @@
-$(document).ready(beginning);
+$(document).ready(() => {
+    $('#header').load('resources/pages/navbar.html', function(responseTxt, statusTxt, xhr){
+        if(statusTxt == "success") {
 
-function beginning(){
-  scriptMarcelo();
-  //scriptIñigo();
-  //scriptImrane();
-}
+        var currentPosition = $(location).attr('href').split('/').pop();
 
-function preventClick(event){
-    event.preventDefault();
-    event.stopPropagation();
-  }
+        console.log(currentPosition);
+        console.log($(''));
+        switch (currentPosition) {
+            //!ESTA ES POR QUE NO TENEMOS EL HTML BIEN PUESTO EN SUSITIO Y LA REFERECIA CAMBIA PERO LUEGO USAREMOS LA DE ABAJO
+            case 'index.html':
+                $('#casaR').attr('href', "");
+                $('#logoR').attr('src','resources/img/LOGO AirForce.png');
+                $('#botonBanca').attr('href', "resources/pages/banca.php");
+            break; 
+            //! ESTA ES POR QUE NO TENEMOS EL HTML BIEN PUESTO EN SUSITIO Y LA REFERECIA CAMBIA PERO LUEGO USAREMOS LA DE ABAJO
+            
+            
+            case 'proyectoAirforce':
+                $('#casaR').attr('href', "");
+                $('#logoR').attr('src','resources/img/LOGO AirForce.png');
+                $('#botonBanca').attr('href', "resources/pages/banca.php");
+                
+            break;
 
-function scriptMarcelo(){
-  $('form#login')
-    .off('click')
-    .on('submit', login);
-}
+            case 'banca.html':
+                $('#casaR').attr('href', "../");
+                $('#logoR').attr('src','../img/LOGO AirForce.png');
+                $('#botonBanca').attr('href', "");
 
-function login() {
-
-    event.preventClick;
-    
-    $.ajax({
-        url: "controller/controllerLogin.php",
-        method: "GET",
-        data:{
-            username: $("form#login input")[0].value,
-            password: $("form#login input")[1].value
-        },
-        success:function(response){
-        console.log(response);
-        },
-        error: function(xhr, textStatus, error){
-            console.log(xhr.statusText);
-            console.log(textStatus);
-            console.log(error);
+            break;
         }
-    })
-    
-    return false;
 
-}
+        }
+
+        if(statusTxt == "error") {
+        alert("Error: " + xhr.status + ": " + xhr.statusText);
+        }
+
+    })
+
+})
+
+
+
+
+// var pathArray = window.location.pathname.split('/')
+
+// for (let i = 0; i < pathArray.length; i++) {
+//     console.log(pathArray[5]);
+// }
+    
