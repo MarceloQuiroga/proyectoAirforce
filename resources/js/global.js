@@ -74,7 +74,6 @@ function testAsync(){
 
 function getSession() { //RECOGE LAS VARIABLES DE SESSION
     var session;
-    console.log(ruta);
     
     var currentPosition = $(location).attr('href').split('/').pop();
 
@@ -82,12 +81,10 @@ function getSession() { //RECOGE LAS VARIABLES DE SESSION
     
             default:
                 ruta = "controller";
-                console.log(ruta);
                 break;
         
             case 'banca.html':
-                ruta = "../../controller";
-                console.log(ruta);       
+                ruta = "../../controller"; 
                 break;
         }
 
