@@ -18,15 +18,14 @@ if (empty($_SESSION)) {
             if ($username != null && $password != null) {
                 $user -> username = $username;
                 $user -> password = $password;
-                
                 $login = $user -> login(); //VALIDACION LOGIN
                 if ($login == true) {
                     $response['logged'] = true;
                     $response['error'] = "No Error";
-                    
+                    $response['debug'] = $user;
                     $_SESSION['user'] = $user->username;
                     $_SESSION['role'] = $user->role; // <-- SESSION variables
-    
+                    
                 } else {
                     session_unset();
                     session_destroy();

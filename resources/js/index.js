@@ -3,15 +3,18 @@ $(document).ready(() => {
     var ruta;
     
     switch (currentPosition) {
+
         case 'proyectoAirforce':
             ruta = 'resources/';    
-        break;
+            break;
     
         case 'banca.html':
             ruta = '../'
-        break;
+            break;
+            
         default:
             ruta = 'resources/';
+            break;
     }
 
 
@@ -20,8 +23,6 @@ $(document).ready(() => {
 
         var currentPosition = $(location).attr('href').split('/').pop();
 
-        console.log(currentPosition);
-        console.log($(''));
         switch (currentPosition) {
             //!ESTA ES POR QUE NO TENEMOS EL HTML BIEN PUESTO EN SUSITIO Y LA REFERECIA CAMBIA PERO LUEGO USAREMOS LA DE ABAJO
             default:
