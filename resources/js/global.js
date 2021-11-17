@@ -71,18 +71,6 @@ function testAsync(){
     })
 }
 
-function leerCookie(nombre) {
-    var lista = document.cookie.split(";");
-    for (i in lista) {
-        var busca = lista[i].search(nombre);
-        if (busca > -1) {micookie=lista[i]}
-        }
-    var igual = micookie.indexOf("=");
-    var valor = micookie.substring(igual+1);
-    return valor;
-    }
-
-
 function getSession() { //RECOGE LAS VARIABLES DE SESSION
     var session;
     console.log();
@@ -92,17 +80,12 @@ function getSession() { //RECOGE LAS VARIABLES DE SESSION
         switch (currentPosition) {
     
             default:
-                ruta = 'controller';
-                document.cookie = "rutaHome=controller"
-                console.log(leerCookie('rutaHome'));
                 break;
         
-            case 'banca.html':
-                document.cookie = 'rutaBanca=../../../controller';
-                console.log(leerCookie('rutaBanca'));
+            case 'banca.html':           
                 break;
         }
-    console.log("esto es la ruta: "+leerCookie('rutaBanca'))
+    console.log("esto es la ruta: "+leerCookie('ruta'))
 
     $.ajax({
       url: leerCookie('ruta')+"/controllerIndex.php",
