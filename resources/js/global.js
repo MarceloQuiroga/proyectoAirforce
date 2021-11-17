@@ -1,3 +1,4 @@
+var ruta;
 $(document).ready(loadComponents);
 
 async function loadComponents(){
@@ -73,22 +74,25 @@ function testAsync(){
 
 function getSession() { //RECOGE LAS VARIABLES DE SESSION
     var session;
-    console.log();
+    console.log(ruta);
     
     var currentPosition = $(location).attr('href').split('/').pop();
 
         switch (currentPosition) {
     
             default:
+                ruta = "controller";
+                console.log(ruta);
                 break;
         
-            case 'banca.html':           
+            case 'banca.html':
+                ruta = "../../controller";
+                console.log(ruta);       
                 break;
         }
-    console.log("esto es la ruta: "+leerCookie('ruta'))
 
     $.ajax({
-      url: leerCookie('ruta')+"/controllerIndex.php",
+      url: ruta+"/controllerIndex.php",
       method: "GET",
       dataType: 'json',
       success:function(response){
