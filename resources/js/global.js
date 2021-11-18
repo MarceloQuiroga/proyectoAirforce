@@ -20,7 +20,9 @@ function testAsync(){
             case 'banca.html':
                 ruta = '../'
                 break;
-                
+            case 'banca.html?':
+                ruta = "../../resources/";
+                break;    
             default:
                 ruta = 'resources/';
                 break;
@@ -31,7 +33,7 @@ function testAsync(){
             if(statusTxt == "success") {
         
                 var currentPosition = $(location).attr('href').split('/').pop();
-        
+                console.log(currentPosition);
                 switch (currentPosition) {
                     //!ESTA ES POR QUE NO TENEMOS EL HTML BIEN PUESTO EN SUSITIO Y LA REFERECIA CAMBIA PERO LUEGO USAREMOS LA DE ABAJO
                     default:
@@ -57,6 +59,14 @@ function testAsync(){
                         $('#botonBanca').attr('href', "");
             
                     break;
+                    case 'banca.html?':
+                        $('#casaR').attr('href', "../../");
+                        $('#casaI').attr('href', "../../");
+                        $(this).removeClass('header-transparent')
+                        $('#logoR').attr('src','../../resources/img/LOGO AirForce blanco.png');
+                        $('#botonBanca').attr('href', "");
+            
+                    break;
                 }
         
             }
@@ -76,7 +86,7 @@ function getSession() { //RECOGE LAS VARIABLES DE SESSION
     var session;
     
     var currentPosition = $(location).attr('href').split('/').pop();
-
+    console.log(currentPosition);
         switch (currentPosition) {
     
             default:
@@ -85,6 +95,9 @@ function getSession() { //RECOGE LAS VARIABLES DE SESSION
         
             case 'banca.html':
                 ruta = "../../controller"; 
+                break;
+            case 'banca.html?':
+                ruta = "../../controller";
                 break;
         }
 
