@@ -1,7 +1,6 @@
 $(document).ready(loadComponents);
 var ruta;
-
-async function loadComponents(){ //esto es en ready ahora se le quita apra debug
+async function loadComponents(){
     await load();
     await getSession().then((session)=> loadContent(session))
 }
@@ -14,22 +13,19 @@ async function load(){
         switch (currentPosition) {
     
             case 'proyectoAirforce':
-                ruta = 'resources/';    
+                ruta = '';    
                 break;
         
-            case 'banca.html':
-                ruta = '../'
-                break;
-            case 'banca.html?':
-                ruta = "../../resources/";
-                break;    
+            case 'banca.html' || 'banca.html?':
+                ruta = '../../'
+                break;   
             default:
-                ruta = 'resources/';
+                ruta = '';
                 break;
         }
 
         await new Promise ((resolve,reject)=> {
-            $('#header').load(ruta+'pages/navbar.html', function(response,statusTxt, xhr){
+            $('#header').load(ruta+'resources/pages/navbar.html', function(response,statusTxt, xhr){
             
                 if(statusTxt == "success") {
                     var currentPosition = $(location).attr('href').split('/').pop();
@@ -78,7 +74,7 @@ async function load(){
         })
 
         await new Promise ((resolve,reject) => {
-            $('#footer').load(ruta+'pages/footer.html', function(response, statusTxt, xhr){
+            $('#footer').load(ruta+'resources/pages/footer.html', function(response, statusTxt, xhr){
                 if (statusTxt == 'success') {
                     resolve();
                 } else if (statusTxt == 'error') {
@@ -182,5 +178,5 @@ function logout() {
             console.log(error);
         }
     
-    }).then(loadComponents)
-  }
+    })
+}
