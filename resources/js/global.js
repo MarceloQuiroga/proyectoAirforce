@@ -1,5 +1,5 @@
-var ruta;
 $(document).ready(loadComponents);
+var ruta;
 
 async function loadComponents(){
     await testAsync();
@@ -80,16 +80,16 @@ function getSession() { //RECOGE LAS VARIABLES DE SESSION
         switch (currentPosition) {
     
             default:
-                ruta = "controller";
+                ruta = "";
                 break;
         
             case 'banca.html':
-                ruta = "../../controller"; 
+                ruta = "../../"; 
                 break;
         }
 
     $.ajax({
-      url: ruta+"/controllerIndex.php",
+      url: ruta+"controller/controllerIndex.php",
       method: "GET",
       dataType: 'json',
       success:function(response){
@@ -105,7 +105,9 @@ function getSession() { //RECOGE LAS VARIABLES DE SESSION
 
 function loadContent(session) { //GENERA EL COTENIDO EN FUNCION DE LA SESSION
     
-    console.log(session); //*VEMOS LA VARIABLE DE SESIÓN*
+    console.group('SESSION'); //*VEMOS LA VARIABLE DE SESIÓN*
+        console.log(session);
+    console.groupEnd();
 
     if (session == null) { //TODO *SIN SESION*
         
@@ -113,7 +115,8 @@ function loadContent(session) { //GENERA EL COTENIDO EN FUNCION DE LA SESSION
         $("#botonBanca").addClass("d-none"); //* OCULTA EL BOTON BANCA
         $("#dropdownLogin > a")[0].dataset.bsTarget = '#login'; //? ASIGNAR EL TARGET PARA MODAL LOGIN
         $("#dropdownLogin > a")[0].dataset.bsToggle = 'modal'; //? ASIGNAR EL TOGGLE PARA LA LLAMADA AL MODAL
-         
+        $("#dropdownLogin span").html('Login');  //? PONER LOGIN EN VEZ DE USERNAME EN EL BTN LOGIN 
+
     } else { //TODO *CON SESION*
 
         $("#dropdownLogin span").html(session['user']); //* MOSTRAMOS EL USUSARIO EN EL BOTON LOGIN
@@ -139,7 +142,7 @@ function loadContent(session) { //GENERA EL COTENIDO EN FUNCION DE LA SESSION
 
 function logout() {
     $.ajax({
-        url: "controller/controllerLogin.php",
+        url: ruta+"controller/controllerLogin.php",
         method: "GET",
         dataType: 'json',
         data:{
@@ -147,7 +150,7 @@ function logout() {
         },
         success:function(response){
         console.log(response);
-        $("#dropdownLogin span").html('Login');
+        document.location.href = ruta;
         },
         error: function(xhr, textStatus, error){
             console.log(xhr.statusText);
