@@ -7,7 +7,6 @@ $response = array();
 
 if (empty($_SESSION)) {
     $_SESSION['status'] = 'active';
-
     if (isset($_GET["request"])) {
         if ($_GET["request"] == "login") {
             $username = $_GET["username"];
@@ -22,7 +21,6 @@ if (empty($_SESSION)) {
                 if ($login == true) {
                     $response['logged'] = true;
                     $response['error'] = "No Error";
-                    $response['debug'] = $user;
                     $_SESSION['user'] = $user->username;
                     $_SESSION['role'] = $user->role; // <-- SESSION variables
                     

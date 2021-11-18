@@ -4,7 +4,6 @@ var ruta;
 async function loadComponents(){ //esto es en ready ahora se le quita apra debug
     await load();
     await getSession().then((session)=> loadContent(session))
-    
 }
 
 async function load(){
@@ -97,7 +96,6 @@ function getSession() { //RECOGE LAS VARIABLES DE SESSION
     return new Promise((resolve,reject)=>{
 
         var currentPosition = $(location).attr('href').split('/').pop();
-        var session;
 
         switch (currentPosition) {
     
@@ -118,7 +116,7 @@ function getSession() { //RECOGE LAS VARIABLES DE SESSION
             method: "GET",
             dataType: 'json',
             success:function(response){
-              session = response['SESSION'];
+                resolve(response['SESSION']);
             },
             error: function(xhr, textStatus, error){
                 console.log(xhr.statusText);
@@ -126,7 +124,7 @@ function getSession() { //RECOGE LAS VARIABLES DE SESSION
                 console.log(error);
                 reject();
             }
-          }).then(resolve(session))
+          })
     })
 }
 
@@ -184,5 +182,5 @@ function logout() {
             console.log(error);
         }
     
-    }).then(getSession)
+    }).then(loadComponents)
   }

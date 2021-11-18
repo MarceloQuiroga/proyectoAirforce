@@ -5,6 +5,7 @@ $('form.signIn').on('submit',()=>{
   var username = $('form.signIn input')[0].value;
   var password = $('form.signIn input')[1].value;
   login(username, password);
+  return false;
 })
 
 function login(username, password) {
@@ -19,11 +20,8 @@ function login(username, password) {
       password: password
     },
     success:function(response){
-      console.log(response);
-      //* $("[data-bs-target='#login'] a")[0].innerHTML = "hola"; //! ESTO SERIA OTRA MANERA DE HACERLO
       if (response['logged']) {
         $('#login').modal('hide');//cerrar modal
-        
       } else {
         alert(response['error']);
       }
@@ -33,8 +31,7 @@ function login(username, password) {
         console.log(textStatus);
         console.log(error);
     }
-  }).then(getSession)
-  return false;
+  }).then(loadComponents)
 }
 
 $('#formContra').on('input',()=>{
