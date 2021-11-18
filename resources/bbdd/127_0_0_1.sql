@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 08-11-2021 a las 13:20:48
+-- Tiempo de generación: 18-11-2021 a las 08:44:43
 -- Versión del servidor: 10.4.21-MariaDB
--- Versión de PHP: 8.0.11
+-- Versión de PHP: 7.3.31
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -22,14 +22,6 @@ SET time_zone = "+00:00";
 --
 CREATE DATABASE IF NOT EXISTS `airforce` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
 USE `airforce`;
-
-DELIMITER $$
---
--- Procedimientos
---
-CREATE DEFINER=`root`@`localhost` PROCEDURE `spLogin` (IN `user` VARCHAR(25), IN `pass` VARCHAR(50))  SELECT "true" AS Logged FROM usuarios WHERE username = user && password = pass$$
-
-DELIMITER ;
 
 -- --------------------------------------------------------
 
@@ -141,7 +133,7 @@ CREATE TABLE `usuarios` (
   `username` varchar(25) NOT NULL,
   `password` varchar(50) NOT NULL,
   `status` tinyint(1) NOT NULL,
-  `role` tinyint(1) NOT NULL,
+  `role` enum('ADMIN','USER') NOT NULL DEFAULT 'USER',
   `cod_cliente` int(5) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -150,7 +142,7 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`cod`, `username`, `password`, `status`, `role`, `cod_cliente`) VALUES
-(3, 'prueba', 'prueba', 1, 1, NULL);
+(3, 'prueba', 'prueba', 1, 'ADMIN', NULL);
 
 --
 -- Índices para tablas volcadas
