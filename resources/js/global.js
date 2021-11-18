@@ -1,13 +1,14 @@
 $(document).ready(loadComponents);
 var ruta;
 
-async function loadComponents(){
-    await testAsync();
-    getSession();
+async function loadComponents(){ //esto es en ready ahora se le quita apra debug
+    await load();
+    await getSession().then((session)=> loadContent(session))
+    
 }
 
-function testAsync(){
-    return new Promise((resolve,reject)=>{
+async function load(){
+    return new Promise(async function (resolve,reject) {
 
         var currentPosition = $(location).attr('href').split('/').pop();
 
@@ -27,66 +28,77 @@ function testAsync(){
                 ruta = 'resources/';
                 break;
         }
-    
-        $('#header').load(ruta+'pages/navbar.html', function(responseTxt, statusTxt, xhr){
+
+        await new Promise ((resolve,reject)=> {
+            $('#header').load(ruta+'pages/navbar.html', function(response,statusTxt, xhr){
             
-            if(statusTxt == "success") {
-        
-                var currentPosition = $(location).attr('href').split('/').pop();
-                console.log(currentPosition);
-                switch (currentPosition) {
-                    //!ESTA ES POR QUE NO TENEMOS EL HTML BIEN PUESTO EN SUSITIO Y LA REFERECIA CAMBIA PERO LUEGO USAREMOS LA DE ABAJO
-                    default:
-                        $('#casaR').attr('href', "");
-                        $('#logoR').attr('src','resources/img/LOGO AirForce.png');
-                        $('#botonBanca').attr('href', "resources/pages/banca.html");
-                    break; 
-                    //! ESTA ES POR QUE NO TENEMOS EL HTML BIEN PUESTO EN SUSITIO Y LA REFERECIA CAMBIA PERO LUEGO USAREMOS LA DE ABAJO
-                    
-                    
-                    case 'proyectoAirforce':
-                        $('#casaR').attr('href', "");
-                        $('#logoR').attr('src','resources/img/LOGO AirForce.png');
-                        $('#botonBanca').attr('href', "resources/pages/banca.html");
+                if(statusTxt == "success") {
+                    var currentPosition = $(location).attr('href').split('/').pop();
+                    switch (currentPosition) {
+                        //!ESTA ES POR QUE NO TENEMOS EL HTML BIEN PUESTO EN SUSITIO Y LA REFERECIA CAMBIA PERO LUEGO USAREMOS LA DE ABAJO
+                        default:
+                            $('#casaR').attr('href', "");
+                            $('#logoR').attr('src','resources/img/LOGO AirForce.png');
+                            $('#botonBanca').attr('href', "resources/pages/banca.html");
+                        break; 
+                        //! ESTA ES POR QUE NO TENEMOS EL HTML BIEN PUESTO EN SUSITIO Y LA REFERECIA CAMBIA PERO LUEGO USAREMOS LA DE ABAJO
                         
-                    break;
-            
-                    case 'banca.html':
-                        $('#casaR').attr('href', "../../");
-                        $('#casaI').attr('href', "../../");
-                        $(this).removeClass('header-transparent')
-                        $('#logoR').attr('src','../img/LOGO AirForce blanco.png');
-                        $('#botonBanca').attr('href', "");
-            
-                    break;
-                    case 'banca.html?':
-                        $('#casaR').attr('href', "../../");
-                        $('#casaI').attr('href', "../../");
-                        $(this).removeClass('header-transparent')
-                        $('#logoR').attr('src','../../resources/img/LOGO AirForce blanco.png');
-                        $('#botonBanca').attr('href', "");
-            
-                    break;
+                        
+                        case 'proyectoAirforce':
+                            $('#casaR').attr('href', "");
+                            $('#logoR').attr('src','resources/img/LOGO AirForce.png');
+                            $('#botonBanca').attr('href', "resources/pages/banca.html");
+                            
+                        break;
+                
+                        case 'banca.html':
+                            $('#casaR').attr('href', "../../");
+                            $('#casaI').attr('href', "../../");
+                            $(this).removeClass('header-transparent')
+                            $('#logoR').attr('src','../img/LOGO AirForce blanco.png');
+                            $('#botonBanca').attr('href', "");
+                
+                        break;
+                        case 'banca.html?':
+                            $('#casaR').attr('href', "../../");
+                            $('#casaI').attr('href', "../../");
+                            $(this).removeClass('header-transparent')
+                            $('#logoR').attr('src','../../resources/img/LOGO AirForce blanco.png');
+                            $('#botonBanca').attr('href', "");
+                
+                        break;
+                    }
+                    resolve();            
                 }
-        
-            }
-        
-            if(statusTxt == "error") {
-            alert("Error: " + xhr.status + ": " + xhr.statusText);
-            }
+            
+                if(statusTxt == "error") {
+                alert("Error: " + xhr.status + ": " + xhr.statusText);
+                reject("Error: " + xhr.status + ": " + xhr.statusText);
+                }
+            })
         })
-        
-        $('#footer').load(ruta+'pages/footer.html');
+
+        await new Promise ((resolve,reject) => {
+            $('#footer').load(ruta+'pages/footer.html', function(response, statusTxt, xhr){
+                if (statusTxt == 'success') {
+                    resolve();
+                } else if (statusTxt == 'error') {
+                    alert("Error: " + xhr.status + ": " + xhr.statusText);
+                    reject();
+                }
+            })
+        })
 
         resolve();
     })
 }
 
 function getSession() { //RECOGE LAS VARIABLES DE SESSION
-    var session;
-    
-    var currentPosition = $(location).attr('href').split('/').pop();
-    console.log(currentPosition);
+    return new Promise((resolve,reject)=>{
+
+        var currentPosition = $(location).attr('href').split('/').pop();
+        var session;
+
         switch (currentPosition) {
     
             default:
@@ -101,29 +113,30 @@ function getSession() { //RECOGE LAS VARIABLES DE SESSION
                 break;
         }
 
-    $.ajax({
-      url: ruta+"controller/controllerIndex.php",
-      method: "GET",
-      dataType: 'json',
-      success:function(response){
-        session = response['SESSION'];
-      },
-      error: function(xhr, textStatus, error){
-          console.log(xhr.statusText);
-          console.log(textStatus);
-          console.log(error);
-      }
-    }).then(()=>{loadContent(session)})
+        $.ajax({
+            url: ruta+"controller/controllerIndex.php",
+            method: "GET",
+            dataType: 'json',
+            success:function(response){
+              session = response['SESSION'];
+            },
+            error: function(xhr, textStatus, error){
+                console.log(xhr.statusText);
+                console.log(textStatus);
+                console.log(error);
+                reject();
+            }
+          }).then(resolve(session))
+    })
 }
 
 function loadContent(session) { //GENERA EL COTENIDO EN FUNCION DE LA SESSION
     
-    console.group('SESSION'); //*VEMOS LA VARIABLE DE SESIÓN*
-        console.log(session);
+    console.group('SESSION'); 
+        console.log(session); //*VEMOS LA VARIABLE DE SESIÓN*
     console.groupEnd();
 
     if (session == null) { //TODO *SIN SESION*
-        
         $("#dropdownLogin ul").addClass("d-none"); //* OCULTA EL DROPDOWN
         $("#botonBanca").addClass("d-none"); //* OCULTA EL BOTON BANCA
         $("#dropdownLogin > a")[0].dataset.bsTarget = '#login'; //? ASIGNAR EL TARGET PARA MODAL LOGIN
