@@ -37,7 +37,8 @@ async function load(){
                         default:
                             $('#casaR').attr('href', "");
                             $('#logoR').attr('src','resources/img/LOGO AirForce.png');
-                            $('#botonBanca').attr('href', "resources/pages/banca.html");
+                            $('#btnBanca').attr('href', "resources/pages/banca.html");
+                            $('#btnTienda').attr('href', "resources/pages/tienda.html");
                         break; 
                         //! ESTA ES POR QUE NO TENEMOS EL HTML BIEN PUESTO EN SUSITIO Y LA REFERECIA CAMBIA PERO LUEGO USAREMOS LA DE ABAJO
                         
@@ -45,20 +46,29 @@ async function load(){
                         case 'proyectoAirforce':
                             $('#casaR').attr('href', "");
                             $('#logoR').attr('src','resources/img/LOGO AirForce.png');
-                            $('#botonBanca').attr('href', "resources/pages/banca.html");
+                            $('#btnBanca').attr('href', "resources/pages/banca.html");
+                            $('#btnTienda').attr('href', "resources/pages/tienda.html");
                             
                         break;
                 
                         case 'banca.html':
                         case 'banca.html?':
+                            $('#casaR').attr('href', "../../");
+                            $('#casaI').attr('href', "../../");
+                            $(this).removeClass('header-transparent')
+                            $('#logoR').attr('src','../img/LOGO AirForce blanco.png');
+                            $('#btnBanca').attr('href', "");
+                            $('#btnTienda').attr('href', "../tienda.html");
+                        break;
+
                         case 'tienda.html':
                         case 'tienda.html?':
                             $('#casaR').attr('href', "../../");
                             $('#casaI').attr('href', "../../");
                             $(this).removeClass('header-transparent')
                             $('#logoR').attr('src','../img/LOGO AirForce blanco.png');
-                            $('#botonBanca').attr('href', "");
-                
+                            $('#btnBanca').attr('href', "../banca.html");
+                            $('#btnTienda').attr('href', "");
                         break;
                     }
                     resolve();            
