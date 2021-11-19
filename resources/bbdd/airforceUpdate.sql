@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 19-11-2021 a las 09:01:17
+-- Tiempo de generación: 19-11-2021 a las 12:36:31
 -- Versión del servidor: 10.4.21-MariaDB
 -- Versión de PHP: 8.0.11
 
@@ -20,8 +20,18 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `airforce`
 --
+DROP DATABASE IF EXISTS `airforce`;
 CREATE DATABASE IF NOT EXISTS `airforce` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
 USE `airforce`;
+
+DELIMITER $$
+--
+-- Procedimientos
+--
+DROP PROCEDURE IF EXISTS `spLogin`$$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `spLogin` (IN `user` VARCHAR(25), IN `pass` VARCHAR(50))  SELECT * FROM usuarios WHERE username = user && password = pass$$
+
+DELIMITER ;
 
 -- --------------------------------------------------------
 
