@@ -130,7 +130,8 @@ function loadContent(session) { //GENERA EL COTENIDO EN FUNCION DE LA SESSION
 
     if (session == null) { //TODO *SIN SESION*
         $("#dropdownLogin ul").addClass("d-none"); //* OCULTA EL DROPDOWN
-        $("#botonBanca").addClass("d-none"); //* OCULTA EL BOTON BANCA
+        $("#btnBanca").addClass("d-none"); //* OCULTA EL BOTON BANCA
+        $("#btnTienda").addClass("d-none"); //* OCULTA EL BOTON TIENDA
         $("#dropdownLogin > a")[0].dataset.bsTarget = '#login'; //? ASIGNAR EL TARGET PARA MODAL LOGIN
         $("#dropdownLogin > a")[0].dataset.bsToggle = 'modal'; //? ASIGNAR EL TOGGLE PARA LA LLAMADA AL MODAL
         $("#dropdownLogin span").html('Login');  //? PONER LOGIN EN VEZ DE USERNAME EN EL BTN LOGIN 
@@ -144,11 +145,12 @@ function loadContent(session) { //GENERA EL COTENIDO EN FUNCION DE LA SESSION
 
         if (session['role'] == 'USER') {
             
-            
+            $("#btnTienda").removeClass("d-none");
             
         } else if (session['role'] == 'ADMIN') {
             
-            $("#botonBanca").removeClass("d-none");
+            $("#btnBanca").removeClass("d-none");
+            $("#btnTienda").removeClass("d-none");
             
         }
 
