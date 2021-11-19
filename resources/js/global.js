@@ -9,7 +9,6 @@ async function load(){
     return new Promise(async function (resolve,reject) {
 
         var currentPosition = $(location).attr('href').split('/').pop();
-        console.log(currentPosition);
 
         switch (currentPosition) {
     
@@ -17,13 +16,14 @@ async function load(){
                 ruta = '';    
                 break;
         
-            case 'banca.html' || 'banca.html?' || 'tienda.html' || 'tienda.html?':
+            case 'banca.html':
+            case 'banca.html?':
+            case 'tienda.html':
+            case 'tienda.html?':
                 ruta = '../../'
-                console.log(1);
                 break;
 
             default:
-                console.log('default');
                 ruta = '';
                 break;
         }
@@ -32,7 +32,6 @@ async function load(){
             $('#header').load(ruta+'resources/pages/navbar.html', function(response,statusTxt, xhr){
             
                 if(statusTxt == "success") {
-                    var currentPosition = $(location).attr('href').split('/').pop();
                     switch (currentPosition) {
                         //!ESTA ES POR QUE NO TENEMOS EL HTML BIEN PUESTO EN SUSITIO Y LA REFERECIA CAMBIA PERO LUEGO USAREMOS LA DE ABAJO
                         default:
@@ -50,7 +49,10 @@ async function load(){
                             
                         break;
                 
-                        case 'banca.html' || 'banca.html?' || 'tienda.html' || 'tienda.html?':
+                        case 'banca.html':
+                        case 'banca.html?':
+                        case 'tienda.html':
+                        case 'tienda.html?':
                             $('#casaR').attr('href', "../../");
                             $('#casaI').attr('href', "../../");
                             $(this).removeClass('header-transparent')
