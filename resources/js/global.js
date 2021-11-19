@@ -9,6 +9,7 @@ async function load(){
     return new Promise(async function (resolve,reject) {
 
         var currentPosition = $(location).attr('href').split('/').pop();
+        console.log(currentPosition);
 
         switch (currentPosition) {
     
@@ -16,10 +17,13 @@ async function load(){
                 ruta = '';    
                 break;
         
-            case 'banca.html' || 'banca.html?':
+            case 'banca.html' || 'banca.html?' || 'tienda.html' || 'tienda.html?':
                 ruta = '../../'
-                break;   
+                console.log(1);
+                break;
+
             default:
+                console.log('default');
                 ruta = '';
                 break;
         }
@@ -46,19 +50,11 @@ async function load(){
                             
                         break;
                 
-                        case 'banca.html':
+                        case 'banca.html' || 'banca.html?' || 'tienda.html' || 'tienda.html?':
                             $('#casaR').attr('href', "../../");
                             $('#casaI').attr('href', "../../");
                             $(this).removeClass('header-transparent')
                             $('#logoR').attr('src','../img/LOGO AirForce blanco.png');
-                            $('#botonBanca').attr('href', "");
-                
-                        break;
-                        case 'banca.html?':
-                            $('#casaR').attr('href', "../../");
-                            $('#casaI').attr('href', "../../");
-                            $(this).removeClass('header-transparent')
-                            $('#logoR').attr('src','../../resources/img/LOGO AirForce blanco.png');
                             $('#botonBanca').attr('href', "");
                 
                         break;
