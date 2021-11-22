@@ -58,7 +58,7 @@ async function load(){
                             $(this).removeClass('header-transparent')
                             $('#logoR').attr('src','../img/LOGO AirForce blanco.png');
                             $('#btnBanca').attr('href', "");
-                            $('#btnTienda').attr('href', "../tienda.html");
+                            $('#btnTienda').attr('href', "../pages/tienda.html");
                         break;
 
                         case 'tienda.html':
@@ -67,7 +67,7 @@ async function load(){
                             $('#casaI').attr('href', "../../");
                             $(this).removeClass('header-transparent')
                             $('#logoR').attr('src','../img/LOGO AirForce blanco.png');
-                            $('#btnBanca').attr('href', "../banca.html");
+                            $('#btnBanca').attr('href', "../pages/banca.html");
                             $('#btnTienda').attr('href', "");
                         break;
                     }
