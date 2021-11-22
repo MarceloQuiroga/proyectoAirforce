@@ -1,0 +1,14 @@
+#main > title {
+    background-color: #f7f7f7;
+    height: 80px;
+    padding: 20px 10px;
+    font-size: 25px;
+}
+
+#main input[type=checkbox]:checked {
+    background-color: #18d26e;
+}
+
+.fas:hover{ 
+    color: #18d26e;
+}
