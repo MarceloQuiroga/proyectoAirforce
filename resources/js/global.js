@@ -108,10 +108,10 @@ function getSession() { //RECOGE LAS VARIABLES DE SESSION
                 break;
         
             case 'banca.html':
-                ruta = "../../"; 
-                break;
             case 'banca.html?':
-                ruta = "../../controller";
+            case 'tienda.html':
+            case 'tienda.html?':
+                ruta = "../../"; 
                 break;
         }
 
