@@ -1,38 +1,47 @@
 $(document).ready(loadComponents);
-var ruta;
+
 async function loadComponents(){
-    await load();
-    await getSession().then((session)=> loadContent(session))
+
+    await getSession().then(async function(session) {
+        await loadHeaderFooter();
+        await loadContent(session);
+    })
+
 }
 
-async function load(){
+function getRuta() {
+    return $(location).attr('href').split('/').pop();
+}
+
+function index() {
+    var index;
+    switch (getRuta()) {
+        case 'banca.html':
+        case 'banca.html?':
+        case 'tienda.html':
+        case 'tienda.html?':
+        case 'error-page.html':
+        case 'error-page.html?':
+            index = '../../'
+            break;
+
+        default:
+            index = '';
+            break;
+    }
+    return index;
+}
+
+async function loadHeaderFooter(){
     return new Promise(async function (resolve,reject) {
 
-        var currentPosition = $(location).attr('href').split('/').pop();
-
-        switch (currentPosition) {
-    
-            case 'proyectoAirforce':
-                ruta = '';    
-                break;
-        
-            case 'banca.html':
-            case 'banca.html?':
-            case 'tienda.html':
-            case 'tienda.html?':
-                ruta = '../../'
-                break;
-
-            default:
-                ruta = '';
-                break;
-        }
+       
 
         await new Promise ((resolve,reject)=> {
-            $('#header').load(ruta+'resources/pages/navbar.html', function(response,statusTxt, xhr){
+            $('#header').load(index()+'resources/pages/navbar.html', function(response,statusTxt, xhr){
             
                 if(statusTxt == "success") {
-                    switch (currentPosition) {
+                    switch (getRuta()) {
                         //!ESTA ES POR QUE NO TENEMOS EL HTML BIEN PUESTO EN SUSITIO Y LA REFERECIA CAMBIA PERO LUEGO USAREMOS LA DE ABAJO
                         default:
                             $('#casaR').attr('href', "");
@@ -81,42 +90,28 @@ async function load(){
             })
         })
 
+       
+
         await new Promise ((resolve,reject) => {
-            $('#footer').load(ruta+'resources/pages/footer.html', function(response, statusTxt, xhr){
+            $('#footer').load(index()+'resources/pages/footer.html', function(response, statusTxt, xhr){
                 if (statusTxt == 'success') {
                     resolve();
                 } else if (statusTxt == 'error') {
                     alert("Error: " + xhr.status + ": " + xhr.statusText);
-                    reject();
+                    reject("Error: " + xhr.status + ": " + xhr.statusText);
                 }
             })
         })
 
         resolve();
+
     })
 }
 
 function getSession() { //RECOGE LAS VARIABLES DE SESSION
     return new Promise((resolve,reject)=>{
-
-        var currentPosition = $(location).attr('href').split('/').pop();
-
-        switch (currentPosition) {
-    
-            default:
-                ruta = "";
-                break;
-        
-            case 'banca.html':
-            case 'banca.html?':
-            case 'tienda.html':
-            case 'tienda.html?':
-                ruta = "../../"; 
-                break;
-        }
-
         $.ajax({
-            url: ruta+"controller/controllerIndex.php",
+            url: index() +"controller/controllerIndex.php",
             method: "GET",
             dataType: 'json',
             success:function(response){
@@ -172,7 +167,7 @@ function loadContent(session) { //GENERA EL COTENIDO EN FUNCION DE LA SESSION
 
 function logout() {
     $.ajax({
-        url: ruta+"controller/controllerLogin.php",
+        url: index() +"controller/controllerLogin.php",
         method: "GET",
         dataType: 'json',
         data:{

@@ -18,3 +18,24 @@
     grid-template-columns: repeat(3, 1fr);
     grid-gap: 15px;
 }
+
+.btn-search{
+    background-color: #18d26e;
+    border: #18d26e;
+}
+
+.btn-order{
+    background-color: #18d26e;
+    border: #18d26e;
+    width: 100%;
+    border-radius: 5px;
+}
+
+.dropdown-menu{
+    text-align: center;
+    width: 100%;
+}
+
+button:active:focus{
+    background-color: #18d26e;
+}

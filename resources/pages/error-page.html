@@ -6,13 +6,137 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AirForce</title>
 
+    <!-- Favicons --> 
+    <link href="../img/solo Logo.png" rel="icon">
+    <link href="../img/apple-touch-icon.png" rel="apple-touch-icon">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Montserrat:300,400,500,700" rel="stylesheet">
+
+    <!-- Vendor CSS Files -->
+    <link href="../vendor/animate.css/animate.min.css" rel="stylesheet">
+    <link href="../vendor/aos/aos.css" rel="stylesheet">
+    <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="../vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+    <link href="../vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+    
+    <link rel="stylesheet" href="../css/fontawesome-free-5.15.4/css/all.css">
+
     <!-- Template Main CSS File -->
     <link href="../css/style.css" rel="stylesheet">
     <link href="../css/error-page.css" rel="stylesheet">
 
 </head>
 <body>
+
+    <div class="moon"></div>
+        <div class="moon__crater moon__crater1"></div>
+        <div class="moon__crater moon__crater2"></div>
+        <div class="moon__crater moon__crater3"></div>
+
+        <div class="star star1"></div>
+        <div class="star star2"></div>
+        <div class="star star3"></div>
+        <div class="star star4"></div>
+        <div class="star star5"></div>
+
+        <div class="error">
+        <div class="error__title">404</div>
+        <div class="error__subtitle">Hmmm...</div>
+        <div class="error__description">It looks like one of the  developers fell asleep</div>
+        <button id="btnLogin" class="error__button error__button--active" data-bs-toggle="modal" data-bs-target="#login">LOGIN</button>
+        <button id="btnHome" class="error__button">GO HOME</button>
+        </div>
+
+        <div class="astronaut">
+        <div class="astronaut__backpack"></div>
+        <div class="astronaut__body"></div>
+        <div class="astronaut__body__chest"></div>
+        <div class="astronaut__arm-left1"></div>
+        <div class="astronaut__arm-left2"></div>
+        <div class="astronaut__arm-right1"></div>
+        <div class="astronaut__arm-right2"></div>
+        <div class="astronaut__arm-thumb-left"></div>
+        <div class="astronaut__arm-thumb-right"></div>
+        <div class="astronaut__leg-left"></div>
+        <div class="astronaut__leg-right"></div>
+        <div class="astronaut__foot-left"></div>
+        <div class="astronaut__foot-right"></div>
+        <div class="astronaut__wrist-left"></div>
+        <div class="astronaut__wrist-right"></div>
+        
+        <div class="astronaut__cord">
+            <canvas id="cord" height="500px" width="500px"></canvas>
+        </div>
+        
+        <div class="astronaut__head">
+            <canvas id="visor" width="60px" height="60px"></canvas>
+            <div class="astronaut__head-visor-flare1"></div>
+            <div class="astronaut__head-visor-flare2"></div>
+        </div>
+        </div>    <section id="modals">
+
+            <!-- MODAL -->
+            <div class="modal fade" id="login" tabindex="-1">
+                <div id="modaldialog2" class="modal-dialog">
+                    <div id="modalcontent2" class="modal-content">
+                        <!--modalHeader-->
     
+                        <!--modalBody-->
+                        <div id="modalbody2" class="modal-body">
+    
+                            <div class="containerLog">
+                                <form class="signIn">
+                                    <h3>Welcome</br>Back !</h3>
+                                    <button class="fb" type="button">Log In With Facebook</button>
+                                    <p>- or -</p>
+                                    <input id="formEmail" type="text" placeholder="Insert Username" autocomplete='off' reqired />
+                                    <input autocomplete="one-time-code" id="formPassword" type="password" placeholder="Insert Password" reqired />
+                                    <button class="form-btn sx back" type="button">Registrarme</button>
+                                    <button class="form-btn dx" type="submit">Iniciar Sesion</button>
+                                </form>
+                                <form class="signUp">
+                                    <h3>Create Your Account</h3>
+                                    <p>Just enter your Username</br>
+                                        and your password for join.
+                                    </p>
+                                    <input id="formUser" class="w100 my-0" type="text" placeholder="Username" reqired autocomplete='off' />
+                                    <input autocomplete="one-time-code" id="formContra" class="my-2" type="password" placeholder="Insert Password" reqired />
+                                    <input autocomplete="one-time-code" id="formPasswordVerify" class="my-2" type="password" placeholder="Verify Password" reqired />
+                                    <div class="progress mx-4">
+                                        <div class="progress-bar bg-secondary progressPass" role="progressbar" style="width: 33.3%;">Password Weak</div>
+                                    </div>
+                                    <div class="list-group mx-4 mt-2">
+                                        <span class="validation v-pass v-pass-size list-group-item list-group-item-danger p-1">min 8 char</span>
+                                        <span class="validation v-pass v-pass-char list-group-item list-group-item-danger p-1">especial char</span>
+                                        <span class="validation v-pass v-pass-num list-group-item list-group-item-danger p-1">number</span>
+                                    </div>
+                                    <button class="form-btn sx log-in" type="button">Iniciar Sesion</button>
+                                    <button class="form-btn dx" type="submit">Registrarme</button>
+                                </form>
+                            </div>
+    
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--MODAL-->
+        </section>
+
+    <!-- Vendor JS Files -->
+    <script src="../vendor/aos/aos.js"></script>
+    <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="../vendor/glightbox/js/glightbox.min.js"></script>
+    <script src="../vendor/isotope-layout/isotope.pkgd.min.js"></script>
+    <script src="../vendor/php-email-form/validate.js"></script>
+    <script src="../vendor/purecounter/purecounter.js"></script>
+    <script src="../vendor/swiper/swiper-bundle.min.js"></script>
+    <script src="../vendor/waypoints/noframework.waypoints.js"></script>
+    
+    <script src="../js/jquery-3.6.0.js"></script>
+    <script src="../js/global.js"></script>
+    <script src="../js/login.js"></script>
     <script src="../js/error-page.js"></script>
 
 </body>

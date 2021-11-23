@@ -32,40 +32,6 @@
 
     <!-- ============== Header =============== -->
     <header id="header" class="sticky-top d-flex align-items-center header-transparent">
-        <div class="container-fluid">
-            <div class="row justify-content-center align-items-center">
-                <div class="col-xl-11 d-flex align-items-center justify-content-between">
-                    <a id="casaR"> <img class="logoimg" id="logoR" alt='Algo ha fallado porfavor reporte el problema'></a>
-                    <!-- Uncomment below if you prefer to use an image logo -->
-                    <!-- <a href="index.html" class="logo"><img src="resources/img/logo.png" alt="" class="img-fluid"></a>-->
-    
-                    <nav id="navbar" class="navbar">
-                        <ul>
-                            <li><a class="nav-link scrollto active" id="casaI">Inicio</a></li>
-                            <li><a class="nav-link scrollto" href="#about">About</a></li>
-                            <li><a class="nav-link scrollto" href="#services">Servicios</a></li>
-                            <li><a class="nav-link scrollto " href="#portfolio">Productos</a></li>
-                            <li><a class="nav-link scrollto" href="#team">Equipo</a></li>
-    
-                            <!--IF LOGEADO Y USUARIO=ADMIN-->
-                            <li><a id="btnTienda" class="nav-link d-none">Tienda</a></li>
-                            <li><a id="btnBanca" class="nav-link d-none">Banca</a></li>
-                            <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
-    
-    
-                            <li id="dropdownLogin" class="dropdown"><a href="#" data-bs-toggle="modal" data-bs-target="#login"><span>Login</span></a>
-                                <ul class="d-none">
-                                    <li><a href="#" name="perfil">Perfil</a></li>
-                                    <li><a href="#" name="logout">Logout</a></li>
-                                </ul>
-                            </li>
-    
-                        </ul>
-                        <i class="bi bi-list mobile-nav-toggle"></i>
-                    </nav>
-                </div>
-            </div>
-        </div>
     </header>
     <!-- ============== Header =============== -->
     
@@ -85,23 +51,24 @@
                     </div>
                 </div>
 
+
                 <div class="mt-2 px-2"> <!-- drone type -->
                     <div class="d-flex align-items-center">
                         <a data-bs-toggle="collapse" href="#collapseDronType" role="button"><h6 class="py-2 m-0">DRONE-TYPE</h6></a>
-                        <i class="fas fa-redo px-2"></i>
+                        <i id="reset-type" class="fas fa-redo px-2"></i>
                     </div> 
                     
                     <hr>
                     <div id="collapseDronType" class="collapse">
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                            <label class="form-check-label" for="flexCheckDefault">
+                            <input class="form-check-input" name="police" type="checkbox" value="police" id="typePolice">
+                            <label class="form-check-label" for="typePolice">
                                 POLICE
                             </label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
-                            <label class="form-check-label" for="flexCheckChecked">
+                            <input class="form-check-input" name="" type="checkbox" value="firefighter" id="typeFirefighter">
+                            <label class="form-check-label" for="typeFirefighter">
                                 FIREFIGHTER
                             </label>
                         </div>
@@ -112,19 +79,19 @@
                 <div class="mt-2 px-2"> <!-- drone size -->
                     <div class="d-flex align-items-center">
                         <a data-bs-toggle="collapse" href="#collapseDronSize" role="button"><h6 class="py-2 m-0">DRONE-SIZE</h6></a>
-                        <i class="fas fa-redo px-2"></i>
+                        <i id="reset-size" class="fas fa-redo px-2"></i>
                     </div>  
                     <hr>
                     <div id="collapseDronSize" class="collapse">
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                            <label class="form-check-label" for="flexCheckDefault">
+                            <input class="form-check-input" type="checkbox" value="long" name="size" id="sizeLong">
+                            <label class="form-check-label" for="sizeLong">
                                 LONG
                             </label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
-                            <label class="form-check-label" for="flexCheckChecked">
+                            <input class="form-check-input" type="checkbox" value="medium" name="size" id="sizeMedium">
+                            <label class="form-check-label" for="sizeMedium">
                                 MEDIUM
                             </label>
                         </div>
@@ -132,40 +99,45 @@
                     </div>
                 </div>
 
+                <div class="input-group order_by px-2"> <!-- Dropdown with filters -->
+                    <button type="button" class="btn btn-success btn-order rounded" data-bs-toggle="dropdown">Order By</button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                        <li><button class="dropdown-item">Price: Low to high</button></li>
+                        <li><button class="dropdown-item">Price: High to low</button></li>
+                        <li><button class="dropdown-item"></button></li>
+                    </ul>
+                </div>
+
             </div>
             <div class="col"> <!--BLOQUE DE BUSQUEDA Y PRODUCTOS-->
-                <div class="container mt-2">
+                <div class="container my-3">
 
                     <div class="row input-group mx-auto"> <!-- Buscador -->
                         <div class="form-outline col px-0">
                         <input type="search" id="form1" class="form-control" placeholder="Search..."/>
                         </div>
-                        <button type="button" class="btn btn-primary col-2">
+                        <button type="button" class="btn btn-success btn-search col-2">
                         <i class="fas fa-search"></i>
                         </button>
                     </div>
 
-                    <div class="row input-group mx-auto my-2"> <!-- Filters -->
-                        <button class="btn btn-primary">Order By</button>
-                    </div>
-
                     <div id="listProductos" class="row mx-auto mt-2 justify-content-between"> <!-- Productos -->
 
-                        <div class="col producto px-0">
+                        <div class="col producto px-0 border">
                             <img src="https://m.media-amazon.com/images/I/51TEcohAqHS._AC_SY355_.jpg" class="card-img-top" >
                             <div class="car-title bg-light row py-2 mx-0">
                                 <p class="h4 col m-0">Drone Test</p>
                                 <p class="h5 col m-0 text-end">100.00€</p>
                             </div>
                         </div>
-                        <div class="col producto px-0">
+                        <div class="col producto px-0 border">
                             <img src="https://m.media-amazon.com/images/I/51TEcohAqHS._AC_SY355_.jpg" class="card-img-top" >
                             <div class="car-title bg-light row py-2 mx-0">
                                 <p class="h4 col m-0">Drone Test</p>
                                 <p class="h5 col m-0 text-end">100.00€</p>
                             </div>
                         </div>
-                        <div class="col producto px-0">
+                        <div class="col producto px-0 border">
                             <img src="https://m.media-amazon.com/images/I/51TEcohAqHS._AC_SY355_.jpg" class="card-img-top" >
                             <div class="car-title bg-light row py-2 mx-0">
                                 <p class="h4 col m-0">Drone Test</p>
