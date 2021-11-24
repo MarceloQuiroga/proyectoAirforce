@@ -23,6 +23,18 @@ async function getProductos() {
     })
 }
 
+$('#filtros input').on('change',()=>{
+  var filters = Array.from($('#filtros input'))
+  var filterON = new Array;
+  filters.forEach(element => {
+    if (element.checked) {
+      console.log(element.value);
+      filterON[element.name] = element.value;
+    }
+  });
+  console.log(filterON);
+})
+
 $('#reset-type').click(()=>{
   var filtro = $('#collapseDronType').children(".form-check");
   Array.from(filtro).forEach(element => {
