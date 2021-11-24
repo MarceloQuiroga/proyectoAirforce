@@ -1,24 +1,22 @@
+async function indexSection() {
+  $('nav a.scrollto').on('click', scrolltoAdjustment);
+  $('nav a.scrollto').on('click', greenActive); 
+  
+}
 
-$(document).ready(getProductos);
+function scrolltoAdjustment() {
+  var target = this.href.split('/').pop();
+  var section = $(target);
+  section.css('padding-top','120px');
+}
 
-async function getProductos() {
-    return new Promise ( (resolve, reject) => {
-        $.ajax({
-            url: "controller/controllerProductos.php",
-            method: "GET",
-            dataType: 'json',
-            success:function(response){
+function greenActive() {
+  
+  Array.from($('nav a.scrollto')).forEach(element => {
+    if (element.classList.contains('active')) {
+      element.classList.remove('active');
+    }
+  });
+  this.classList.add('active');
 
-              console.log(response);
-              resolve();
-
-            },
-            error: function(xhr, textStatus, error){
-                console.log(xhr.statusText);
-                console.log(textStatus);
-                console.log(error);
-                resolve(error);
-            }
-          })
-    })
 }

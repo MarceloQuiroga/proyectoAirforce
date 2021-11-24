@@ -24,15 +24,61 @@ async function getProductos() {
 }
 
 $('#filtros input').on('change',()=>{
-  var filters = Array.from($('#filtros input'))
-  var filterON = new Array;
-  filters.forEach(element => {
-    if (element.checked) {
-      console.log(element.value);
-      filterON[element.name] = element.value;
+  var filterData = new Array;
+  if (event.target.name == 'filterStatus') { //TODO *Verifica que es el boton filtro*
+    if (event.target.checked) { //! Verifica que el boton esta activado
+      filterData[event.target.name] = 'ON'
+    } else {
+      filterData[event.target.name] = 'OFF'
     }
-  });
-  console.log(filterON);
+  } else { //? Los otros filtros (NO BOTON DE ACTIVAR FILTRO)
+    
+    if (event.target.checked) { //TODO *Auto activa el filtro*
+      if ($('[name=filterStatus]')[0].checked) {//! COMPRUEBA QUE NO ESTE ACTIVO
+        filterData['filterStatus'] = 'ON'
+      } else {
+        $('[name=filterStatus]')[0].checked = true;
+        filterData['filterStatus'] = 'ON'
+      }
+    }
+    var filters = Array.from($('#filtros input'))
+    filters.forEach(element => {//* RECORREMOS EL ARRAY PARA SACAR EL FILTRO ACTIVO
+      if (!element.name == 'filterStatus') {
+        if (element.checked) {
+          if (filterData[element.name] == undefined) {
+            filterData[element.name] = new Array(element.value);
+          } else {
+            filterData[element.name].push(element.value)
+          }
+        }
+      }
+    });
+  }
+
+  console.log(filterData);
+
+  
+   
+  
+    // if (event.target.checked) {
+    //   var filters = Array.from($('#filtros input'))
+    
+    //   filters.forEach(element => {
+    //     if (element.checked) {
+
+    //       if (filterData[element.name] == undefined) {
+    //         filterData[element.name] = new Array(element.value);
+    //       } else {
+    //         filterData[element.name].push(element.value)
+    //       }
+
+    //     }
+    //   });
+    // } else {
+    //   filterData[event.target.name] = 'OFF'
+    // }
+  
+
 })
 
 $('#reset-type').click(()=>{
