@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 19-11-2021 a las 12:36:31
+-- Tiempo de generación: 24-11-2021 a las 08:56:11
 -- Versión del servidor: 10.4.21-MariaDB
--- Versión de PHP: 8.0.11
+-- Versión de PHP: 7.3.31
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -20,7 +20,6 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `airforce`
 --
-DROP DATABASE IF EXISTS `airforce`;
 CREATE DATABASE IF NOT EXISTS `airforce` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
 USE `airforce`;
 
@@ -75,9 +74,17 @@ DROP TABLE IF EXISTS `cuentas`;
 CREATE TABLE `cuentas` (
   `ref` varchar(50) NOT NULL,
   `nombre` varchar(25) NOT NULL,
-  `type` int(2) NOT NULL,
-  `cantidad` int(5) NOT NULL
+  `type` varchar(50) NOT NULL,
+  `saldo` int(5) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `cuentas`
+--
+
+INSERT INTO `cuentas` (`ref`, `nombre`, `type`, `saldo`) VALUES
+('ES66 2100 0418 4012 3456 7891', 'Airforce', 'Cuenta credito', 70),
+('ES66 2100 0418 4013 0012 3422', 'Airforce', 'Cuenta corriente', 158);
 
 -- --------------------------------------------------------
 
@@ -141,10 +148,31 @@ CREATE TABLE `registro` (
   `ref` int(11) NOT NULL,
   `fecha` date NOT NULL,
   `titular` varchar(25) NOT NULL,
-  `cantidad` int(6) NOT NULL,
+  `importe` varchar(50) NOT NULL,
   `ref_cuenta` varchar(50) NOT NULL,
-  `num_seguimiento` int(6) NOT NULL
+  `num_seguimiento` int(6) DEFAULT NULL,
+  `tipo` varchar(50) NOT NULL,
+  `saldo` int(50) NOT NULL,
+  `concepto` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `registro`
+--
+
+INSERT INTO `registro` (`ref`, `fecha`, `titular`, `importe`, `ref_cuenta`, `num_seguimiento`, `tipo`, `saldo`, `concepto`) VALUES
+(10, '2021-11-23', 'Airforce', '+1', 'ES66 2100 0418 4012 3456 7891', NULL, 'Ingreso', 1, 'ingreso1'),
+(11, '2021-11-23', 'Airforce', '+2', 'ES66 2100 0418 4012 3456 7891', NULL, 'Ingreso', 3, 'ingresp2'),
+(12, '2021-11-23', 'Airforce', '+200', 'ES66 2100 0418 4013 0012 3422', NULL, 'Ingreso', 200, 'ingreso1'),
+(13, '2021-11-23', 'Airforce', '-47', 'ES66 2100 0418 4013 0012 3422', NULL, 'transferecnia', 153, 'transferencia1'),
+(14, '2021-11-23', 'Airforce', '+47', 'ES66 2100 0418 4012 3456 7891', NULL, 'transferecnia', 50, 'transferencia1'),
+(15, '2021-11-23', 'Airforce', '-3', 'ES66 2100 0418 4013 0012 3422', NULL, 'transferecnia', 150, 'transferencia2'),
+(16, '2021-11-23', 'Airforce', '+3', 'ES66 2100 0418 4012 3456 7891', NULL, 'transferecnia', 53, 'transferencia2'),
+(17, '2021-11-23', 'Airforce', '-1', 'ES66 2100 0418 4012 3456 7891', NULL, 'transferecnia', 52, 'transferencia3'),
+(18, '2021-11-23', 'Airforce', '+1', 'ES66 2100 0418 4013 0012 3422', NULL, 'transferecnia', 151, 'transferencia3'),
+(19, '2021-11-24', 'Airforce', '+25', 'ES66 2100 0418 4012 3456 7891', NULL, 'Ingreso', 77, 'pruebaIng1'),
+(20, '2021-11-24', 'Airforce', '-7', 'ES66 2100 0418 4012 3456 7891', NULL, 'transferecnia', 70, 'tr'),
+(21, '2021-11-24', 'Airforce', '+7', 'ES66 2100 0418 4013 0012 3422', NULL, 'transferecnia', 158, 'tr');
 
 -- --------------------------------------------------------
 
@@ -244,7 +272,7 @@ ALTER TABLE `productos`
 -- AUTO_INCREMENT de la tabla `registro`
 --
 ALTER TABLE `registro`
-  MODIFY `ref` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ref` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
