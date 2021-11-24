@@ -118,7 +118,7 @@ h1, h2, h3, h4, h5, h6 {
   transition: all 0.5s;
   z-index: 997;
   background: rgba(0, 0, 0, 0.9);
-  height: 100px;
+  height: 100px !important;
 }
 #header.header-transparent {
   background: transparent;
@@ -322,6 +322,7 @@ h1, h2, h3, h4, h5, h6 {
   background: #000;
   overflow: hidden;
   position: relative;
+  margin-top: -100px;
 }
 @media (max-height: 500px) {
   #hero {
@@ -445,6 +446,9 @@ section {
 
 /* Sections Header
 --------------------------------*/
+header#header {
+  z-index: 100;
+}
 .section-header h3 {
   font-size: 32px;
   color: #111;
@@ -2089,11 +2093,11 @@ section {
 
 
 /*---------------------------------------*/
-
+#casaR{
+  height: 100px;
+}
 .logoimg{
-  margin-top: 10px;
-  width: 230px;
-  height: 200px ;
+  
 }
 
 
