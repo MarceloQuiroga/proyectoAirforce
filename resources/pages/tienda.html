@@ -20,27 +20,149 @@
     <link href="../vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
     <link href="../vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
     <link href="../vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+    
+    <link rel="stylesheet" href="../css/fontawesome-free-5.15.4/css/all.css">
 
     <!-- Template Main CSS File -->
     <link href="../css/style.css" rel="stylesheet">
+    <link href="../css/tienda.css" rel="stylesheet">
 
 </head>
 <body>
 
     <!-- ============== Header =============== -->
-    <header id="header" class="fixed-top d-flex align-items-center header-transparent">
-        <!-- Auto Fill -->
+    <header id="header" class="sticky-top d-flex align-items-center header-transparent">
     </header>
     <!-- ============== Header =============== -->
-
+    
 
     <!-- ============== Content ============== -->
-    <br><br><br><br><br><br><br><br><br><br><br><br>
+    <div id="main" class="position-sticky" style="top: 80px;">
+
+        <title class="d-block">Tienda</title>
+
+        <div class="row">
+            <div id="filtros" class="bg-light" style="min-width:250px; width: 250px;"> <!--BLOQUE DE FILTROS-->
+
+                <div class="mt-2 px-2 d-flex"> <!-- tittle filter -->
+                    <h5 class="">Filters</h5>
+                    <div class="form-check form-switch ms-2">
+                        <input class="form-check-input" type="checkbox" name="filterStatus">
+                    </div>
+                </div>
+
+
+                <div class="mt-2 px-2"> <!-- drone type -->
+                    <div class="d-flex align-items-center">
+                        <a data-bs-toggle="collapse" href="#collapseDronType" role="button"><h6 class="py-2 m-0">DRONE-TYPE</h6></a>
+                        <i id="reset-type" class="fas fa-redo px-2"></i>
+                    </div> 
+                    
+                    <hr>
+                    <div id="collapseDronType" class="collapse">
+                        <div class="form-check">
+                            <input class="form-check-input" name="droneType" type="checkbox" value="police" id="typePolice">
+                            <label class="form-check-label" for="typePolice">
+                                POLICE
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" name="droneType" type="checkbox" value="firefighter" id="typeFirefighter">
+                            <label class="form-check-label" for="typeFirefighter">
+                                FIREFIGHTER
+                            </label>
+                        </div>
+                        <br>
+                    </div>
+                </div>
+
+                <div class="mt-2 px-2"> <!-- drone size -->
+                    <div class="d-flex align-items-center">
+                        <a data-bs-toggle="collapse" href="#collapseDronSize" role="button"><h6 class="py-2 m-0">DRONE-SIZE</h6></a>
+                        <i id="reset-size" class="fas fa-redo px-2"></i>
+                    </div>  
+                    <hr>
+                    <div id="collapseDronSize" class="collapse">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="long" name="droneSize" id="sizeLong">
+                            <label class="form-check-label" for="sizeLong">
+                                LONG
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="medium" name="droneSize" id="sizeMedium">
+                            <label class="form-check-label" for="sizeMedium">
+                                MEDIUM
+                            </label>
+                        </div>
+                        <br>
+                    </div>
+                </div>
+
+                <div class="input-group order_by px-2"> <!-- Dropdown with filters -->
+                    <button type="button" class="btn btn-success btn-order rounded" data-bs-toggle="dropdown">Order By</button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                        <li><button class="dropdown-item">Price: Low to high</button></li>
+                        <li><button class="dropdown-item">Price: High to low</button></li>
+                        <li><button class="dropdown-item"></button></li>
+                    </ul>
+                </div>
+
+            </div>
+            <div class="col"> <!--BLOQUE DE BUSQUEDA Y PRODUCTOS-->
+                <div class="container my-3">
+
+                    <div class="row input-group mx-auto"> <!-- Buscador -->
+                        <div class="form-outline col px-0">
+                        <input type="search" id="form1" class="form-control" placeholder="Search..."/>
+                        </div>
+                        <button type="button" class="btn btn-success btn-search col-2">
+                        <i class="fas fa-search"></i>
+                        </button>
+                    </div>
+
+                    <div id="listProductos" class="row mx-auto mt-2 justify-content-between"> <!-- Productos -->
+
+                        <div class="col producto px-0 border">
+                            <img src="https://m.media-amazon.com/images/I/51TEcohAqHS._AC_SY355_.jpg" class="card-img-top" >
+                            <div class="car-title bg-light row py-2 mx-0">
+                                <p class="h4 col m-0">Drone Test</p>
+                                <p class="h5 col m-0 text-end">100.00€</p>
+                            </div>
+                        </div>
+                        <div class="col producto px-0 border">
+                            <img src="https://m.media-amazon.com/images/I/51TEcohAqHS._AC_SY355_.jpg" class="card-img-top" >
+                            <div class="car-title bg-light row py-2 mx-0">
+                                <p class="h4 col m-0">Drone Test</p>
+                                <p class="h5 col m-0 text-end">100.00€</p>
+                            </div>
+                        </div>
+                        <div class="col producto px-0 border">
+                            <img src="https://m.media-amazon.com/images/I/51TEcohAqHS._AC_SY355_.jpg" class="card-img-top" >
+                            <div class="car-title bg-light row py-2 mx-0">
+                                <p class="h4 col m-0">Drone Test</p>
+                                <p class="h5 col m-0 text-end">100.00€</p>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        
+
+
+
+    </div>
+
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
     <!-- ============== Content ============== -->
 
 
     <!-- ============== Footer =============== -->
-    <footer id="footer">
+    <footer id="footer" class="">
         <!-- Auto Fill -->
     </footer>
     <!-- ============== Footer =============== -->
@@ -55,10 +177,10 @@
     <script src="../vendor/swiper/swiper-bundle.min.js"></script>
     <script src="../vendor/waypoints/noframework.waypoints.js"></script>
 
-    <!--JAVASCRIPT links-->"
+    <!--JAVASCRIPT links-->
     <script src="../js/jquery-3.6.0.js"></script>
     <script src="../js/global.js"></script>
-    <script src="../js/main.js"></script>
+    <script src="../js/tienda.js"></script>
     <!--JAVASCRIPT links-->
     
 </body>
