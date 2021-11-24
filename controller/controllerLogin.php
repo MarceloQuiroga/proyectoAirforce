@@ -7,7 +7,6 @@ $response = array();
 
 if (empty($_SESSION)) {
     $_SESSION['status'] = 'active';
-
     if (isset($_GET["request"])) {
         if ($_GET["request"] == "login") {
             $username = $_GET["username"];
@@ -18,15 +17,13 @@ if (empty($_SESSION)) {
             if ($username != null && $password != null) {
                 $user -> username = $username;
                 $user -> password = $password;
-                
                 $login = $user -> login(); //VALIDACION LOGIN
                 if ($login == true) {
                     $response['logged'] = true;
                     $response['error'] = "No Error";
-                    
                     $_SESSION['user'] = $user->username;
                     $_SESSION['role'] = $user->role; // <-- SESSION variables
-    
+                    
                 } else {
                     session_unset();
                     session_destroy();

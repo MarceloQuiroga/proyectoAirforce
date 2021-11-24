@@ -1,43 +1,24 @@
-$(document).ready(beginning);
 
-function beginning(){
-  scriptMarcelo();
-  //scriptIñigo();
-  //scriptImrane();
-}
+$(document).ready(getProductos);
 
-function preventClick(event){
-    event.preventDefault();
-    event.stopPropagation();
-  }
+async function getProductos() {
+    return new Promise ( (resolve, reject) => {
+        $.ajax({
+            url: "controller/controllerProductos.php",
+            method: "GET",
+            dataType: 'json',
+            success:function(response){
 
-function scriptMarcelo(){
-  $('form#login')
-    .off('click')
-    .on('submit', login);
-}
+              console.log(response);
+              resolve();
 
-function login() {
-
-    event.preventClick;
-    
-    $.ajax({
-        url: "controller/controllerLogin.php",
-        method: "GET",
-        data:{
-            username: $("form#login input")[0].value,
-            password: $("form#login input")[1].value
-        },
-        success:function(response){
-        console.log(response);
-        },
-        error: function(xhr, textStatus, error){
-            console.log(xhr.statusText);
-            console.log(textStatus);
-            console.log(error);
-        }
+            },
+            error: function(xhr, textStatus, error){
+                console.log(xhr.statusText);
+                console.log(textStatus);
+                console.log(error);
+                resolve(error);
+            }
+          })
     })
-    
-    return false;
-
 }

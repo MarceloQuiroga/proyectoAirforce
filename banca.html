@@ -10,22 +10,22 @@
   <meta content="" name="keywords">
 
   <!-- Favicons -->
-  <link href="resources/img/favicon.png" rel="icon">
-  <link href="resources/img/apple-touch-icon.png" rel="apple-touch-icon">
+  <link href="../img/favicon.png" rel="icon">
+  <link href="../img/apple-touch-icon.png" rel="apple-touch-icon">
 
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Montserrat:300,400,500,700" rel="stylesheet">
 
   <!-- Vendor CSS Files -->
-  <link href="resources/vendor/animate.css/animate.min.css" rel="stylesheet">
-  <link href="resources/vendor/aos/aos.css" rel="stylesheet">
-  <link href="resources/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="resources/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <link href="resources/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-  <link href="resources/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+  <link href="../vendor/animate.css/animate.min.css" rel="stylesheet">
+  <link href="../vendor/aos/aos.css" rel="stylesheet">
+  <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="../vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="../vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
 
   <!-- Template Main CSS File -->
-  <link href="resources/css/style.css" rel="stylesheet">
+  <link href="../css/style.css" rel="stylesheet">
 
   <!-- =======================================================
   * Template Name: BizPage - v5.7.0
@@ -39,75 +39,40 @@
 
   <!-- ======= Header ======= -->
   <header id="header" class="fixed-top d-flex align-items-center ">
-    <div class="container-fluid">
 
-      <div class="row justify-content-center align-items-center">
-        <div class="col-xl-11 d-flex align-items-center justify-content-between" style="height: 100px !important">
-          <a href="index.html"><img class="logoimg" src="resources/img/LOGO AirForce blanco.png" alt=""></a>
-          <!-- Uncomment below if you prefer to use an image logo -->
-          <!-- <a href="index.html" class="logo"><img src="resources/img/logo.png" alt="" class="img-fluid"></a>-->
-
-          <nav id="navbar" class="navbar">
-            <ul>
-              <li><a class="nav-link scrollto" href="index.html#hero">Inicio</a></li>
-              <li><a class="nav-link scrollto" href="index.html#about">About</a></li>
-              <li><a class="nav-link scrollto" href="index.html#services">Servicios</a></li>
-              <li><a class="nav-link scrollto" href="index.html#portfolio">Productos</a></li>
-              <li><a class="nav-link scrollto" href="index.html#team">Equipo</a></li>
-              <li><a class="nav-link" href="blog.html">Tienda</a></li>
-              
-              <!--IF LOGEADO Y USUARIO=ADMIN-->
-              <li><a class="nav-link active" href="banca.html">Banca</a></li>
-              <!--
-              <li class="dropdown"><a href="#"><span>Drop Down</span> <i class="bi bi-chevron-down"></i></a>
-                <ul>
-                  <li><a href="#">Drop Down 1</a></li>
-                  <li class="dropdown"><a href="#"><span>Deep Drop Down</span> <i class="bi bi-chevron-right"></i></a>
-                    <ul>
-                      <li><a href="#">Deep Drop Down 1</a></li>
-                      <li><a href="#">Deep Drop Down 2</a></li>
-                      <li><a href="#">Deep Drop Down 3</a></li>
-                      <li><a href="#">Deep Drop Down 4</a></li>
-                      <li><a href="#">Deep Drop Down 5</a></li>
-                    </ul>
-                  </li>
-                  <li><a href="#">Drop Down 2</a></li>
-                  <li><a href="#">Drop Down 3</a></li>
-                  <li><a href="#">Drop Down 4</a></li>
-                </ul>
-              </li> -->
-
-              <li><a class="nav-link scrollto" href="index.html#contact">Contact</a></li>
-              <li data-bs-toggle="modal" data-bs-target="#login"><a class="nav-link scrollto" href="#">Login</a></li>
-              
-            </ul>
-            <i class="bi bi-list mobile-nav-toggle"></i>
-          </nav><!-- .navbar -->
-        </div>
-      </div>
-
-    </div>
   </header><!-- End Header -->
 
   <main id="main">
 
     <!-- ======= Breadcrumbs ======= -->
-    <section id="breadcrumbs" class="breadcrumbs2">
-      <div class="">
-        <h2 class="mt-4">Banca</h2>
+    <section id="breadcrumbs2">
+      <div id="flexrow">
+        <div class="">
+          <h2 id="tipoCuenta" class="mt-4">Banca</h2>
+        </div>
+        <div class="divNumCuenta">
+          <input id="numCuenta" value="">
+          <input id="saldoCuenta" value="">
+        </div>
+        <div id="CuentaBanca">
+          <select name="potencial" id="potencial" class="custom-select sources" placeholder="Elige una cuenta">
+            <option value='ES66 2100 0418 4012 3456 7891'>ES66 2100 0418 4012 3456 7891</option>
+            <option value="B">ES68 5672 5673 8964 9642</option>
+            <option value="C">ES16 2222 3424 4566 7453</option>
+            <option value='ES68 5672 5673 8964 9642'>ES68 5672 5673 8964 9642</option>
+          </select>
+        </div>
       </div>
-      <div id="CuentaBanca">
-        <select name="potencial" id="potencial" class="custom-select sources" placeholder="Elige una cuenta">
-          <option value="DH" selected>ES12 3443 4343 3434 5665</option>
-          <option value="A">ES32 3443 4343 3434 5665</option>
-          <option value="B">ES68 5672 5673 8964 9642</option>
-          <option value="C">ES16 2222 3424 4566 7453</option>
-        </select>
+
+      <div id="infoCuenta">
+
       </div>
+
     </section><!-- End Breadcrumbs -->
 
 
     <!-- ======= Banca Section ======= -->
+    
     <section id="banca" class="">
       <div class="container" data-aos="fade-up">
 
@@ -134,15 +99,14 @@
             <div class="banca-wrap">
               
               <div class="banca-info">
-                <h4><a href="portfolio-details.html">PRESTAMO</a></h4>
-                <p>Prestamo</p>
+                <h4><a href="portfolio-details.html">PRESTAMO FRANCES</a></h4>
+                <p>Prestamo Frances</p>
               </div>
 
               <figure>
-                <img src="resources/img/portfolio/app1.jpg" class="img-fluid" alt="">
+                <img src="../img/portfolio/app1.jpg" class="img-fluid" alt="">
                 <a data-bs-toggle="modal" data-bs-target="#formPrestamo" data-lightbox="banca" data-title="App 1" class="link-preview">CALCULAR</a>
               </figure>
-
               
             </div>
           </div>
@@ -156,7 +120,7 @@
               </div>
 
               <figure>
-                <img src="resources/img/portfolio/web3.jpg" class="img-fluid" alt="">
+                <img src="../img/portfolio/web3.jpg" class="img-fluid" alt="">
                 <a data-bs-toggle="modal" data-bs-target="#formLeasing" data-lightbox="banca" data-title="App 1" class="link-preview">CALCULAR</a>
               </figure>
 
@@ -166,23 +130,24 @@
 
           <div class="col-lg-4 col-md-6 banca-item filter-prest">
             <div class="banca-wrap">
-              <div class="banca-info">
-                <h4><a href="portfolio-details.html">Ejemplo</a></h4>
-                <p>Ejemplo</p>
-              </div>
               <figure>
-                <img src="resources/img/portfolio/app2.jpg" class="img-fluid" alt="">
-                <a href="resources/img/portfolio/app2.jpg" class="link-preview banca-lightbox" data-gallery="bancaGallery" title="App 2"><i class="bi bi-plus"></i></a>
+                <img src="../img/portfolio/app2.jpg" class="img-fluid" alt="">
+                <a href="../img/portfolio/app2.jpg" class="link-preview banca-lightbox" data-gallery="bancaGallery" title="App 2"><i class="bi bi-plus"></i></a>
                 <a href="portfolio-details.html" class="link-details" title="More Details"><i class="bi bi-link"></i></a>
               </figure>
+
+              <div class="banca-info">
+                <h4><a href="portfolio-details.html">App 2</a></h4>
+                <p>App</p>
+              </div>
             </div>
           </div>
-          <!-- --------------------Estas cards de la parte de movimientos no la necesitamos por ahora------------------
+          <!--
           <div class="col-lg-4 col-md-6 banca-item filter-mov">
             <div class="banca-wrap">
               <figure>
-                <img src="resources/img/portfolio/card2.jpg" class="img-fluid" alt="">
-                <a href="resources/img/portfolio/card2.jpg" class="link-preview banca-lightbox" data-gallery="bancaGallery" title="Card 2"><i class="bi bi-plus"></i></a>
+                <img src="../img/portfolio/card2.jpg" class="img-fluid" alt="">
+                <a href="../img/portfolio/card2.jpg" class="link-preview banca-lightbox" data-gallery="bancaGallery" title="Card 2"><i class="bi bi-plus"></i></a>
                 <a href="portfolio-details.html" class="link-details" title="More Details"><i class="bi bi-link"></i></a>
               </figure>
 
@@ -196,8 +161,8 @@
           <div class="col-lg-4 col-md-6 banca-item filter-mov">
             <div class="banca-wrap">
               <figure>
-                <img src="resources/img/portfolio/web2.jpg" class="img-fluid" alt="">
-                <a href="resources/img/portfolio/web2.jpg" class="link-preview banca-lightbox" data-gallery="bancaGallery" title="Web 2"><i class="bi bi-plus"></i></a>
+                <img src="../img/portfolio/web2.jpg" class="img-fluid" alt="">
+                <a href="../img/portfolio/web2.jpg" class="link-preview banca-lightbox" data-gallery="bancaGallery" title="Web 2"><i class="bi bi-plus"></i></a>
                 <a href="portfolio-details.html" class="link-details" title="More Details"><i class="bi bi-link"></i></a>
               </figure>
 
@@ -211,8 +176,8 @@
           <div class="col-lg-4 col-md-6 banca-item filter-mov">
             <div class="banca-wrap">
               <figure>
-                <img src="resources/img/portfolio/app3.jpg" class="img-fluid" alt="">
-                <a href="resources/img/portfolio/app3.jpg" class="link-preview banca-lightbox" data-gallery="bancaGallery" title="App 3"><i class="bi bi-plus"></i></a>
+                <img src="../img/portfolio/app3.jpg" class="img-fluid" alt="">
+                <a href="../img/portfolio/app3.jpg" class="link-preview banca-lightbox" data-gallery="bancaGallery" title="App 3"><i class="bi bi-plus"></i></a>
                 <a href="portfolio-details.html" class="link-details" title="More Details"><i class="bi bi-link"></i></a>
               </figure>
 
@@ -222,19 +187,17 @@
               </div>
             </div>
           </div>
-
           -->
 
           <div class="col-lg-4 col-md-6 banca-item filter-trans">
             <div class="banca-wrap">
               <figure>
-                <img src="resources/img/portfolio/card1.jpg" class="img-fluid" alt="">
-                <a href="resources/img/portfolio/card1.jpg" class="link-preview banca-lightbox" data-gallery="bancaGallery" title="Card 1"><i class="bi bi-plus"></i></a>
-                <a href="portfolio-details.html" class="link-details" title="More Details"><i class="bi bi-link"></i></a>
+                <img src="../img/portfolio/card1.jpg" class="img-fluid" alt="">
+                <li id="trans1" data-filter=".filter-miscuentas" class="link-preview transFilter">Transferir</li>
               </figure>
 
               <div class="banca-info">
-                <h4><a href="portfolio-details.html">Card 1</a></h4>
+                <h4><a href="portfolio-details.html">Transferencia entre mis cuentas</a></h4>
                 <p>Card</p>
               </div>
             </div>
@@ -243,13 +206,12 @@
           <div class="col-lg-4 col-md-6 banca-item filter-trans">
             <div class="banca-wrap">
               <figure>
-                <img src="resources/img/portfolio/card3.jpg" class="img-fluid" alt="">
-                <a href="assresourcesets/img/portfolio/card3.jpg" class="link-preview banca-lightbox" data-gallery="bancaGallery" title="Card 3"><i class="bi bi-plus"></i></a>
-                <a href="portfolio-details.html" class="link-details" title="More Details"><i class="bi bi-link"></i></a>
+                <img src="../img/portfolio/card3.jpg" class="img-fluid" alt="">
+                <li id="trans2" data-filter=".filter-entidad" class="link-preview transFilter">Transferir</li>
               </figure>
 
               <div class="banca-info">
-                <h4><a href="portfolio-details.html">Card 3</a></h4>
+                <h4><a href="portfolio-details.html">Transferencia a otra entidad</a></h4>
                 <p>Card</p>
               </div>
             </div>
@@ -258,13 +220,13 @@
           <div class="col-lg-4 col-md-6 banca-item filter-trans">
             <div class="banca-wrap">
               <figure>
-                <img src="resources/img/portfolio/web1.jpg" class="img-fluid" alt="">
-                <a href="resources/img/portfolio/web1.jpg" class="link-preview banca-lightbox" data-gallery="bancaGallery" title="Web 1"><i class="bi bi-plus"></i></a>
-                <a href="portfolio-details.html" class="link-details" title="More Details"><i class="bi bi-link"></i></a>
+                <img src="../img/portfolio/card2.jpg" class="img-fluid" alt="">
+                <li data-filter=".filter-reembolso"  class="link-preview transFilter">Transferir</li>
+                <li data-filter=".filter-ninguno"  class="transFilter"></li>
               </figure>
 
               <div class="banca-info">
-                <h4><a href="portfolio-details.html">Web 1</a></h4>
+                <h4><a href="portfolio-details.html">Transferencia de reembolso</a></h4>
                 <p>Web</p>
               </div>
             </div>
@@ -283,69 +245,54 @@
         <div id="ComparacionTablas" class="banca-item filter-prest">
         </div>
         <div id="ComparacionMovimientos" class="banca-item filter-mov">
-          <table style="text-align: center;" class="table">
-            <thead>
-              <tr>
-                <th scope="col">Fecha</th>
-                <th scope="col">Referencia</th>
-                <th scope="col">Concepto</th>
-                <th scope="col">Tipo</th>
-                <th scope="col">Cantidad</th>
-                <th scope="col">CC emisor</th>
-                <th scope="col">CC receptor</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <th scope="row">26-03-2021</th>
-                <td>345232</td>
-                <td>Pack Drones AF-59</td>
-                <td>Cargo</td>
-                <td>8212€</td>
-                <td>ES60 0049 1500 0512 3456 7892</td>
-                <td>ES71 0030 2053 0912 3456 7895</td>
-              </tr>
-              <tr>
-                <th scope="row">26-03-2021</th>
-                <td>143499</td>
-                <td>Pack Drones AF-59</td>
-                <td>Cargo</td>
-                <td>399,99€</td>
-                <td>ES60 0049 1500 0512 3456 7892</td>
-                <td>ES71 0030 2053 0912 3456 7895</td>
-              </tr>
-              <tr>
-                <th scope="row">26-03-2021</th>
-                <td>388496</td>
-                <td>Pack Drones AF-59</td>
-                <td>Abono</td>
-                <td>1250€</td>
-                <td>ES60 0049 1500 0512 3456 7892</td>
-                <td>ES71 0030 2053 0912 3456 7895</td>
-              </tr>
-              <tr>
-                <th scope="row">26-03-2021</th>
-                <td>109902</td>
-                <td>Pack Drones AF-59</td>
-                <td>Cargo</td>
-                <td>732€</td>
-                <td>ES60 0049 1500 0512 3456 7892</td>
-                <td>ES71 0030 2053 0912 3456 7895</td>
-              </tr>
-              <tr>
-                <th scope="row">26-03-2021</th>
-                <td>330312</td>
-                <td>Pack Drones AF-59</td>
-                <td>Abono</td>
-                <td>952,55€</td>
-                <td>ES60 0049 1500 0512 3456 7892</td>
-                <td>ES71 0030 2053 0912 3456 7895</td>
-              </tr>
-            </tbody>
+          <div id="mensajeNocuenta">Selecciona una cuenta para ver sus movimientos</div>
+          <table id="tablaMovim" style="text-align: center;" class="table">
+            
           </table>
+        </div>
+        <div class=" banca-item filter-trans">
+          <div id="containerTransferencias" class="row container3">
+            <div class="banca-item transfDiv filter-reembolso">
+              Transferencia de reembolso
+            </div>
+            <div class="banca-item transfDiv filter-miscuentas">
+              <div id="cuenta1">
+                <form id="formCuenta">
+                    <input id="cuenta1form" class="w100" type="text" placeholder="numero de cuenta" value="" disabled />
+                    <input id="saldo1" class="w100" type="text" placeholder="saldo" disabled />
+                    <input id="importeform" class="w100" type="text" placeholder="Importe" />
+                    <input id="conceptoform" class="w100" type="text" placeholder="Concepto" />
+                </form>
+              </div>
+              <div><button id="botonTransferir">Transferir --></button></div>
+              <div id="cuenta2">
+                <form id="formCuenta">
+                    <select id="cuenta2form">
+                    </select>
+                    <input id="saldo2" class="w100" type="text" placeholder="saldo" disabled />
+                </form>
+              </div>
+            </div>
+            <div class="banca-item transfDiv filter-entidad">
+              Transferir a otra entidad
+            </div>
+            <div class="banca-item transfDiv filter-ninguno">
+            </div>
+          </div>
+        </div>
+        <div class="banca-item filter-ingr">
+          <div id="ingreso">
+            <form id="formCuenta">
+                <input id="importe2form" class="w100" type="text" placeholder="Importe" />
+                <input id="concepto2form" class="w100" type="text" placeholder="Concepto"/>
+            </form>
+            <button id="botonIngresar">Ingresar</button>
+          </div>
         </div>
       </div>
     </section>
+
+    
 
     <!-- ======= Blog Section ======= -->
     
@@ -565,20 +512,22 @@
   <!-- <div id="preloader"></div> -->
 
   <!-- Vendor JS Files -->
-  <script src="resources/vendor/aos/aos.js"></script>
-  <script src="resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="resources/vendor/glightbox/js/glightbox.min.js"></script>
-  <script src="resources/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-  <script src="resources/vendor/php-email-form/validate.js"></script>
-  <script src="resources/vendor/purecounter/purecounter.js"></script>
-  <script src="resources/vendor/swiper/swiper-bundle.min.js"></script>
-  <script src="resources/vendor/waypoints/noframework.waypoints.js"></script>
+  <script src="../vendor/aos/aos.js"></script>
+  <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="../vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="../vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="../vendor/php-email-form/validate.js"></script>
+  <script src="../vendor/purecounter/purecounter.js"></script>
+  <script src="../vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="../vendor/waypoints/noframework.waypoints.js"></script>
 
       <!--JAVASCRIPT links-->
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-      <script src="resources/js/jquery-3.6.0.js"></script>
-      <script src="resources/js/test.js"></script>
-      <script src="resources/js/main.js"></script>
+      <script src="../js/data.js"></script>
+      <script src="../js/jquery-3.6.0.js"></script>  
+      <script src="../js/test.js"></script>
+      <script src="../js/main.js"></script>
+      
       <!--JAVASCRIPT links-->
 
 </body>

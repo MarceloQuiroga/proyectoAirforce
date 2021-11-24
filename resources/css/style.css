@@ -532,21 +532,27 @@ section {
 /*--------------------------------------------------------------
 # Breadcrumbs2
 --------------------------------------------------------------*/
-.breadcrumbs2 {
+
+#breadcrumbs2 {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   padding: 20px 0;
   background-color: #f7f7f7;
   min-height: 40px;
   margin-top: 80px;
 }
-.breadcrumbs2 h2 {
+
+#flexrow{
+  display: flex;
+  flex-direction: row;
+}
+#breadcrumbs2 h2 {
   font-size: 24px;
   margin-bottom: 0;
   font-weight: 400;
   margin-left: 30px;
 }
-.breadcrumbs2 ol {
+#breadcrumbs2 ol {
   display: flex;
   flex-wrap: wrap;
   list-style: none;
@@ -554,23 +560,23 @@ section {
   margin: 0;
   font-size: 14px;
 }
-.breadcrumbs2 ol li + li {
+#breadcrumbs2 ol li + li {
   padding-left: 10px;
 }
-.breadcrumbs2 ol li + li::before {
+#breadcrumbs2 ol li + li::before {
   display: inline-block;
   padding-right: 10px;
   color: #6c757d;
   content: "/";
 }
 @media (max-width: 768px) {
-  .breadcrumbs2 .d-flex {
+  #breadcrumbs2 .d-flex {
     display: block !important;
   }
-  .breadcrumbs2 ol {
+  #breadcrumbs2 ol {
     display: block;
   }
-  .breadcrumbs2 ol li {
+  #breadcrumbs2 ol li {
     display: inline-block;
   }
 }
@@ -2102,8 +2108,8 @@ body::-webkit-scrollbar {
 }
 
 
-#ComparacionTablas{
-
+#tablas{
+  margin-bottom: 200px;
 }
 
 
@@ -2149,7 +2155,7 @@ select {
 .custom-select-trigger {
   position: relative;
   display: block;
-  min-width: 130px;
+  min-width: 250px;
   padding: 0 104px 0 25px;
   font-weight: 100;
   color: #6e7c83;
@@ -2541,4 +2547,54 @@ button{
   background-color: rgba(255, 255, 255, 0);
   height: 500px !important;
   width: auto !important;
+}
+
+
+/*--------------------------transferecnia entre mis cuentas-----------------*/
+
+.filter-miscuentas, .filter-ingr{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+
+#cuenta1, #cuenta2{
+  border: 1px solid black;
+  border-radius: 30px;
+  width: 700px;
+  height: 450px;
+}
+
+#ingreso{
+  border: 1px solid black;
+  border-radius: 30px;
+  width: 700px;
+  height: 250px;
+}
+
+#cuenta1{
+  background-color: rgb(131, 238, 197);
+}
+
+#ingreso{
+  background-color: rgba(86, 252, 108, 0.651);
+}
+
+#cuenta2{
+  background-color: rgb(115, 230, 224);
+}
+
+#formCuenta {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+}
+
+#numCuenta, #divNumCuenta, #saldoCuenta{
+  display: none;
+}
+
+#infoCuenta{
+  height: 0px;
 }

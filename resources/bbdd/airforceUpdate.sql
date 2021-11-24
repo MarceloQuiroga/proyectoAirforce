@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 08-11-2021 a las 13:20:48
+-- Tiempo de generación: 19-11-2021 a las 12:36:31
 -- Versión del servidor: 10.4.21-MariaDB
 -- Versión de PHP: 8.0.11
 
@@ -20,6 +20,7 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `airforce`
 --
+DROP DATABASE IF EXISTS `airforce`;
 CREATE DATABASE IF NOT EXISTS `airforce` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
 USE `airforce`;
 
@@ -27,7 +28,8 @@ DELIMITER $$
 --
 -- Procedimientos
 --
-CREATE DEFINER=`root`@`localhost` PROCEDURE `spLogin` (IN `user` VARCHAR(25), IN `pass` VARCHAR(50))  SELECT "true" AS Logged FROM usuarios WHERE username = user && password = pass$$
+DROP PROCEDURE IF EXISTS `spLogin`$$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `spLogin` (IN `user` VARCHAR(25), IN `pass` VARCHAR(50))  SELECT * FROM usuarios WHERE username = user && password = pass$$
 
 DELIMITER ;
 
@@ -37,6 +39,7 @@ DELIMITER ;
 -- Estructura de tabla para la tabla `clientes`
 --
 
+DROP TABLE IF EXISTS `clientes`;
 CREATE TABLE `clientes` (
   `cod` int(5) NOT NULL,
   `nombre` varchar(25) NOT NULL,
@@ -53,6 +56,7 @@ CREATE TABLE `clientes` (
 -- Estructura de tabla para la tabla `compra`
 --
 
+DROP TABLE IF EXISTS `compra`;
 CREATE TABLE `compra` (
   `num_seguimiento` int(6) NOT NULL,
   `cod_cliente` int(5) NOT NULL,
@@ -67,6 +71,7 @@ CREATE TABLE `compra` (
 -- Estructura de tabla para la tabla `cuentas`
 --
 
+DROP TABLE IF EXISTS `cuentas`;
 CREATE TABLE `cuentas` (
   `ref` varchar(50) NOT NULL,
   `nombre` varchar(25) NOT NULL,
@@ -80,6 +85,7 @@ CREATE TABLE `cuentas` (
 -- Estructura de tabla para la tabla `productos`
 --
 
+DROP TABLE IF EXISTS `productos`;
 CREATE TABLE `productos` (
   `cod` int(5) NOT NULL,
   `nombre` varchar(25) NOT NULL,
@@ -87,12 +93,20 @@ CREATE TABLE `productos` (
   `precio` decimal(6,2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Volcado de datos para la tabla `productos`
+--
+
+INSERT INTO `productos` (`cod`, `nombre`, `descripcion`, `precio`) VALUES
+(1, 'dron - Police', 'Dron de servicio policial', '500.99');
+
 -- --------------------------------------------------------
 
 --
 -- Estructura de tabla para la tabla `provee`
 --
 
+DROP TABLE IF EXISTS `provee`;
 CREATE TABLE `provee` (
   `num_seguimiento` int(6) NOT NULL,
   `cif_proveedor` varchar(9) NOT NULL,
@@ -107,6 +121,7 @@ CREATE TABLE `provee` (
 -- Estructura de tabla para la tabla `proveedores`
 --
 
+DROP TABLE IF EXISTS `proveedores`;
 CREATE TABLE `proveedores` (
   `cif` varchar(9) NOT NULL,
   `direccion` varchar(50) NOT NULL,
@@ -121,6 +136,7 @@ CREATE TABLE `proveedores` (
 -- Estructura de tabla para la tabla `registro`
 --
 
+DROP TABLE IF EXISTS `registro`;
 CREATE TABLE `registro` (
   `ref` int(11) NOT NULL,
   `fecha` date NOT NULL,
@@ -136,12 +152,13 @@ CREATE TABLE `registro` (
 -- Estructura de tabla para la tabla `usuarios`
 --
 
+DROP TABLE IF EXISTS `usuarios`;
 CREATE TABLE `usuarios` (
   `cod` int(5) NOT NULL,
   `username` varchar(25) NOT NULL,
   `password` varchar(50) NOT NULL,
   `status` tinyint(1) NOT NULL,
-  `role` tinyint(1) NOT NULL,
+  `role` enum('ADMIN','USER','','') NOT NULL,
   `cod_cliente` int(5) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -150,7 +167,7 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`cod`, `username`, `password`, `status`, `role`, `cod_cliente`) VALUES
-(3, 'prueba', 'prueba', 1, 1, NULL);
+(3, 'prueba', 'prueba', 1, 'ADMIN', NULL);
 
 --
 -- Índices para tablas volcadas
@@ -221,7 +238,7 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `productos`
 --
 ALTER TABLE `productos`
-  MODIFY `cod` int(5) NOT NULL AUTO_INCREMENT;
+  MODIFY `cod` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `registro`
@@ -233,7 +250,7 @@ ALTER TABLE `registro`
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `cod` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `cod` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- Restricciones para tablas volcadas
