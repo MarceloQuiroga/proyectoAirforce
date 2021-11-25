@@ -175,7 +175,7 @@ function logout() {
         },
         success:function(response){
         console.log(response);
-        document.location.href = ruta;
+        document.location.href = index();
         },
         error: function(xhr, textStatus, error){
             console.log(xhr.statusText);
