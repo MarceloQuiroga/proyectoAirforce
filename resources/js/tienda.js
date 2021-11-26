@@ -92,8 +92,10 @@ $('#filtros input').on('change',()=>{
 
 $('#reset-type').click(()=>{
   var filtro = $('#collapseDronType').children(".form-check");
+  console.log($('[name=filterStatus]'));
   Array.from(filtro).forEach(element => {
     element.children[0].checked = false;
+    $('[name=filterStatus]')[0].checked
   });
 })
 
