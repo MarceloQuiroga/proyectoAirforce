@@ -3,7 +3,7 @@ $(document).ready(loadComponents);
 async function loadComponents(){
 
     await getSession().then(async function(session) {
-        await loadHeaderFooter();
+        await loadHeaderFooter().then(indexSection);
         await loadContent(session);
     })
 
