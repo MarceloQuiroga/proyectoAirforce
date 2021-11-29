@@ -1031,6 +1031,11 @@ header#header {
 
 /* Banca Section
 --------------------------------*/
+.banca-container{
+  justify-content: center;
+  margin: auto;
+}
+
 #banca {
   padding: 60px 0;
 }
