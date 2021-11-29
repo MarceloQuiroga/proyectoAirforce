@@ -14,7 +14,16 @@ async function security () {
 }
 
 async function banca() {
-    console.log(await getCuentas());
+  test(await getCuentas());
+}
+
+function test(cuentas) {
+  txt = '';
+  cuentas.forEach(cuenta => {
+    txt += "<option value='"+cuenta.ref+"'>"+cuenta.ref+"</option>";
+  });
+  $("#cuentasList").html(txt);
+  $("#cuenta2form").html(txt);
 }
 
 function getCuentas() { // DEVUELVE LAS CUENTAS
@@ -36,7 +45,6 @@ function getCuentas() { // DEVUELVE LAS CUENTAS
     })
 }
 
-function 
 
 function delloadCuentas() {
 
