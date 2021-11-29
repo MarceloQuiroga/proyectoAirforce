@@ -16,6 +16,7 @@ function loadCuentas()
 		console.log(result.cuentas);
 		
 		var cuentas=result.cuentas;
+    var newRow2 = "<option value=''>Escoge una cuenta</option>";	
    		
 		var newRow ="";
    		
@@ -23,9 +24,8 @@ function loadCuentas()
 							
 			newRow += "<option value='"+cuentas[i].ref+"'>"+cuentas[i].ref+"</option>";	
 		}
-    console.log("He rellenado el combobox"); 		 
+	 
 		document.getElementById("potencial").innerHTML=newRow;
-    document.getElementById("cuenta2form").innerHTML=newRow;
 
     //Esto es para dar estilo al combobox y que cargen bien las cuentas, si no se pone este codigo aqui no carga por cuestion de tiempos.
     $(".custom-select").each(function() {
