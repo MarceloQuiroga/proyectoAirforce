@@ -20,5 +20,3 @@ function greenActive() {
   this.classList.add('active');
 
 }
-
-console.log(1);

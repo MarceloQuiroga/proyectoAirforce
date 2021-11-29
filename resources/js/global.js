@@ -3,7 +3,7 @@ $(document).ready(loadComponents);
 async function loadComponents(){
 
     await getSession().then(async function(session) {
-        await loadHeaderFooter().then(indexSection);
+        await loadHeaderFooter();
         await loadContent(session);
     })
 
@@ -27,6 +27,7 @@ function index() {
 
         default:
             index = '';
+            indexSection();
             break;
     }
     return index;
