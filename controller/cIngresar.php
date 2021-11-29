@@ -12,24 +12,33 @@
     $tipo="Ingreso";
     $titular="Airforce";
 
-
-    $cuenta=new cuenta_model();
-    $cuenta->ref=$ref;
-    $newSaldo=($saldo+$importe);
-    $cuenta->saldo=$newSaldo;
-    $cuenta->updateCuenta();
-
-    $mov=new movimiento_model();
-    $mov->titular=$titular;
-    $mov->importe="+". $importe;
-    $mov->saldo=$newSaldo;
-    $mov->ref_cuenta=$ref;
-    $mov->tipo=$tipo;
-    $mov->concepto=$concepto;
-    $mov->insertMov();
-    
     $response=array();
-    $msg="Ingreso realizado con exito";
+
+    if ($importe=="" || $importe=null) {
+        $msg="Introduce un importe valido";
+    }elseif ($concepto=="" || $concepto=null) {
+        $msg="Introduce un concepto";
+    }else {
+
+        $cuenta=new cuenta_model();
+        $cuenta->ref=$ref;
+        $newSaldo=($saldo+$importe);
+        $cuenta->saldo=$newSaldo;
+        $cuenta->updateCuenta();
+    
+        $mov=new movimiento_model();
+        $mov->titular=$titular;
+        $mov->importe="+". $importe;
+        $mov->saldo=$newSaldo;
+        $mov->ref_cuenta=$ref;
+        $mov->tipo=$tipo;
+        $mov->concepto=$concepto;
+        $mov->insertMov();       
+        
+        $msg="Ingreso realizado con exito";
+    }
+
+
     $response["error"]=$msg;
 
     echo json_encode($response);
