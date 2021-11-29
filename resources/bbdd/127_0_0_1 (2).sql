@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 24-11-2021 a las 08:56:11
+-- Tiempo de generación: 29-11-2021 a las 09:28:03
 -- Versión del servidor: 10.4.21-MariaDB
 -- Versión de PHP: 7.3.31
 
@@ -83,7 +83,7 @@ CREATE TABLE `cuentas` (
 --
 
 INSERT INTO `cuentas` (`ref`, `nombre`, `type`, `saldo`) VALUES
-('ES66 2100 0418 4012 3456 7891', 'Airforce', 'Cuenta credito', 70),
+('ES66 2100 0418 4012 3456 7891', 'Airforce', 'Cuenta credito', 100),
 ('ES66 2100 0418 4013 0012 3422', 'Airforce', 'Cuenta corriente', 158);
 
 -- --------------------------------------------------------
@@ -172,7 +172,9 @@ INSERT INTO `registro` (`ref`, `fecha`, `titular`, `importe`, `ref_cuenta`, `num
 (18, '2021-11-23', 'Airforce', '+1', 'ES66 2100 0418 4013 0012 3422', NULL, 'transferecnia', 151, 'transferencia3'),
 (19, '2021-11-24', 'Airforce', '+25', 'ES66 2100 0418 4012 3456 7891', NULL, 'Ingreso', 77, 'pruebaIng1'),
 (20, '2021-11-24', 'Airforce', '-7', 'ES66 2100 0418 4012 3456 7891', NULL, 'transferecnia', 70, 'tr'),
-(21, '2021-11-24', 'Airforce', '+7', 'ES66 2100 0418 4013 0012 3422', NULL, 'transferecnia', 158, 'tr');
+(21, '2021-11-24', 'Airforce', '+7', 'ES66 2100 0418 4013 0012 3422', NULL, 'transferecnia', 158, 'tr'),
+(22, '2021-11-29', 'Airforce', '+25', 'ES66 2100 0418 4012 3456 7891', NULL, 'Ingreso', 95, 'hola'),
+(23, '2021-11-29', 'Airforce', '+5', 'ES66 2100 0418 4012 3456 7891', NULL, 'Ingreso', 100, 'ingr2');
 
 -- --------------------------------------------------------
 
@@ -185,8 +187,8 @@ CREATE TABLE `usuarios` (
   `cod` int(5) NOT NULL,
   `username` varchar(25) NOT NULL,
   `password` varchar(50) NOT NULL,
-  `status` tinyint(1) NOT NULL,
-  `role` enum('ADMIN','USER','','') NOT NULL,
+  `status` tinyint(1) NOT NULL DEFAULT 1,
+  `role` enum('ADMIN','USER') NOT NULL DEFAULT 'USER',
   `cod_cliente` int(5) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -272,7 +274,7 @@ ALTER TABLE `productos`
 -- AUTO_INCREMENT de la tabla `registro`
 --
 ALTER TABLE `registro`
-  MODIFY `ref` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `ref` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarios`

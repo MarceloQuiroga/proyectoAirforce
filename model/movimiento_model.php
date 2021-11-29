@@ -41,8 +41,7 @@ class movimiento_model extends movimiento_class {
         $sql="select * from movimientos where ref_cuenta='$ref_cuenta'";
         $result= $this->link->query($sql);
         
-        if ($row = mysqli_fetch_array($result, MYSQLI_ASSOC))
-        {               
+        if ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)){               
             //$movimento=new movimiento_model();
             //$movimento->ref=$row['ref'];
             //$movimento->nombre=$row['nombre'];
