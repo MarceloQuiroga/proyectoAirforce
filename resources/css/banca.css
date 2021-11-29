@@ -1,4 +1,4 @@
-#cuentasList {
+#cuentasSelect {
     position: relative;
     display: block;
     min-width: 250px;
@@ -10,4 +10,34 @@
     border-radius: 3px;
     cursor: pointer;
     transition: all 0.2s ease-in-out;
+}
+
+#cuentasSelect::before {
+    position: absolute;
+    display: block;
+    content: "";
+    width: 1px;
+    height: 50px;
+    top: 3px;
+    right: 50px;
+    margin-top: -3px;
+    border-right: 1px solid #c7d1d6;
+    transition: all 0.35s ease-out;
+    transform-origin: 50% 0;
+}
+
+#cuentasSelect::after{
+    position: absolute;
+    display: block;
+    content: "";
+    width: 10px;
+    height: 10px;
+    top: 50%;
+    right: 20px;
+    margin-top: -3px;
+    border-bottom: 1px solid #c7d1d6;
+    border-right: 1px solid #c7d1d6;
+    transform: rotate(45deg) translateY(-50%);
+    transition: all 0.35s ease-out;
+    transform-origin: 50% 0;    
 }

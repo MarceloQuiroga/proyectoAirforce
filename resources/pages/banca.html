@@ -65,18 +65,34 @@
         </div>
       </div>
 
-      <div id="Cuentas">
-        <select id="cuentasList" class="" placeholder="Elige una cuenta">
-          <!-- <option value="X">ES68 5672 5673 8964 9642</option> -->
-        </select>
-      </div>
-
       <div id="infoCuenta">
 
       </div>
 
     </section><!-- End Breadcrumbs -->
 
+
+
+    <section id="breadcrumbs2">
+      <div id="flexrow">
+        <div class="">
+          <h2 id="tipoCuenta" class="mt-4">Banca</h2>
+        </div>
+        <div class="divNumCuenta">
+          <input id="numCuenta" value="">
+          <input id="saldoCuenta" value="">
+        </div>
+        <div id="CuentaBanca">
+          <div class="custom-select sources">
+            <span id="cuentasSelect">Elige una cuenta</span>
+            <div class="cuentasList">
+              <span class="" data-value="ES66 2100 0418 4012 3456 7891">ES66 2100 0418 4012 3456 7891</span>
+              <span class="" data-value="ES66 2100 0418 4013 0012 3422">ES66 2100 0418 4013 0012 3422</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
     <!-- ======= Banca Section ======= -->
     
@@ -101,6 +117,7 @@
         
 
         <div class="row banca-container" data-aos="fade-up" data-aos-delay="200">
+          <div class="col-lg-2 col-md-0 banca-item filter-prest"></div>   <!-- Tema de diseño para que este centrado sin tener que tocar tanto css -->
 
           <div class="col-lg-4 col-md-6 banca-item filter-prest">
             <div class="banca-wrap">
@@ -111,7 +128,7 @@
               </div>
 
               <figure>
-                <img src="../img/portfolio/app1.jpg" class="img-fluid" alt="">
+                <img src="../img/portfolio/prestamo.jpg" class="img-fluid" alt="">
                 <a data-bs-toggle="modal" data-bs-target="#formPrestamo" data-lightbox="banca" data-title="App 1" class="link-preview">CALCULAR</a>
               </figure>
               
@@ -127,14 +144,12 @@
               </div>
 
               <figure>
-                <img src="../img/portfolio/web3.jpg" class="img-fluid" alt="">
+                <img src="../img/portfolio/leasing.jpg" class="img-fluid" alt="">
                 <a data-bs-toggle="modal" data-bs-target="#formLeasing" data-lightbox="banca" data-title="App 1" class="link-preview">CALCULAR</a>
               </figure>
 
-              
             </div>
           </div>
-
           
           <!--
           <div class="col-lg-4 col-md-6 banca-item filter-mov">
@@ -186,7 +201,7 @@
           <div class="col-lg-4 col-md-6 banca-item filter-trans">
             <div class="banca-wrap">
               <figure>
-                <img src="../img/portfolio/card1.jpg" class="img-fluid" alt="">
+                <img src="../img/portfolio/transferencia.jpg" class="img-fluid" alt="">
                 <li id="trans1" data-filter=".filter-miscuentas" class="link-preview transFilter">Transferir</li>
               </figure>
 
@@ -200,7 +215,7 @@
           <div class="col-lg-4 col-md-6 banca-item filter-trans">
             <div class="banca-wrap">
               <figure>
-                <img src="../img/portfolio/card3.jpg" class="img-fluid" alt="">
+                <img src="../img/portfolio/transferir.jpg" class="img-fluid" alt="">
                 <li id="trans2" data-filter=".filter-entidad" class="link-preview transFilter">Transferir</li>
               </figure>
 
