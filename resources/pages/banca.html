@@ -49,7 +49,7 @@
     <section id="breadcrumbs2">
       <div id="flexrow">
         <div class="">
-          <h2 id="tipoCuenta" class="mt-4">Banca</h2>
+          <h2 class="mt-4">Banca</h2>
         </div>
         <div class="divNumCuenta">
           <input id="numCuenta" value="">
@@ -65,11 +65,14 @@
         </div>
       </div>
 
+    </section><!-- End Breadcrumbs -->
+
+    <section id="breadcrumbs3">
+      <h2 id="tipoCuenta"></h2>
       <div id="infoCuenta">
 
       </div>
-
-    </section><!-- End Breadcrumbs -->
+    </section>
 
 
     <!-- Que es esto ??????????? 
@@ -107,8 +110,8 @@
         <div class="row" data-aos="fade-up" data-aos-delay="100">
           <div class=" col-lg-12">
             <ul id="banca-flters">
-              <li id="botonPrestamos" data-filter=".filter-prest">PRESTAMOS</li>
               <li data-filter=".filter-mov">MOVIMIENTOS</li>
+              <li id="botonPrestamos" data-filter=".filter-prest">PRESTAMOS</li> 
               <li id="botonTransferencias" data-filter=".filter-trans">TRANSFERENCIAS</li>
               <li data-filter=".filter-ingr">Ingreso</li>
             </ul>
@@ -254,11 +257,11 @@
       <div id="containerTablas" class="row container2">
         <div id="ComparacionTablas" class="banca-item filter-prest">
         </div>
-        <div id="ComparacionMovimientos" class="banca-item filter-mov">
+        <div id="ComparacionMovimientos" class="banca-item filter-mov" data-aos="fade-up" data-aos-delay="300">
           <div id="mensajeNocuenta">Selecciona una cuenta para ver sus movimientos</div>
-          <table id="tablaMovim" style="text-align: center;" class="table">
-            
-          </table>
+          <div id="tabla1">
+
+          </div>
         </div>
         <div class=" banca-item filter-trans">
           <div id="containerTransferencias" class="row container3">
