@@ -41,3 +41,9 @@
     transition: all 0.35s ease-out;
     transform-origin: 50% 0;    
 }
+
+#mensajeNocuenta{
+    text-align: center;
+    color: #18d26e;
+    font-weight: bold;
+}
