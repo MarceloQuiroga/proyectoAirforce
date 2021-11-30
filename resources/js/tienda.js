@@ -15,10 +15,10 @@ async function getProductos() {
               for (let i = 0; i < response.list.length; i++) {
                 $('#listProductos').append(
                   "<div class='col producto px-0 border'>"+
-                  "<img src='https://m.media-amazon.com/images/I/51TEcohAqHS._AC_SY355_.jpg' class='card-img-top' >"+
+                  "<img src='../img/productos/"+response.list[i].nombre+".jpg' class='card-img-top' >"+
                     "<div class='car-title bg-light row py-2 mx-0'>"+
                       "<p class='h4 col m-0'>"+response.list[i].nombre+"</p>"+
-                      "<p class='h5 col m-0 text-end'>"+response.list[i].precio+"</p>"+
+                      "<p class='h5 col m-0 text-end'>"+response.list[i].precio+"€</p>"+
                     "</div>"+
                   "</div>");
               }
