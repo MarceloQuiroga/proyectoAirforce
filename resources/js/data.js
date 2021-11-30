@@ -138,6 +138,10 @@ function loadCuenta() {
     document.getElementById("infoCuenta").style.padding="30px";
     document.getElementById("breadcrumbs2").style.height="200px";
 
+    if (ref==document.getElementById("cuenta2form").value) {
+      document.getElementById("saldo2").value=result.cuenta.saldo;
+    }
+
     var txt= "<br><h5>Saldo "+result.cuenta.saldo+"€</h5>";
     var tablaMovim="    <thead>"
                  +   "<tr>"
@@ -258,11 +262,13 @@ function transferir()
 	.then(res => res.json()).then(result => {
 	
 		alert(result.error);
+    if (result.error=="transferencia realizada con exito") {
+      document.getElementById("importeform").value="";
+      document.getElementById("conceptoform").value="";
+      document.getElementById("saldo2").value=result.saldo2;
+      loadCuenta();
+    }
 
-    document.getElementById("importeform").value="";
-    document.getElementById("conceptoform").value="";
-    document.getElementById("saldo2").value=result.saldo2;
-    loadCuenta();
 		
 	})
 	.catch(error => console.error('Error status:', error));	
@@ -291,8 +297,10 @@ function ingresar()
 
     document.getElementById("importe2form").value="";
     document.getElementById("concepto2form").value="";
-    document.getElementById("saldo2").value=result.saldo2;
-    loadCuenta();
+    if (result.error=="Ingreso realizado con exito") {
+      loadCuenta();
+    }
+    
 		
 	})
 	.catch(error => console.error('Error status:', error));	
