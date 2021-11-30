@@ -15,6 +15,24 @@
     $titular="Airforce";
 
 
+    $response=array();
+
+    if ($ref1=="" || $ref1==null) {
+        $msg="Ha habido un problema con la cuenta1";
+    }elseif ($ref2=="" || $ref2==null) {
+        $msg="Ha habido un probelma con la cuenta2";
+    }elseif ($saldo1=="" || $saldo1==null) {
+        $msg="Ha habido un error con el saldo1";
+    }elseif ($saldo2=="" || $saldo2==null) {
+        $msg="Ha habido un error con el saldo2";
+    }elseif ($importe=="" || $importe==null || $importe=="0") {
+        $msg="Introduce un importe valido";
+    }elseif ($importe > $saldo1) {
+        $msg="Saldo insuficiente";
+    }elseif ($concepto=="" || $concepto==null) {
+        $msg="Introduce un concepto";
+    }else {
+
     $cuenta1=new cuenta_model();
     $cuenta1->ref=$ref1;
     $newSaldo1=($saldo1-$importe);
@@ -45,11 +63,14 @@
     $mov2->concepto=$concepto;
     $mov2->insertMov();
     
-    $response=array();
+    
     $msg="transferencia realizada con exito";
-    $response["error"]=$msg;
     $response["saldo1"]=$newSaldo1;
     $response["saldo2"]=$newSaldo2;
+
+    }
+
+    $response["error"]=$msg;
     
     echo json_encode($response);
     

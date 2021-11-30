@@ -19,11 +19,16 @@ async function banca() {
 
 function test(cuentas) {
   txt = '';
+  txt2 = "<option value='' hidden>Escoge una cuenta</option>";
   cuentas.forEach(cuenta => {
     txt += "<option value='"+cuenta.ref+"'>"+cuenta.ref+"</option>";
+    if (cuenta.ref!=document.getElementById("cuenta1form").value) {
+      txt2 += "<option value='"+cuenta.ref+"'>"+cuenta.ref+"</option>";
+    }
+    
   });
   $("#cuentasList").html(txt);
-  $("#cuenta2form").html(txt);
+  $("#cuenta2form").html(txt2);
 }
 
 function getCuentas() { // DEVUELVE LAS CUENTAS

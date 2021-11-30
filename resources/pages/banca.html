@@ -72,7 +72,7 @@
     </section><!-- End Breadcrumbs -->
 
 
-
+    <!-- Que es esto ??????????? 
     <section id="breadcrumbs2">
       <div id="flexrow">
         <div class="">
@@ -93,6 +93,7 @@
         </div>
       </div>
     </section>
+    -->
 
     <!-- ======= Banca Section ======= -->
     
@@ -269,7 +270,7 @@
                 <form id="formCuenta">
                     <input id="cuenta1form" class="w100" type="text" placeholder="numero de cuenta" value="" disabled />
                     <input id="saldo1" class="w100" type="text" placeholder="saldo" disabled />
-                    <input id="importeform" class="w100" type="text" placeholder="Importe" />
+                    <input id="importeform" class="w100" type="text" onkeypress="return event.charCode >= 48 && event.keyCode <= 57" min="1" placeholder="Importe" />
                     <input id="conceptoform" class="w100" type="text" placeholder="Concepto" />
                 </form>
               </div>
@@ -292,7 +293,7 @@
         <div class="banca-item filter-ingr">
           <div id="ingreso">
             <form id="formCuenta">
-                <input id="importe2form" class="w100" type="text" placeholder="Importe" />
+                <input id="importe2form" class="w100" type="text" onkeypress="return event.charCode >= 48 && event.keyCode <= 57" min="1" placeholder="Importe" />
                 <input id="concepto2form" class="w100" type="text" placeholder="Concepto"/>
             </form>
             <button id="botonIngresar">Ingresar</button>

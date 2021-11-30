@@ -14,7 +14,7 @@
 
     $response=array();
 
-    if ($importe=="" || $importe==null) {
+    if ($importe=="" || $importe==null || $importe=="0") {
         $msg="Introduce un importe valido";
     }elseif ($concepto=="" || $concepto==null) {
         $msg="Introduce un concepto";
