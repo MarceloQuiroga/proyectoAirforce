@@ -46,7 +46,7 @@ async function loadHeaderFooter(){
                         //!ESTA ES POR QUE NO TENEMOS EL HTML BIEN PUESTO EN SUSITIO Y LA REFERECIA CAMBIA PERO LUEGO USAREMOS LA DE ABAJO
                         default:
                             $('#casaR').attr('href', "");
-                            $('#logoR').attr('src','resources/img/LOGO AirForce.png');
+                            $('#logoR').attr('src','resources/img/LOGO AirForce blanco.png');
                             $('#btnBanca').attr('href', "resources/pages/banca.html");
                             $('#btnTienda').attr('href', "resources/pages/tienda.html");
                         break; 
@@ -55,7 +55,7 @@ async function loadHeaderFooter(){
                         
                         case 'proyectoAirforce':
                             $('#casaR').attr('href', "");
-                            $('#logoR').attr('src','resources/img/LOGO AirForce.png');
+                            $('#logoR').attr('src','resources/img/LOGO AirForce blanco.png');
                             $('#btnBanca').attr('href', "resources/pages/banca.html");
                             $('#btnTienda').attr('href', "resources/pages/tienda.html");
                             
