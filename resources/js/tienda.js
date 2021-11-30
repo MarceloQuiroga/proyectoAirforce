@@ -1,4 +1,3 @@
-
 $(document).ready(getProductos);
 
 async function getProductos() {
@@ -8,7 +7,11 @@ async function getProductos() {
             method: "GET",
             dataType: 'json',
             success:function(response){
-              resolve();
+
+              console.group('PRODUCTOS')
+                console.log(response.list)
+              console.groupEnd();
+
               for (let i = 0; i < response.list.length; i++) {
                 $('#listProductos').append(
                   "<div class='col producto px-0 border'>"+
@@ -20,6 +23,7 @@ async function getProductos() {
                   "</div>");
               }
                 
+              resolve();
 
             },
             error: function(xhr, textStatus, error){
@@ -32,77 +36,77 @@ async function getProductos() {
     })
 }
 
-$('#filtros input').on('change',()=>{
-  var filterData = new Array;
-  if (event.target.name == 'filterStatus') { //TODO *Verifica que es el boton filtro*
-    if (event.target.checked) { //! Verifica que el boton esta activado
-      filterData[event.target.name] = 'ON'
-    } else {
-      filterData[event.target.name] = 'OFF'
-    }
-  } else { //? Los otros filtros (NO BOTON DE ACTIVAR FILTRO)
-    
-    if (event.target.checked) { //TODO *Auto activa el filtro*
-      if ($('[name=filterStatus]')[0].checked) {//! COMPRUEBA QUE NO ESTE ACTIVO
-        filterData['filterStatus'] = 'ON'
-      } else {
-        $('[name=filterStatus]')[0].checked = true;
-        filterData['filterStatus'] = 'ON'
-      }
-    }
-    var filters = Array.from($('#filtros input'))
-    filters.forEach(element => {//* RECORREMOS EL ARRAY PARA SACAR EL FILTRO ACTIVO
-      if (!element.name == 'filterStatus') {
-        if (element.checked) {
-          if (filterData[element.name] == undefined) {
-            filterData[element.name] = new Array(element.value);
-          } else {
-            filterData[element.name].push(element.value)
-          }
-        }
-      }
-    });
+$('#filtros input').on('change', loadProductsByFilters);
+
+async function loadProductsByFilters() { //! CARGA LOS PRODUCTOS EN BASE LOS FILTROS
+
+  var filters = getFiltersParams();
+  if ( filters.filterStatus ) {
+    console.log('Params Exist');
+    console.log(filters);
+  } else {
+    console.log('Not Param Found');
+    console.log(filters);
   }
 
-  console.log(filterData);
+}
 
+
+function getFiltersParams() { //! RETURN FILTERS
+
+  var filterData = new Array;
+  var filters = Array.from($('#filtros input:not([name=filterStatus])'))
+  var filterStatus = false;
+
+  if ( event.target.name == 'filterStatus' ) {
+    if ( event.target.checked ) {
+      filterStatus = true;
+      generateFilterData(filterData);
+    } else {
+      filterData['filterStatus'] = false
+    }
+  } else {
+    generateFilterData(filterData);
+  }
   
-   
-  
-    // if (event.target.checked) {
-    //   var filters = Array.from($('#filtros input'))
-    
-    //   filters.forEach(element => {
-    //     if (element.checked) {
+  function generateFilterData(filterData) { //! RETURN FILTERS
+    filters.forEach(filter => {
+      if ( filter.checked ) {
+        filterStatus = true;
+        if (filterData[filter.name] == undefined) { //TODO Bloque destinado a los filtros
+          filterData[filter.name] = new Array(filter.value);
+        } else {
+          filterData[filter.name].push(filter.value)
+        }
 
-    //       if (filterData[element.name] == undefined) {
-    //         filterData[element.name] = new Array(element.value);
-    //       } else {
-    //         filterData[element.name].push(element.value)
-    //       }
+      }
+    });
+    if ( filterStatus ) {
+      filterData['filterStatus'] = true
+      $('[name=filterStatus]')[0].checked = true;
+    } else {
+      filterData['filterStatus'] = false
+      $('[name=filterStatus]')[0].checked = false;
+    }
+  }
 
-    //     }
-    //   });
-    // } else {
-    //   filterData[event.target.name] = 'OFF'
-    // }
-  
+  return filterData;
+}
 
-})
-
-$('#reset-type').click(()=>{
+$('#reset-type').click(()=>{ //! CLEAR TYPE-FILTER AND CALL LOADPRODUCTSBYFILTER
   var filtro = $('#collapseDronType').children(".form-check");
-  console.log($('[name=filterStatus]'));
   Array.from(filtro).forEach(element => {
     element.children[0].checked = false;
     $('[name=filterStatus]')[0].checked
   });
+  loadProductsByFilters();
 })
 
-$('#reset-size').click(()=>{
+$('#reset-size').click(()=>{ //! CLEAR SIZE-FILTER AND CALL LOADPRODUCTSBYFILTER
   var filtro = $('#collapseDronSize').children(".form-check");
   Array.from(filtro).forEach(element => {
     element.children[0].checked = false;
   });
+  loadProductsByFilters();
 })
   
