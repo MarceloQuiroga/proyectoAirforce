@@ -5,6 +5,7 @@ class producto_class {
     private $nombre;
     private $descripcion;
     private $precio;
+    private $tag;
 
     
 
@@ -84,6 +85,23 @@ class producto_class {
     public function setPrecio($precio)
     {
         $this->precio = $precio;
+
+        return $this;
+    }
+
+    public function getTag()
+    {
+        return $this->tag;
+    }
+
+    /**
+     * Set the value of tag
+     *
+     * @return  self
+     */ 
+    public function setTag($tag)
+    {
+        $this->tag = $tag;
 
         return $this;
     }

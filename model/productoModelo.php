@@ -50,6 +50,7 @@ class productoModelo extends producto_class {
             $newProduct->nombre=$row['nombre'];
             $newProduct->descripcion=$row['descripcion'];
             $newProduct->precio=$row['precio'];
+            $newProduct->tag=$row['tag'];
 
             array_push($list, $newProduct);
         
