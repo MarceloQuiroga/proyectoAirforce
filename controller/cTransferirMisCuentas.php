@@ -25,10 +25,12 @@
         $msg="Ha habido un error con el saldo1";
     }elseif ($saldo2=="" || $saldo2==null) {
         $msg="Ha habido un error con el saldo2";
-    }elseif ($importe=="" || $importe==null || $importe=="0") {
-        $msg="Introduce un importe valido";
     }elseif ($importe > $saldo1) {
         $msg="Saldo insuficiente";
+    }elseif ($ref1 == $ref2) {
+        $msg="No puedes realizar trnasferencias en la misma cuenta";
+    }elseif ($importe=="" || $importe==null || $importe=="0") {
+        $msg="Introduce un importe valido";
     }elseif ($concepto=="" || $concepto==null) {
         $msg="Introduce un concepto";
     }else {

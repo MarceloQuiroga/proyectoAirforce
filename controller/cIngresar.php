@@ -14,10 +14,13 @@
 
     $response=array();
 
-    if ($importe=="" || $importe==null || $importe=="0") {
+    if ($ref=="" || $ref==null) {
+        $msg="Escoge una una cuenta";
+    }elseif ($importe=="" || $importe==null || $importe=="0") {
         $msg="Introduce un importe valido";
     }elseif ($concepto=="" || $concepto==null) {
         $msg="Introduce un concepto";
+    
     }else {
 
         $cuenta=new cuenta_model();
