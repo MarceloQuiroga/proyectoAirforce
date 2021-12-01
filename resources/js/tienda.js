@@ -36,8 +36,6 @@ async function loadProducts(productos) {
 
     var img = '';
 
-    console.log(producto.nombre);
-
     $.get('../img/productos/' + producto.nombre + '.jpg').then(function (response,statusTxt, xhr) {
       if (statusTxt == 'success') {
         img = producto.nombre;
