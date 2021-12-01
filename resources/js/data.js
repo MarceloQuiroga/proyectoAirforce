@@ -136,10 +136,15 @@ function loadCuenta() {
     document.getElementById("cuenta1form").value=result.cuenta.ref;
     document.getElementById("tipoCuenta").innerHTML=result.cuenta.type;
     document.getElementById("infoCuenta").style.padding="30px";
-    document.getElementById("breadcrumbs2").style.height="200px";
+
+    if (ref==document.getElementById("cuenta2form").value) {
+      document.getElementById("saldo2").value=result.cuenta.saldo;
+    }
 
     var txt= "<br><h5>Saldo "+result.cuenta.saldo+"€</h5>";
-    var tablaMovim="    <thead>"
+    var tablaMovim= "<table id='tablaMovim' style='text-align: center;' class='table' data-aos='fade-down' data-aos-delay='10'>"
+            
+    tablaMovim+="    <thead>"
                  +   "<tr>"
                  +     "<th scope='col'>Fecha</th>"
                  +     '<th scope="col">Referencia</th>'
@@ -164,14 +169,15 @@ function loadCuenta() {
     }
 
     tablaMovim+="</tbody>";
+    tablaMovim+="</table>";
 
     document.getElementById("mensajeNocuenta").style.display="none";
-    document.getElementById("tablaMovim").innerHTML=tablaMovim;
+    document.getElementById("tabla1").innerHTML=tablaMovim;
 
     document.getElementById("infoCuenta").innerHTML=txt;
     
 
-    //Para que cargue bien la tabla de los movimientos (en caso de escoger la cuenta estando el apartado de movimientos selecionado) hay que hacer lo siguiente:
+    //Para que cargue bien la tabla de los movimientos (en caso de escoger la cuenta estando el apartado de movimientos ionado) hay que hacer lo siguiente:
 
     var filtroActivado=document.querySelectorAll(".filter-active");
     filtroActivado.forEach(element => {
@@ -258,11 +264,13 @@ function transferir()
 	.then(res => res.json()).then(result => {
 	
 		alert(result.error);
+    if (result.error=="transferencia realizada con exito") {
+      document.getElementById("importeform").value="";
+      document.getElementById("conceptoform").value="";
+      document.getElementById("saldo2").value=result.saldo2;
+      loadCuenta();
+    }
 
-    document.getElementById("importeform").value="";
-    document.getElementById("conceptoform").value="";
-    document.getElementById("saldo2").value=result.saldo2;
-    loadCuenta();
 		
 	})
 	.catch(error => console.error('Error status:', error));	
@@ -291,8 +299,10 @@ function ingresar()
 
     document.getElementById("importe2form").value="";
     document.getElementById("concepto2form").value="";
-    document.getElementById("saldo2").value=result.saldo2;
-    loadCuenta();
+    if (result.error=="Ingreso realizado con exito") {
+      loadCuenta();
+    }
+    
 		
 	})
 	.catch(error => console.error('Error status:', error));	
