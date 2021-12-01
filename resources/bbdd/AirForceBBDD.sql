@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 01-12-2021 a las 09:05:13
+-- Tiempo de generación: 01-12-2021 a las 09:18:56
 -- Versión del servidor: 10.4.20-MariaDB
 -- Versión de PHP: 8.0.9
 
@@ -23,12 +23,22 @@ SET time_zone = "+00:00";
 CREATE DATABASE IF NOT EXISTS `airforce` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
 USE `airforce`;
 
+DELIMITER $$
+--
+-- Procedimientos
+--
+DROP PROCEDURE IF EXISTS `spLogin`$$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `spLogin` (IN `user` VARCHAR(25), IN `pass` VARCHAR(50))  SELECT * FROM usuarios WHERE username = user && password = pass$$
+
+DELIMITER ;
+
 -- --------------------------------------------------------
 
 --
 -- Estructura de tabla para la tabla `clientes`
 --
 
+DROP TABLE IF EXISTS `clientes`;
 CREATE TABLE `clientes` (
   `cod` int(5) NOT NULL,
   `nombre` varchar(25) NOT NULL,
@@ -45,6 +55,7 @@ CREATE TABLE `clientes` (
 -- Estructura de tabla para la tabla `compra`
 --
 
+DROP TABLE IF EXISTS `compra`;
 CREATE TABLE `compra` (
   `num_seguimiento` int(6) NOT NULL,
   `cod_cliente` int(5) NOT NULL,
@@ -59,6 +70,7 @@ CREATE TABLE `compra` (
 -- Estructura de tabla para la tabla `cuentas`
 --
 
+DROP TABLE IF EXISTS `cuentas`;
 CREATE TABLE `cuentas` (
   `ref` varchar(50) NOT NULL,
   `nombre` varchar(25) NOT NULL,
@@ -80,6 +92,7 @@ INSERT INTO `cuentas` (`ref`, `nombre`, `type`, `saldo`) VALUES
 -- Estructura de tabla para la tabla `productos`
 --
 
+DROP TABLE IF EXISTS `productos`;
 CREATE TABLE `productos` (
   `cod` int(5) NOT NULL,
   `nombre` varchar(25) NOT NULL,
@@ -102,6 +115,7 @@ INSERT INTO `productos` (`cod`, `nombre`, `descripcion`, `etiquetas`, `precio`) 
 -- Estructura de tabla para la tabla `provee`
 --
 
+DROP TABLE IF EXISTS `provee`;
 CREATE TABLE `provee` (
   `num_seguimiento` int(6) NOT NULL,
   `cif_proveedor` varchar(9) NOT NULL,
@@ -116,6 +130,7 @@ CREATE TABLE `provee` (
 -- Estructura de tabla para la tabla `proveedores`
 --
 
+DROP TABLE IF EXISTS `proveedores`;
 CREATE TABLE `proveedores` (
   `cif` varchar(9) NOT NULL,
   `direccion` varchar(50) NOT NULL,
@@ -130,6 +145,7 @@ CREATE TABLE `proveedores` (
 -- Estructura de tabla para la tabla `registro`
 --
 
+DROP TABLE IF EXISTS `registro`;
 CREATE TABLE `registro` (
   `ref` int(11) NOT NULL,
   `fecha` date NOT NULL,
@@ -176,6 +192,7 @@ INSERT INTO `registro` (`ref`, `fecha`, `titular`, `importe`, `ref_cuenta`, `num
 -- Estructura de tabla para la tabla `usuarios`
 --
 
+DROP TABLE IF EXISTS `usuarios`;
 CREATE TABLE `usuarios` (
   `cod` int(5) NOT NULL,
   `username` varchar(25) NOT NULL,

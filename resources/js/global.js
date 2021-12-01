@@ -63,6 +63,14 @@ async function loadHeaderFooter(){
                 
                         case 'banca.html':
                         case 'banca.html?':
+                            $('#casaR').attr('href', "../../");
+                            $('#casaI').attr('href', "../../");
+                            $(this).removeClass('header-transparent')
+                            $('#logoR').attr('src','../img/LOGO AirForce blanco.png');
+                            $('#btnBanca').attr('href', "");
+                            $('#btnTienda').attr('href', "../pages/tienda.html");
+                        break;
+
                         case 'tienda.html':
                         case 'tienda.html?':
                             $('#casaR').attr('href', "../../");
