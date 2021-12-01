@@ -30,26 +30,32 @@ async function getProductos() {
     })
 }
 
-function loadProducts(productos) {
+async function loadProducts(productos) {
   
   productos.forEach(producto => {
 
     var img = '';
-    
-    $.get('../img/productos/' + producto.nombre + '.jpg')
-    .done(img = producto.nombre)
-    .fail(img = 'default');
-    console.log(img);
 
-    $('#listProductos').append(
-      "<div class='col producto px-0 border'>"+
-      "<img src='../img/productos/"+img+".jpg' class='card-img-top' alt='Lo sentimos ha surgido un problema y no hemos podido traerle la imagen esperada.'>"+
-        "<div class='car-title bg-light row py-2 mx-0'>"+
-          "<p class='h4 col m-0'><a >"+producto.nombre+"</p>"+
-          "<p class='h5 col m-0 text-end'>"+producto.precio+"€</p>"+
-        "</div>"+
-      "</div>");
-  });
+    console.log(producto.nombre);
+
+    $.get('../img/productos/' + producto.nombre + '.jpg').then(function (response,statusTxt, xhr) {
+      if (statusTxt == 'success') {
+        img = producto.nombre;
+      } else {
+        img = 'default';
+      }
+
+      $('#listProductos').append(
+        "<div class='col producto px-0 border'>"+
+        "<img src='../img/productos/"+img+".jpg' class='card-img-top' alt='Lo sentimos ha surgido un problema y no hemos podido traerle la imagen esperada.'>"+
+          "<div class='car-title bg-light row py-2 mx-0'>"+
+            "<p class='h4 col m-0'><a >"+producto.nombre+"</p>"+
+            "<p class='h5 col m-0 text-end'>"+producto.precio+"€</p>"+
+          "</div>"+
+        "</div>");
+      });
+
+    })
 
 }
 
