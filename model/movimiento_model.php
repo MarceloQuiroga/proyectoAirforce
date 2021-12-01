@@ -32,29 +32,9 @@ class movimiento_model extends movimiento_class {
      }
 
      /********* FUNCIONES **********/
-
-    public function getMovimiento(){
-        
-
-        $this->OpenConnect();
-        $ref_cuenta=$this->ref_cuenta;
-        $sql="select * from movimientos where ref_cuenta='$ref_cuenta'";
-        $result= $this->link->query($sql);
-        
-        if ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)){               
-            //$movimento=new movimiento_model();
-            //$movimento->ref=$row['ref'];
-            //$movimento->nombre=$row['nombre'];
-            //$movimento->type=$row['type'];
-            //$movimento->saldo=$row['saldo'];          
-        }
-        mysqli_free_result($result);
-        $this->CloseConnect();
-        return $movimiento;
-
-    }
-
-    public function getMovimientos(){
+     
+    
+     public function getMovimientos(){
 
         $this->OpenConnect();
         $ref_cuenta=$this->ref_cuenta;
@@ -100,6 +80,18 @@ class movimiento_model extends movimiento_class {
 
         $sql="INSERT INTO registro (fecha, titular, importe, ref_cuenta,  tipo, saldo, concepto) VALUES ('$fecha', '$titular', '$importe', '$ref_cuenta',  '$tipo', $saldo, '$concepto');";
         $result= $this->link->query($sql);
+        $this->CloseConnect();
+
+    }
+
+    public function insertMovimiento(){       
+
+        $this->OpenConnect();   
+
+        $sql="INSERT INTO registro (fecha, titular, importe, ref_cuenta,  tipo, saldo, concepto) VALUES ('$this->fecha', '$this->titular', '$this->importe', '$this->ref_cuenta',  '$this->tipo', $this->saldo, '$this->concepto');";
+        $result= $this->link->query($sql);
+        return $result;
+
         $this->CloseConnect();
 
     }

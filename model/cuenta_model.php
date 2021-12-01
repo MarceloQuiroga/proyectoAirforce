@@ -101,11 +101,11 @@ class cuenta_model extends cuenta_class {
 
     }
 
-    public function updateSaldo($ref, $importe) {
+    public function updateSaldo($importe) {
 
         $this->OpenConnect();
 
-        $sql="UPDATE cuentas SET saldo=saldo" . $importe . " WHERE ref='" . $ref . "'";
+        $sql="UPDATE cuentas SET saldo=saldo$importe WHERE ref='$this->ref'";
         $result= $this->link->query($sql);
         return $result;
 
@@ -114,5 +114,21 @@ class cuenta_model extends cuenta_class {
 
     }
     
+    public function getCuentaByRef(){       
 
+        $this->OpenConnect();
+        $sql="SELECT * FROM cuentas WHERE ref='$this->ref'";
+        $result= $this->link->query($sql);
+        
+        if ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+
+            $this->nombre=$row['nombre'];
+            $this->type=$row['type'];
+            $this->saldo=$row['saldo'];
+            
+        }
+        mysqli_free_result($result);
+        $this->CloseConnect();
+    }
 }
+

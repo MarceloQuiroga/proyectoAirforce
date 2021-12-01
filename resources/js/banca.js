@@ -47,8 +47,8 @@ function makeWithdrawal() {
     data: {
       solicitud: 'Withdrawal',
       ref: $('#custom-select-trigger').html(),
-      importe: "-"+$('form#formIngr input')[0].value,
-      concepto: $('form#formIngr input')[1].value
+      importe: "-"+$('form#formReti input')[0].value,
+      concepto: $('form#formReti input')[1].value
     },
     success:function(response){
         console.log(response);
@@ -60,8 +60,4 @@ function makeWithdrawal() {
     }
   })  
   return false;
-}
-
-function addReg() {
-
 }
