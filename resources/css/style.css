@@ -152,8 +152,11 @@ h1, h2, h3, h4, h5, h6 {
 .navbar li {
   position: relative;
 }
+.dropdown{
+  text-align: end;
+}
 .navbar a, .navbar a:focus {
-  display: flex;
+  /* display: flex; */
   align-items: center;
   justify-content: space-between;
   padding: 10px 0 10px 30px;
@@ -247,22 +250,35 @@ h1, h2, h3, h4, h5, h6 {
     display: none;
   }
 }
+
 .navbar-mobile {
   position: fixed;
   overflow: hidden;
-  top: 0;
-  right: 0;
-  left: 0;
-  bottom: 0;
-  background: rgba(26, 26, 26, 0.9);
+  width: 30%;
+  min-width: 175px !important;
+  height: 570px;
+  top: 2%;
+  right: 0%;
   transition: 0.3s;
   z-index: 999;
 }
+
+.drop{
+  text-align: left;
+  width: 100px;
+  overflow-x: hidden;
+}
+
 .navbar-mobile .mobile-nav-toggle {
   position: absolute;
   top: 15px;
   right: 15px;
 }
+
+.mobile-nav-toggle:hover{
+  color: #18d26e;
+}
+
 .navbar-mobile ul {
   display: block;
   position: absolute;
@@ -278,6 +294,7 @@ h1, h2, h3, h4, h5, h6 {
 .navbar-mobile a, .navbar-mobile a:focus {
   padding: 10px 20px;
   font-size: 15px;
+  text-align: right !important;
   color: #333333;
 }
 .navbar-mobile a:hover, .navbar-mobile .active, .navbar-mobile li:hover > a {
@@ -288,7 +305,6 @@ h1, h2, h3, h4, h5, h6 {
 }
 .navbar-mobile .dropdown ul {
   position: static;
-  display: none;
   margin: 10px 20px;
   padding: 10px 0;
   z-index: 99;

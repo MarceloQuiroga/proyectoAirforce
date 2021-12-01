@@ -100,6 +100,19 @@ class cuenta_model extends cuenta_class {
         $this->CloseConnect();
 
     }
+
+    public function updateSaldo($ref, $importe) {
+
+        $this->OpenConnect();
+
+        $sql="UPDATE cuentas SET saldo=saldo" . $importe . " WHERE ref='" . $ref . "'";
+        $result= $this->link->query($sql);
+        return $result;
+
+        mysqli_free_result($result);
+        $this->CloseConnect();
+
+    }
     
 
 }
