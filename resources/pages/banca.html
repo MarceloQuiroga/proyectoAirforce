@@ -114,6 +114,7 @@
               <li id="botonPrestamos" data-filter=".filter-prest">PRESTAMOS</li> 
               <li id="botonTransferencias" data-filter=".filter-trans">TRANSFERENCIAS</li>
               <li data-filter=".filter-ingr">Ingreso</li>
+              <li data-filter=".filter-reti">Retiro</li>
             </ul>
           </div>
         </div>
@@ -306,21 +307,33 @@
       </div> -->
 
       <div class="banca-item filter-ingr">
-        <div class="form-check form-switch ms-2">
-          <input class="form-check-input" type="checkbox" name="Enviar/Retirar">
-          <label for="Enviar/Retirar" class="form-check-label">Enviar</label>
-        </div>
-        <form id='igr/rti' class="row mx-auto">
-          <div class="form-outline mb-4"> <!--Importe-->
+        <form id='formIngr' class="row mx-auto">
+          <div class="form-outline mb-4">
             <label class="form-label" for="formImporte">Importe</label>
             <input type="text" id="formImporte" class="form-control" />
           </div>
-          <div class="form-outline mb-4"> <!--Concepto-->
+          <div class="form-outline mb-4">
             <label class="form-label" for="formConcepto">Concepto</label>
             <input type="text" id="formConcepto" class="form-control" />
           </div>
           <div class="modal-footer">
-            <button type="submit" class="btn btn-primary w-100">Enviar</button>
+            <button type="submit" class="btn btn-success w-100">Ingresar</button>
+          </div>
+        </form>
+      </div>
+
+      <div class="banca-item filter-reti">
+        <form id='formReti' class="row mx-auto">
+          <div class="form-outline mb-4">
+            <label class="form-label" for="formImporte">Importe</label>
+            <input type="text" id="formImporte" class="form-control" />
+          </div>
+          <div class="form-outline mb-4">
+            <label class="form-label" for="formConcepto">Concepto</label>
+            <input type="text" id="formConcepto" class="form-control" />
+          </div>
+          <div class="modal-footer">
+            <button type="submit" class="btn btn-success w-100">Retirar</button>
           </div>
         </form>
       </div>
