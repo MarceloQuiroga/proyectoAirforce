@@ -20,7 +20,7 @@
 
 
                     <li id="dropdownLogin" class="dropdown"><a href="#" data-bs-toggle="modal" data-bs-target="#login"><span>Login</span></a>
-                        <ul class="d-none">
+                        <ul class="d-none drop">
                             <li><a href="#" name="perfil">Perfil</a></li>
                             <li><a href="#" name="logout">Logout</a></li>
                         </ul>
@@ -33,29 +33,31 @@
     </div>
 </div>
 <script>
-const select = (el, all = false) => {
-    el = el.trim()
-    if (all) {
-      return [...document.querySelectorAll(el)]
-    } else if(el) {
-      return document.querySelector(el)
-    }
-}
+    const select = (el, all = false) => {
+        el = el.trim()
 
-const on = (type, el, listener, all = false) => {
-    let selectEl = select(el, all)
-    if (selectEl) {
-      if (all) {
-        selectEl.forEach(e => e.addEventListener(type, listener))
-      } else {
-        selectEl.addEventListener(type, listener)
-      }
+        if (all) {
+        return [...document.querySelectorAll(el)]
+        }else if(el){
+        return document.querySelector(el)
+        }
     }
-}
+
+    const on = (type, el, listener, all = false) => {
+        let selectEl = select(el, all)
+
+        if (selectEl) {
+            if (all) {
+            selectEl.forEach(e => e.addEventListener(type, listener))
+            }else{
+            selectEl.addEventListener(type, listener)
+            }
+        }
+    }
 
     on('click', '.mobile-nav-toggle', function(e) {
-    select('#navbar').classList.toggle('navbar-mobile')
-    this.classList.toggle('bi-list')
-    this.classList.toggle('bi-x')
-  })
+        select('#navbar').classList.toggle('navbar-mobile')
+        this.classList.toggle('bi-list')
+        this.classList.toggle('bi-x')
+    })
 </script>
