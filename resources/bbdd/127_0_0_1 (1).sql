@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 29-11-2021 a las 09:28:03
--- Versión del servidor: 10.4.21-MariaDB
--- Versión de PHP: 7.3.31
+-- Tiempo de generación: 01-12-2021 a las 09:05:13
+-- Versión del servidor: 10.4.20-MariaDB
+-- Versión de PHP: 8.0.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -23,22 +23,12 @@ SET time_zone = "+00:00";
 CREATE DATABASE IF NOT EXISTS `airforce` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
 USE `airforce`;
 
-DELIMITER $$
---
--- Procedimientos
---
-DROP PROCEDURE IF EXISTS `spLogin`$$
-CREATE DEFINER=`root`@`localhost` PROCEDURE `spLogin` (IN `user` VARCHAR(25), IN `pass` VARCHAR(50))  SELECT * FROM usuarios WHERE username = user && password = pass$$
-
-DELIMITER ;
-
 -- --------------------------------------------------------
 
 --
 -- Estructura de tabla para la tabla `clientes`
 --
 
-DROP TABLE IF EXISTS `clientes`;
 CREATE TABLE `clientes` (
   `cod` int(5) NOT NULL,
   `nombre` varchar(25) NOT NULL,
@@ -55,7 +45,6 @@ CREATE TABLE `clientes` (
 -- Estructura de tabla para la tabla `compra`
 --
 
-DROP TABLE IF EXISTS `compra`;
 CREATE TABLE `compra` (
   `num_seguimiento` int(6) NOT NULL,
   `cod_cliente` int(5) NOT NULL,
@@ -70,7 +59,6 @@ CREATE TABLE `compra` (
 -- Estructura de tabla para la tabla `cuentas`
 --
 
-DROP TABLE IF EXISTS `cuentas`;
 CREATE TABLE `cuentas` (
   `ref` varchar(50) NOT NULL,
   `nombre` varchar(25) NOT NULL,
@@ -83,7 +71,7 @@ CREATE TABLE `cuentas` (
 --
 
 INSERT INTO `cuentas` (`ref`, `nombre`, `type`, `saldo`) VALUES
-('ES66 2100 0418 4012 3456 7891', 'Airforce', 'Cuenta credito', 100),
+('ES66 2100 0418 4012 3456 7891', 'Airforce', 'Cuenta credito', 190),
 ('ES66 2100 0418 4013 0012 3422', 'Airforce', 'Cuenta corriente', 158);
 
 -- --------------------------------------------------------
@@ -92,11 +80,11 @@ INSERT INTO `cuentas` (`ref`, `nombre`, `type`, `saldo`) VALUES
 -- Estructura de tabla para la tabla `productos`
 --
 
-DROP TABLE IF EXISTS `productos`;
 CREATE TABLE `productos` (
   `cod` int(5) NOT NULL,
   `nombre` varchar(25) NOT NULL,
-  `descripcion` varchar(50) NOT NULL,
+  `descripcion` varchar(150) NOT NULL,
+  `etiquetas` varchar(150) DEFAULT NULL,
   `precio` decimal(6,2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -104,8 +92,9 @@ CREATE TABLE `productos` (
 -- Volcado de datos para la tabla `productos`
 --
 
-INSERT INTO `productos` (`cod`, `nombre`, `descripcion`, `precio`) VALUES
-(1, 'dron - Police', 'Dron de servicio policial', '500.99');
+INSERT INTO `productos` (`cod`, `nombre`, `descripcion`, `etiquetas`, `precio`) VALUES
+(1, 'dron - Police', 'Dron de servicio policial', 'type: Police,Size: medium', '500.99'),
+(2, 'dron - Firefighter', 'Dron preparado para incendios, con mucha resistencia', 'type: Firefighter,Size: long', '725.00');
 
 -- --------------------------------------------------------
 
@@ -113,7 +102,6 @@ INSERT INTO `productos` (`cod`, `nombre`, `descripcion`, `precio`) VALUES
 -- Estructura de tabla para la tabla `provee`
 --
 
-DROP TABLE IF EXISTS `provee`;
 CREATE TABLE `provee` (
   `num_seguimiento` int(6) NOT NULL,
   `cif_proveedor` varchar(9) NOT NULL,
@@ -128,7 +116,6 @@ CREATE TABLE `provee` (
 -- Estructura de tabla para la tabla `proveedores`
 --
 
-DROP TABLE IF EXISTS `proveedores`;
 CREATE TABLE `proveedores` (
   `cif` varchar(9) NOT NULL,
   `direccion` varchar(50) NOT NULL,
@@ -143,7 +130,6 @@ CREATE TABLE `proveedores` (
 -- Estructura de tabla para la tabla `registro`
 --
 
-DROP TABLE IF EXISTS `registro`;
 CREATE TABLE `registro` (
   `ref` int(11) NOT NULL,
   `fecha` date NOT NULL,
@@ -174,7 +160,15 @@ INSERT INTO `registro` (`ref`, `fecha`, `titular`, `importe`, `ref_cuenta`, `num
 (20, '2021-11-24', 'Airforce', '-7', 'ES66 2100 0418 4012 3456 7891', NULL, 'transferecnia', 70, 'tr'),
 (21, '2021-11-24', 'Airforce', '+7', 'ES66 2100 0418 4013 0012 3422', NULL, 'transferecnia', 158, 'tr'),
 (22, '2021-11-29', 'Airforce', '+25', 'ES66 2100 0418 4012 3456 7891', NULL, 'Ingreso', 95, 'hola'),
-(23, '2021-11-29', 'Airforce', '+5', 'ES66 2100 0418 4012 3456 7891', NULL, 'Ingreso', 100, 'ingr2');
+(23, '2021-11-29', 'Airforce', '+5', 'ES66 2100 0418 4012 3456 7891', NULL, 'Ingreso', 100, 'ingr2'),
+(24, '2021-11-29', 'Airforce', '+', 'ES66 2100 0418 4013 0012 3422', NULL, 'Ingreso', 158, ''),
+(25, '2021-11-29', 'Airforce', '+', 'ES66 2100 0418 4013 0012 3422', NULL, 'Ingreso', 158, ''),
+(26, '2021-11-29', 'Airforce', '+', 'ES66 2100 0418 4012 3456 7891', NULL, 'Ingreso', 100, ''),
+(27, '2021-11-29', 'Airforce', '+', 'ES66 2100 0418 4012 3456 7891', NULL, 'Ingreso', 100, ''),
+(28, '2021-11-29', 'Airforce', '+', 'ES66 2100 0418 4012 3456 7891', NULL, 'Ingreso', 100, ''),
+(29, '2021-11-29', 'Airforce', '+15', 'ES66 2100 0418 4012 3456 7891', NULL, 'Ingreso', 115, 'Ya funcionaaa!!'),
+(30, '2021-11-30', 'Airforce', '+50', 'ES66 2100 0418 4012 3456 7891', NULL, 'Ingreso', 165, 'otra prueba por si acaso'),
+(31, '2021-12-01', 'Airforce', '+25', 'ES66 2100 0418 4012 3456 7891', NULL, 'Ingreso', 190, 'Ingreso Test');
 
 -- --------------------------------------------------------
 
@@ -182,7 +176,6 @@ INSERT INTO `registro` (`ref`, `fecha`, `titular`, `importe`, `ref_cuenta`, `num
 -- Estructura de tabla para la tabla `usuarios`
 --
 
-DROP TABLE IF EXISTS `usuarios`;
 CREATE TABLE `usuarios` (
   `cod` int(5) NOT NULL,
   `username` varchar(25) NOT NULL,
@@ -268,13 +261,13 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `productos`
 --
 ALTER TABLE `productos`
-  MODIFY `cod` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `cod` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `registro`
 --
 ALTER TABLE `registro`
-  MODIFY `ref` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `ref` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
