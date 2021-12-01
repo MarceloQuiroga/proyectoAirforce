@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 01-12-2021 a las 09:18:56
+-- Tiempo de generación: 01-12-2021 a las 16:40:51
 -- Versión del servidor: 10.4.20-MariaDB
 -- Versión de PHP: 8.0.9
 
@@ -83,7 +83,7 @@ CREATE TABLE `cuentas` (
 --
 
 INSERT INTO `cuentas` (`ref`, `nombre`, `type`, `saldo`) VALUES
-('ES66 2100 0418 4012 3456 7891', 'Airforce', 'Cuenta credito', 190),
+('ES66 2100 0418 4012 3456 7891', 'Airforce', 'Cuenta credito', 250),
 ('ES66 2100 0418 4013 0012 3422', 'Airforce', 'Cuenta corriente', 158);
 
 -- --------------------------------------------------------
@@ -97,7 +97,7 @@ CREATE TABLE `productos` (
   `cod` int(5) NOT NULL,
   `nombre` varchar(25) NOT NULL,
   `descripcion` varchar(150) NOT NULL,
-  `etiquetas` varchar(150) DEFAULT NULL,
+  `tag` varchar(150) DEFAULT NULL,
   `precio` decimal(6,2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -105,9 +105,12 @@ CREATE TABLE `productos` (
 -- Volcado de datos para la tabla `productos`
 --
 
-INSERT INTO `productos` (`cod`, `nombre`, `descripcion`, `etiquetas`, `precio`) VALUES
+INSERT INTO `productos` (`cod`, `nombre`, `descripcion`, `tag`, `precio`) VALUES
 (1, 'dron - Police', 'Dron de servicio policial', 'type: Police,Size: medium', '500.99'),
-(2, 'dron - Firefighter', 'Dron preparado para incendios, con mucha resistencia', 'type: Firefighter,Size: long', '725.00');
+(2, 'dron - Firefighter', 'Dron preparado para incendios, con mucha resistencia', 'type: Firefighter,Size: long', '725.00'),
+(3, 'extended dron', 'Dron con grandes helices, con mucho alcance y alta resistencia de altitud.', 'Type: none,Size: long', '625.00'),
+(4, 'Firefighter small dron', 'Dron pequeño para maniobras dentro de edificios, preparado para soportar altas temperaturas y con un buen tanque de agua.', 'Type: Firefighter,Size: Small', '549.00'),
+(5, 'Test', 'asdasdasd', 'asdasdasd', '150.00');
 
 -- --------------------------------------------------------
 
@@ -184,7 +187,14 @@ INSERT INTO `registro` (`ref`, `fecha`, `titular`, `importe`, `ref_cuenta`, `num
 (28, '2021-11-29', 'Airforce', '+', 'ES66 2100 0418 4012 3456 7891', NULL, 'Ingreso', 100, ''),
 (29, '2021-11-29', 'Airforce', '+15', 'ES66 2100 0418 4012 3456 7891', NULL, 'Ingreso', 115, 'Ya funcionaaa!!'),
 (30, '2021-11-30', 'Airforce', '+50', 'ES66 2100 0418 4012 3456 7891', NULL, 'Ingreso', 165, 'otra prueba por si acaso'),
-(31, '2021-12-01', 'Airforce', '+25', 'ES66 2100 0418 4012 3456 7891', NULL, 'Ingreso', 190, 'Ingreso Test');
+(31, '2021-12-01', 'Airforce', '+25', 'ES66 2100 0418 4012 3456 7891', NULL, 'Ingreso', 190, 'Ingreso Test'),
+(36, '2021-12-01', 'Airforce', '+10', 'ES66 2100 0418 4012 3456 7891', NULL, 'deposit', 260, 'test'),
+(37, '2021-12-01', 'Airforce', '+10', 'ES66 2100 0418 4012 3456 7891', NULL, 'deposit', 270, 'test'),
+(38, '2021-12-01', 'Airforce', '-', 'ES66 2100 0418 4012 3456 7891', NULL, 'Withdrawal', 280, ''),
+(39, '2021-12-01', 'Airforce', '-', 'ES66 2100 0418 4012 3456 7891', NULL, 'Withdrawal', 280, ''),
+(40, '2021-12-01', 'Airforce', '-10', 'ES66 2100 0418 4012 3456 7891', NULL, 'Withdrawal', 280, 'test'),
+(41, '2021-12-01', 'Airforce', '+10', 'ES66 2100 0418 4012 3456 7891', NULL, 'deposit', 270, 'test'),
+(42, '2021-12-01', 'Airforce', '-30', 'ES66 2100 0418 4012 3456 7891', NULL, 'Withdrawal', 280, 'test');
 
 -- --------------------------------------------------------
 
@@ -278,13 +288,13 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `productos`
 --
 ALTER TABLE `productos`
-  MODIFY `cod` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `cod` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de la tabla `registro`
 --
 ALTER TABLE `registro`
-  MODIFY `ref` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+  MODIFY `ref` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarios`

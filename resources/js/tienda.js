@@ -36,10 +36,7 @@ function loadProducts(productos) {
 
     var img = '';
     
-    $.get('../img/productos/' + producto.nombre + '.jpg')
-    .done(img = producto.nombre)
-    .fail(img = 'default');
-    console.log(img);
+    $.get('../img/productos/' + producto.nombre + '.jpg').done(()=>{console.log("tiene foto")}).fail(console.log("no tiene"));
 
     $('#listProductos').append(
       "<div class='col producto px-0 border'>"+
