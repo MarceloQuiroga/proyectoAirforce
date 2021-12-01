@@ -30,28 +30,30 @@ async function getProductos() {
     })
 }
 
-async function loadProducts(productos) {
+function loadProducts(productos) {
+
   
-  productos.forEach(producto => {
+  productos.forEach(async producto => {
 
     var img = '';
 
-    $.get('../img/productos/' + producto.nombre + '.jpg').then(function (response,statusTxt, xhr) {
-      if (statusTxt == 'success') {
-        img = producto.nombre;
-      } else {
-        img = 'default';
-      }
+    await new Promise ((resolve,reject)=> {
+      $.get('../img/productos/' + producto.nombre + '.jpg', function(response,statusTxt, xhr){
+        if ( statusTxt == 'success' ) {
+          img = producto.nombre;
+          resolve();
+        }
+      }).fail(()=>{img='default';resolve()})
+    })
 
-      $('#listProductos').append(
-        "<div class='col producto px-0 border'>"+
-        "<img src='../img/productos/"+img+".jpg' class='card-img-top' alt='Lo sentimos ha surgido un problema y no hemos podido traerle la imagen esperada.'>"+
-          "<div class='car-title bg-light row py-2 mx-0'>"+
-            "<p class='h4 col m-0'><a >"+producto.nombre+"</p>"+
-            "<p class='h5 col m-0 text-end'>"+producto.precio+"€</p>"+
-          "</div>"+
-        "</div>");
-      });
+    $('#listProductos').append(
+      "<div class='col producto px-0 border'>"+
+      "<img src='../img/productos/"+img+".jpg' class='card-img-top' alt='Lo sentimos ha surgido un problema y no hemos podido traerle la imagen esperada.'>"+
+        "<div class='car-title bg-light row py-2 mx-0'>"+
+          "<p class='h4 col m-0'><a >"+producto.nombre+"</p>"+
+          "<p class='h5 col m-0 text-end'>"+producto.precio+"€</p>"+
+        "</div>"+
+      "</div>");
 
     })
 
