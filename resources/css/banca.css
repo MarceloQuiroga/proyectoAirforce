@@ -48,3 +48,29 @@
     color: #18d26e;
     font-weight: bold;
 }
+
+#sald{
+    height: 100px;
+    width: 100px;
+    background-color: #68f5a9c7;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    text-align: center;
+    vertical-align: middle;
+    justify-content: center;
+    color: white;
+    font-weight: bolder;
+    font-family: Verdana;
+    font-size: 20px;
+}
+
+#breadcrumbs3{
+    text-align: center;
+}
+
+#tipoCuenta{
+    margin-top: 20px;
+    font-size: 30px !important;
+    color: #18d26e;
+}

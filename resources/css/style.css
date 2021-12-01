@@ -590,10 +590,10 @@ header#header {
 --------------------------------------------------------------*/
 
 #breadcrumbs3 {
-  display: flex;
+  display: none;
   flex-direction: column;
   padding: 20px 0;
-  background-color: #f7f7f7;
+  background-color: white;
   min-height: 40px;
 }
 

@@ -134,15 +134,18 @@ function loadCuenta() {
     document.getElementById("numCuenta").value=result.cuenta.ref;
     document.getElementById("saldo1").value=result.cuenta.saldo;
     document.getElementById("cuenta1form").value=result.cuenta.ref;
-    document.getElementById("tipoCuenta").innerHTML=result.cuenta.type;
-    document.getElementById("infoCuenta").style.padding="30px";
+
 
     if (ref==document.getElementById("cuenta2form").value) {
       document.getElementById("saldo2").value=result.cuenta.saldo;
     }
 
-    var txt= "<br><h5>Saldo "+result.cuenta.saldo+"€</h5>";
-    var tablaMovim= "<table id='tablaMovim' style='text-align: center;' class='table' data-aos='fade-down' data-aos-delay='10'>"
+    var txt= "<div class='infoCuenta' data-aos='fade-down' data-aos-delay='10'>" 
+            + "<h3 data-aos='fade-down' data-aos-delay='500'>Saldo</h3>"        
+            +"<span data-aos='zoom-in' data-aos-delay='800' id='sald'>"+result.cuenta.saldo+"€</span>"
+            +"</div>";
+    
+    var tablaMovim= "<table id='tablaMovim' style='text-align: center;' class='table' data-aos='fade-down' data-aos-delay='100'>"
             
     tablaMovim+="    <thead>"
                  +   "<tr>"
@@ -171,10 +174,15 @@ function loadCuenta() {
     tablaMovim+="</tbody>";
     tablaMovim+="</table>";
 
+    document.getElementById("DivTituloBanca").innerHTML="<h2 data-aos='fade-down' data-aos-delay='100' id='tipoCuenta'>"+result.cuenta.type+"</h2>"
+
     document.getElementById("mensajeNocuenta").style.display="none";
     document.getElementById("tabla1").innerHTML=tablaMovim;
 
-    document.getElementById("infoCuenta").innerHTML=txt;
+    document.getElementById("breadcrumbs3").innerHTML=txt;
+    document.getElementById("breadcrumbs3").style.display="flex";
+    document.getElementById("breadcrumbs3").setAttribute('data-aos', 'fade-down');
+    document.getElementById("breadcrumbs3").setAttribute('data-aos-delay', '10');
     
 
     //Para que cargue bien la tabla de los movimientos (en caso de escoger la cuenta estando el apartado de movimientos ionado) hay que hacer lo siguiente:
