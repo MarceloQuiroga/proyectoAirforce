@@ -27,7 +27,7 @@ Los lenguajes principales que hemos usado en este proyectos son:
 
 
 ## Autores 💻
-Los principales autores del proyecto:
+Los principales autores del proyecto son:
 * **[Marcelo Quiroga](https://github.com/MarceloQuiroga)**
 * **[Imrane Azerzagh](https://github.com/Azerzax)**
 * **[Iñigo Rosado](https://github.com/irosado21)**
