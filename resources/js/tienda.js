@@ -4,24 +4,18 @@ async function getProductos() {
     return new Promise ( (resolve, reject) => {
         $.ajax({
             url: index() + "controller/controllerProductos.php",
-            method: "GET",
+            method: "POST",
             dataType: 'json',
+            data: {
+              solicitud: 'getProductos'
+            },
             success:function(response){
 
               console.group('PRODUCTOS')
                 console.log(response.list)
               console.groupEnd();
 
-              for (let i = 0; i < response.list.length; i++) {
-                $('#listProductos').append(
-                  "<div class='col producto px-0 border'>"+
-                  "<img src='../img/productos/"+response.list[i].nombre+".jpg' class='card-img-top' >"+
-                    "<div class='car-title bg-light row py-2 mx-0'>"+
-                      "<p class='h4 col m-0'>"+response.list[i].nombre+"</p>"+
-                      "<p class='h5 col m-0 text-end'>"+response.list[i].precio+"€</p>"+
-                    "</div>"+
-                  "</div>");
-              }
+              loadProducts(response.list)
                 
               resolve();
 
@@ -36,6 +30,35 @@ async function getProductos() {
     })
 }
 
+function loadProducts(productos) {
+
+  
+  productos.forEach(async producto => {
+
+    var img = '';
+
+    await new Promise ((resolve,reject)=> {
+      $.get('../img/productos/' + producto.nombre + '.jpg', function(response,statusTxt, xhr){
+        if ( statusTxt == 'success' ) {
+          img = producto.nombre;
+          resolve();
+        }
+      }).fail(()=>{img='default';resolve()})
+    })
+
+    $('#listProductos').append(
+      "<div class='col producto px-0 border'>"+
+      "<img src='../img/productos/"+img+".jpg' class='card-img-top' alt='Lo sentimos ha surgido un problema y no hemos podido traerle la imagen esperada.'>"+
+        "<div class='car-title bg-light row py-2 mx-0'>"+
+          "<p class='h4 col m-0'><a >"+producto.nombre+"</p>"+
+          "<p class='h5 col m-0 text-end'>"+producto.precio+"€</p>"+
+        "</div>"+
+      "</div>");
+
+    })
+
+}
+
 $('#filtros input').on('change', loadProductsByFilters);
 
 async function loadProductsByFilters() { //! CARGA LOS PRODUCTOS EN BASE LOS FILTROS
@@ -46,7 +69,7 @@ async function loadProductsByFilters() { //! CARGA LOS PRODUCTOS EN BASE LOS FIL
     console.log(filters);
   } else {
     console.log('Not Param Found');
-    console.log(filters);
+    getProductos();
   }
 
 }
