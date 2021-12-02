@@ -1109,13 +1109,16 @@ header#header {
 #banca {
   padding: 60px 0;
 }
-#banca #banca-flters {
+#banca .banca-flters {
   padding: 0;
-  margin: 5px 0 35px 0;
+  margin: 30px 0 35px 0;
   list-style: none;
   text-align: center;
+  display: flex;
+  justify-content: space-between;
 }
-#banca #banca-flters li {
+
+#banca .banca-flters li {
   margin: 5px;
   cursor: pointer;
   display: inline-block;
@@ -1135,23 +1138,23 @@ header#header {
   transition: all 0.3s ease-in-out;
 }
 
-#banca #banca-flters{
+#banca .banca-flters{
   display: flex;
   justify-content: center;
 }
 
-#banca #banca-flters li.filter-active {
+#banca .banca-flters li.filter-active {
   background: #18d26e;
   color: #fff;
   
 }
-#banca #banca-flters li:hover{
+#banca .banca-flters li:hover{
   background: #18d26f60;
   color: rgb(121, 121, 121);
   font-size: 21px;
 }
 
-#banca #banca-flters li:last-child {
+#banca .banca-flters li:last-child {
   margin-right: 0;
 }
 #banca .banca-wrap {

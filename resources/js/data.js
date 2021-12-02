@@ -2,6 +2,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
 	loadCuentas();
   document.getElementById("botonTransferir").onclick=transferir;
   document.getElementById("botonIngresar").onclick=ingresar;
+  document.getElementById("botonRetirar").onclick=retirar;
 }); 
 
 function loadCuentas()
@@ -16,16 +17,19 @@ function loadCuentas()
 		console.log(result.cuentas);
 		
 		var cuentas=result.cuentas;
-    var newRow2 = "<option value=''>Escoge una cuenta</option>";	
+    txt2 = "<option value='' hidden>Escoge una cuenta</option>";
+
    		
 		var newRow ="";
    		
    		for (let i = 0; i < cuentas.length; i++) {
 							
 			newRow += "<option value='"+cuentas[i].ref+"'>"+cuentas[i].ref+"</option>";	
+      txt2 += "<option value='"+cuentas[i].ref+"'>"+cuentas[i].ref+"</option>";
 		}
 	 
 		document.getElementById("potencial").innerHTML=newRow;
+    document.getElementById("cuenta2form").innerHTML=txt2;
 
     //Esto es para dar estilo al combobox y que cargen bien las cuentas, si no se pone este codigo aqui no carga por cuestion de tiempos.
     $(".custom-select").each(function() {
@@ -141,8 +145,8 @@ function loadCuenta() {
     }
 
     var txt= "<div class='infoCuenta' data-aos='fade-down' data-aos-delay='10'>" 
-            + "<h3 data-aos='fade-down' data-aos-delay='500'>Saldo</h3>"        
-            +"<span data-aos='zoom-in' data-aos-delay='800' id='sald'>"+result.cuenta.saldo+"€</span>"
+            /*+ "<h3 data-aos='fade-down' data-aos-delay='500'>Saldo</h3>"*/        
+            +"<span data-aos='zoom-in' data-aos-delay='400' id='sald'>"+result.cuenta.saldo+"€</span>"
             +"</div>";
     
     var tablaMovim= "<table id='tablaMovim' style='text-align: center;' class='table' data-aos='fade-down' data-aos-delay='100'>"
@@ -174,15 +178,17 @@ function loadCuenta() {
     tablaMovim+="</tbody>";
     tablaMovim+="</table>";
 
+    document.getElementById("circuloSaldo").style.display="flex";
+    document.getElementById("mensajeNocuenta").style.display="none";
+    
     document.getElementById("DivTituloBanca").innerHTML="<h2 data-aos='fade-down' data-aos-delay='100' id='tipoCuenta'>"+result.cuenta.type+"</h2>"
 
-    document.getElementById("mensajeNocuenta").style.display="none";
+    
     document.getElementById("tabla1").innerHTML=tablaMovim;
 
-    document.getElementById("breadcrumbs3").innerHTML=txt;
-    document.getElementById("breadcrumbs3").style.display="flex";
-    document.getElementById("breadcrumbs3").setAttribute('data-aos', 'fade-down');
-    document.getElementById("breadcrumbs3").setAttribute('data-aos-delay', '10');
+    document.getElementById("circuloSaldo").innerHTML=txt;
+    document.getElementById("circuloSaldo").setAttribute('data-aos', 'fade-down');
+    document.getElementById("circuloSaldo").setAttribute('data-aos-delay', '10');
     
 
     //Para que cargue bien la tabla de los movimientos (en caso de escoger la cuenta estando el apartado de movimientos ionado) hay que hacer lo siguiente:
@@ -308,6 +314,38 @@ function ingresar()
     document.getElementById("importe2form").value="";
     document.getElementById("concepto2form").value="";
     if (result.error=="Ingreso realizado con exito") {
+      loadCuenta();
+    }
+    
+		
+	})
+	.catch(error => console.error('Error status:', error));	
+}
+
+function retirar()
+{
+	var url = "../../controller/cRetirar.php";
+  var cuenta=document.getElementById("numCuenta").value;
+  var importe=document.getElementById("importe3form").value;
+  var concepto=document.getElementById("concepto3form").value;
+  var saldo=document.getElementById("saldoCuenta").value;
+  
+
+	var data = { 'cuenta':cuenta , 'importe':importe , 'concepto':concepto , 'saldo':saldo};
+
+	fetch(url, {
+	  method: 'POST', // or 'POST'
+	  body: JSON.stringify(data), // data can be `string` or {object}!
+	  headers:{'Content-Type': 'application/json'}  //input data
+	  
+	})
+	.then( res => res.json()).then(result => {
+	
+		alert(result.error);
+
+    document.getElementById("importe2form").value="";
+    document.getElementById("concepto2form").value="";
+    if (result.error=="Retiro realizado con exito") {
       loadCuenta();
     }
     

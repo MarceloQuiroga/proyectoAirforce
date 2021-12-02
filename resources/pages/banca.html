@@ -67,7 +67,7 @@
 
     </section><!-- End Breadcrumbs -->
 
-    <section id="breadcrumbs3">
+    <section id="">
     </section>
 
 
@@ -97,23 +97,33 @@
     <!-- ======= Banca Section ======= -->
     
     <section id="banca" class="">
-      <div class="container" data-aos="fade-up">
+      <div class="" data-aos="fade-up">
 
         <header class="section-header">
           <h3 class="section-title">GESTION DE BANCA</h3>
         </header>
 
-        <div class="row" data-aos="fade-up" data-aos-delay="100">
-          <div class=" col-lg-12">
-            <ul id="banca-flters">
+        <div id="botonesFiltros" data-aos="fade-up" data-aos-delay="100">
+          <div id="botonesFiltros1">
+            <ul class="banca-flters">
               <li data-filter=".filter-mov">MOVIMIENTOS</li>
               <li id="botonPrestamos" data-filter=".filter-prest">PRESTAMOS</li> 
               <li id="botonTransferencias" data-filter=".filter-trans">TRANSFERENCIAS</li>
+            </ul>
+            
+          </div>
+          <div id="botonesFiltros2" style="text-align: center;"><div id="circuloSaldo" data-filter=".filter-circulo"><span data-aos='zoom-in' data-aos-delay='400' id='sald'>Saldo</span></div></div>
+          <div id="botonesFiltros3">
+            <ul class="banca-flters">
               <li data-filter=".filter-ingr">Ingreso</li>
               <li data-filter=".filter-reti">Retiro</li>
+              <li data-filter=".filter-info">Informacion</li>
             </ul>
           </div>
         </div>
+
+
+        <div id="circuloSaldo" data-filter=".filter-circulo"></div>
 
         
 
@@ -291,6 +301,7 @@
           </div>
         </div>
 
+        <!--
         <div class="banca-item filter-ingr">
           <div id="ingreso">
             <form id="formCuenta">
@@ -299,24 +310,47 @@
             </form>
             <button id="botonIngresar">Ingresar</button>
           </div>
+        </div>-->
+        
+        
+        <div class="banca-item filter-ingr">
+          <form id="formCuenta" class="w-50 mx-auto">
+            <div class="form-outline mb-4">
+              <label class="form-label" for="importe2form">Importe</label>
+              <input type="text" id="importe2form" onkeypress="return event.charCode >= 48 && event.keyCode <= 57" min="1" class="form-control" />
+            </div>
+            <div class="form-outline mb-4">
+              <label class="form-label" for="concepto2form">Concepto</label>
+              <input type="text" id="concepto2form" class="form-control" />
+            </div>
+            <div class="modal-footer">
+              <button type="button" id="botonIngresar" class="btn btn-success w-100">Ingresar</button>
+            </div>
+          </form>
         </div>
+
+        <div class="banca-item filter-reti">
+          <form id="formCuenta" class="w-50 mx-auto">
+            <div class="form-outline mb-4">
+              <label class="form-label" for="importe2form">Importe</label>
+              <input type="text" id="importe3form" onkeypress="return event.charCode >= 48 && event.keyCode <= 57" min="1" class="form-control" />
+            </div>
+            <div class="form-outline mb-4">
+              <label class="form-label" for="concepto2form">Concepto</label>
+              <input type="text" id="concepto3form" class="form-control" />
+            </div>
+            <div class="modal-footer">
+              <button type="button" id="botonRetirar" class="btn btn-success w-100">Retirar</button>
+            </div>
+          </form>
+        </div>
+
       </div>
 
-      <!-- <div class="banca-item filter-ingr">
-        <form id='formIngr' class="w-50 mx-auto">
-          <div class="form-outline mb-4">
-            <label class="form-label" for="formImporte">Importe</label>
-            <input type="text" id="formImporte" class="form-control" />
-          </div>
-          <div class="form-outline mb-4">
-            <label class="form-label" for="formConcepto">Concepto</label>
-            <input type="text" id="formConcepto" class="form-control" />
-          </div>
-          <div class="modal-footer">
-            <button type="submit" class="btn btn-success w-100">Ingresar</button>
-          </div>
-        </form>
-      </div>
+      
+
+
+      <!--
 
       <div class="banca-item filter-reti">
         <form id='formReti' class="w-50 mx-auto">

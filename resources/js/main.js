@@ -279,7 +279,7 @@
         layoutMode: 'fitRows'
       });
 
-      let bancaFilters = select('#banca-flters li', true);
+      let bancaFilters = select('.banca-flters li', true);
       
       //Cargar por defecto los productos del filter "app" 
       bancaFilters.forEach(function(el) {
@@ -294,7 +294,7 @@
       });
 
       // Cargar los productos del filter al que se clique encima
-      on('click', '#banca-flters li', function(e) {
+      on('click', '.banca-flters li', function(e) {
         e.preventDefault();
         bancaFilters.forEach(function(el) {
           el.classList.remove('filter-active');
@@ -324,7 +324,7 @@
         layoutMode: 'fitRows'
       });
 
-      let bancaFilters = select('#banca-flters li', true);
+      let bancaFilters = select('.banca-flters li', true);
       
       //Cargar por defecto los productos del filter "app" 
       bancaFilters.forEach(function(el) {
@@ -339,7 +339,7 @@
       });
 
       // Cargar los productos del filter al que se clique encima
-      on('click', '#banca-flters li', function(e) {
+      on('click', '.banca-flters li', function(e) {
         e.preventDefault();
         bancaFilters.forEach(function(el) {
           el.classList.remove('filter-active');
