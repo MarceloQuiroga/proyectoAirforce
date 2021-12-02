@@ -144,21 +144,21 @@ function loadCuenta() {
       document.getElementById("saldo2").value=result.cuenta.saldo;
     }
 
-    var txt= "<div class='infoCuenta' data-aos='fade-down' data-aos-delay='10'>" 
+    var txt= "<div class='infoCuenta' data-aos='zoom-in' data-aos-delay='10'>" 
             /*+ "<h3 data-aos='fade-down' data-aos-delay='500'>Saldo</h3>"*/        
-            +"<span data-aos='zoom-in' data-aos-delay='400' id='sald'>"+result.cuenta.saldo+"€</span>"
+            +"<span data-aos='zoom-in' data-aos-delay='400' id='sald'><h5 class='TituloSaldoCirculo'>Saldo</h5><h5 class='FontSaldo'>"+result.cuenta.saldo+" €</h5></span>"
             +"</div>";
     
     var tablaMovim= "<table id='tablaMovim' style='text-align: center;' class='table' data-aos='fade-down' data-aos-delay='100'>"
             
     tablaMovim+="    <thead>"
                  +   "<tr>"
-                 +     "<th scope='col'>Fecha</th>"
-                 +     '<th scope="col">Referencia</th>'
-                 +     '<th scope="col">Concepto</th>'
-                 +     '<th scope="col">Tipo</th>'
-                 +     '<th scope="col">Importe</th>'
-                 +     '<th scope="col">Saldo</th>'
+                 +     "<th scope='col' style='color:#18d26e;'>Fecha</th>"
+                 +     '<th scope="col" style="color:#18d26e;">Referencia</th>'
+                 +     '<th scope="col" style="color:#18d26e;">Concepto</th>'
+                 +     '<th scope="col" style="color:#18d26e;">Tipo</th>'
+                 +     '<th scope="col" style="color:#18d26e;">Importe</th>'
+                 +     '<th scope="col" style="color:#18d26e;">Saldo</th>'
                  +   '</tr>'
                  + '</thead>'
                  + '<tbody >';

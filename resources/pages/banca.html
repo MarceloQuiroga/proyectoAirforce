@@ -67,10 +67,6 @@
 
     </section><!-- End Breadcrumbs -->
 
-    <section id="">
-    </section>
-
-
     <!-- Que es esto ??????????? 
     <section id="breadcrumbs2">
       <div id="flexrow">
@@ -103,20 +99,39 @@
           <h3 class="section-title">GESTION DE BANCA</h3>
         </header>
 
+        <!--
         <div id="botonesFiltros" data-aos="fade-up" data-aos-delay="100">
           <div id="botonesFiltros1">
             <ul class="banca-flters">
               <li data-filter=".filter-mov">MOVIMIENTOS</li>
               <li id="botonPrestamos" data-filter=".filter-prest">PRESTAMOS</li> 
               <li id="botonTransferencias" data-filter=".filter-trans">TRANSFERENCIAS</li>
-            </ul>
-            
+            </ul>           
           </div>
           <div id="botonesFiltros2" style="text-align: center;"><div id="circuloSaldo" data-filter=".filter-circulo"><span data-aos='zoom-in' data-aos-delay='400' id='sald'>Saldo</span></div></div>
           <div id="botonesFiltros3">
             <ul class="banca-flters">
               <li data-filter=".filter-ingr">Ingreso</li>
               <li data-filter=".filter-reti">Retiro</li>
+              <li data-filter=".filter-info">Informacion</li>
+            </ul>
+          </div>
+        </div>
+        -->
+
+        <div id="botonesFiltros" data-aos="fade-up" data-aos-delay="100">
+          <div id="botonesFiltros1">
+            <ul class="banca-flters">
+              <li data-filter=".filter-mov">MOVIMIENTOS</li>
+              <li id="botonPrestamos" data-filter=".filter-prest">PRESTAMOS</li> 
+              <li id="botonTransferencias" data-filter=".filter-trans">TRANSFERIR</li>
+            </ul>           
+          </div>
+          <div id="botonesFiltros2" style="text-align: center;"><div id="circuloSaldo" data-filter=".filter-circulo"><span data-aos='zoom-in' data-aos-delay='400' id='sald'><h5 class="escogeCuenta">Escoge</h5><h5 class="escogeCuenta">Cuenta</h5><img src="https://img.icons8.com/ios-glyphs/30/000000/warning-shield.png"/></span></div></div>
+          <div id="botonesFiltros3">
+            <ul class="banca-flters">
+              <li data-filter=".filter-ingr">INGRESAR</li>
+              <li data-filter=".filter-reti">RETIRAR</li>
               <li data-filter=".filter-info">Informacion</li>
             </ul>
           </div>
@@ -261,11 +276,11 @@
 
     
     <section id="tablas">
-      <div id="containerTablas" class="row container2">
+      <div id="containerTablas" class="row container2 me-3">
         <div id="ComparacionTablas" class="banca-item filter-prest">
         </div>
         <div id="ComparacionMovimientos" class="banca-item filter-mov" data-aos="fade-up" data-aos-delay="300">
-          <div id="mensajeNocuenta">LO SENTIMOS, NO HA SELECCIONADO NINGUNA CUENTA, POR FAVOR SELECCIONE UNA PARA MOSTRAR SUS MOVIMIENTOS.</div>
+          <div id="mensajeNocuenta">POR FAVOR SELECCIONE UNA CUENTA PARA MOSTRAR SUS MOVIMIENTOS.</div>
           <div id="tabla1">
 
           </div>
@@ -452,7 +467,7 @@
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary botoncerrar" data-bs-dismiss="modal">Close</button>
-              <button id="submitPrestamo" type="submit" class="btn btn-primary" data-bs-dismiss="modal">Solicitar</button>
+              <button id="submitPrestamo" type="submit" class="btn text-light" style="background-color: #18d26e;" data-bs-dismiss="modal">Solicitar</button>
             </div>
             </form> <!--FORMULARIO CIERRE-->
           </div>
@@ -505,7 +520,7 @@
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-              <button id="submitPrestamo" type="submit" class="btn btn-primary">Solicitar</button>
+              <button id="submitPrestamo" type="submit" class="btn text-light" style="background-color: #18d26e;">Solicitar</button>
             </div>
             </form> <!--FORMULARIO CIERRE-->
           </div>

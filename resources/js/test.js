@@ -57,7 +57,7 @@ function genPrestamo(event) {
         document.getElementById('tablas').scrollIntoView({behavior: "smooth", block: "start", inline: "nearest"});
         console.log("weeeeee");
     }else{
-        alert("no se encutnra tabla");
+        alert("no se encuentra tabla");
     }
 
     return false;
@@ -109,12 +109,12 @@ function genTableInfo(datos) {
         txt = "<table class='table mt-5>'"
             +   "<thead>"
             +       "<tr>" 
-            +         "<th class='col'>N</th>"
-            +         "<th class='col'>Urtekoa</th>"
-            +         "<th class='col'>Interes kuota</th>"
-            +         "<th class='col'>Amortizazio kuota</th>"
-            +         "<th class='col'>Amortizazio kapitala</th>"
-            +         "<th class='col'>Amortizatzeko dagoen kapitala</th>"
+            +         "<th class='col' style='color:#18d26e;'>N</th>"
+            +         "<th class='col' style='color:#18d26e;'>Urtekoa</th>"
+            +         "<th class='col' style='color:#18d26e;'>Interes kuota</th>"
+            +         "<th class='col' style='color:#18d26e;'>Amortizazio kuota</th>"
+            +         "<th class='col' style='color:#18d26e;'>Amortizazio kapitala</th>"
+            +         "<th class='col' style='color:#18d26e;'>Amortizatzeko dagoen kapitala</th>"
             +       "</tr>"
             +   "</thead>"
             +   "<tbody id='tableInfoPrestamo'>"
@@ -129,7 +129,7 @@ function genTableInfo(datos) {
 
             if (i == 0) {
                 genTxt = "<tr>"
-               +     "<th scope='row'>" + i + "</th>"
+               +     "<th scope='row' style='color:#18d26e;'>" + i + "</th>"
                +     "<td>---</td>"
                +     "<td>---</td>"
                +     "<td>---</td>"
@@ -148,7 +148,7 @@ function genTableInfo(datos) {
                 /*******************************************************************************************/
                 
                 txt  +=    "<tr>"
-                        +     "<th>" + i + "</th>"
+                        +     "<th style='color:#18d26e;'>" + i + "</th>"
                         +     "<td>" + parseFloat(datos["cuota"]).toFixed(2) + " € </td>"
                         +     "<td>" + parseFloat(interesCuota).toFixed(2) + " € </td>"
                         +     "<td>" + parseFloat(amortizacionCuota).toFixed(2) + " € </td>"
@@ -174,13 +174,13 @@ function genTableInfo(datos) {
          txt = "<table class='table mt-5>'"
             +   "<thead>"
             +       "<tr>" 
-            +         "<th class='col'>N</th>"
-            +         "<th class='col'>Kuota</th>"
-            +         "<th class='col'>BEZ-a</th>"
-            +         "<th class='col'>Ordaintzeko kuota</th>"
-            +         "<th class='col'>Interesa</th>"
-            +         "<th class='col'>Amortizazioa</th>"
-            +         "<th class='col'>Zorra</th>"
+            +         "<th class='col' style='color:#18d26e;'>N</th>"
+            +         "<th class='col' style='color:#18d26e;'>Kuota</th>"
+            +         "<th class='col' style='color:#18d26e;'>BEZ-a</th>"
+            +         "<th class='col' style='color:#18d26e;'>Ordaintzeko kuota</th>"
+            +         "<th class='col' style='color:#18d26e;'>Interesa</th>"
+            +         "<th class='col' style='color:#18d26e;'>Amortizazioa</th>"
+            +         "<th class='col' style='color:#18d26e;'>Zorra</th>"
             +       "</tr>"
             +   "</thead>"
             +   "<tbody id='tableInfoLeasing'>"
@@ -214,7 +214,7 @@ function genTableInfo(datos) {
                 txt += genTxt; 
                 
                 txt  +=    "<tr>"
-                        +     "<th>" + i + "</th>"
+                        +     "<th style='color:#18d26e;'>" + i + "</th>"
                         +     "<td>" + parseFloat(datos["cuota"]).toFixed(2) + " € </td>"
                         +     "<td>" + parseFloat(datos["BEZ"]).toFixed(2) + " € </td>"
                         +     "<td>" + parseFloat((datos["cuota"]-datos["BEZ"])).toFixed(2) + " € </td>"
@@ -225,7 +225,7 @@ function genTableInfo(datos) {
             }
 
             txt  +=    "<tr>"
-                        +     "<th>" + i + "</th>"
+                        +     "<th style='color:#18d26e;'>" + i + "</th>"
                         +     "<td>" + parseFloat(datos["cuota"]).toFixed(2) + " € </td>"
                         +     "<td>" + parseFloat(datos["BEZ"]).toFixed(2) + " € </td>"
                         +     "<td>" + parseFloat((datos["cuota"]-datos["BEZ"])).toFixed(2) + " € </td>"
@@ -241,7 +241,7 @@ function genTableInfo(datos) {
             + "</table>";
 
         document.getElementById("ComparacionTablas").innerHTML=txt;
-
+        
     }
 
     console.log(txt);

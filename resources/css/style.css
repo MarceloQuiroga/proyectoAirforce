@@ -128,11 +128,6 @@ h1, h2, h3, h4, h5, h6 {
   height: 80px;
 }
 
-
-@media (max-width: 992px) {
-
-}
-
 /*--------------------------------------------------------------
 # Navigation Menu
 --------------------------------------------------------------*/
@@ -1115,27 +1110,26 @@ header#header {
   list-style: none;
   text-align: center;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
 }
 
 #banca .banca-flters li {
-  margin: 5px;
   cursor: pointer;
-  display: inline-block;
   text-align: center;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 0px 30px;
   height: 50px;
-  font-size: 20px;
-  line-height: 20px;
+  width: 12vw;
+  font-size: 1.2vw;
   color: #000000;
   border-radius: 3px;
   text-transform: uppercase;
-  background: #fff;
+  background: rgb(240, 240, 240);
   margin-bottom: 5px;
   transition: all 0.3s ease-in-out;
+  margin-left: 5px;
+  margin-right: 5px;
 }
 
 #banca .banca-flters{
@@ -1154,9 +1148,64 @@ header#header {
   font-size: 21px;
 }
 
-#banca .banca-flters li:last-child {
-  margin-right: 0;
+@media (max-width: 950px) {
+
+  #banca .banca-flters li {
+    cursor: pointer;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 50px;
+    width: 12vw;
+    font-size: 1.6vw;
+    color: #000000;
+    border-radius: 3px;
+    text-transform: uppercase;
+    background: rgb(240, 240, 240);
+    margin-bottom: 5px;
+    transition: all 0.3s ease-in-out;
+    margin-left: 5px;
+    margin-right: 5px;
+  }
+
+  #banca .banca-flters li:hover{
+    background: #18d26f60;
+    color: rgb(121, 121, 121);
+    font-size: 1.6vw;
+  }
+
 }
+
+@media (max-width: 1300px) {
+  #banca .banca-flters li:hover{
+    background: #18d26f60;
+    color: rgb(121, 121, 121);
+    font-size: 1.6vw;
+  }
+}
+
+@media (max-width: 800px) {
+  #banca .banca-flters li {
+    cursor: pointer;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 50px;
+    width: 18vw;
+    font-size: 1.6vw;
+    color: #000000;
+    border-radius: 3px;
+    text-transform: uppercase;
+    background: rgb(240, 240, 240);
+    margin-bottom: 5px;
+    transition: all 0.3s ease-in-out;
+    margin-left: 5px;
+    margin-right: 5px;
+  }
+}
+
 #banca .banca-wrap {
   box-shadow: 0px 2px 12px rgba(0, 0, 0, 0.08);
   transition: 0.3s;

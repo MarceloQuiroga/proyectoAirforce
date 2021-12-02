@@ -1,37 +1,48 @@
 $(document).ready(getProductos);
 
-async function getProductos() {
-    return new Promise ( (resolve, reject) => {
-        $.ajax({
-            url: index() + "controller/controllerProductos.php",
-            method: "POST",
-            dataType: 'json',
-            data: {
-              solicitud: 'getProductos'
-            },
-            success:function(response){
+async function getProductos(filtros) {
 
-              console.group('PRODUCTOS')
-                console.log(response.list)
-              console.groupEnd();
+  var data = {solicitud:'getProductos'};
 
-              loadProducts(response.list)
-                
-              resolve();
+  if (filtros != undefined && filtros.constructor === Object) {
 
-            },
-            error: function(xhr, textStatus, error){
-                console.log(xhr.statusText);
-                console.log(textStatus);
-                console.log(error);
-                reject(error);
-            }
-          })
-    })
+    data = {solicitud:'getProductosByFilters'};
+    data = Object.assign(data, filtros)
+    
+  }
+
+  console.log(data);
+
+  return new Promise ( (resolve, reject) => {
+      $.ajax({
+          url: index() + "controller/controllerProductos.php",
+          method: "POST",
+          dataType: 'json',
+          data: data,
+          success:function(response){
+
+            console.group('PRODUCTOS')
+              console.log(response.list)
+            console.groupEnd();
+
+            loadProducts(response.list)
+              
+            resolve();
+
+          },
+          error: function(xhr, textStatus, error){
+              console.log(xhr.statusText);
+              console.log(textStatus);
+              console.log(error);
+              reject(error);
+          }
+        })
+  })
 }
 
-function loadProducts(productos) {
+function loadProducts(productos) {  
 
+  $('#listProductos').html('');
   
   productos.forEach(async producto => {
 
@@ -63,13 +74,81 @@ $('#filtros input').on('change', loadProductsByFilters);
 
 async function loadProductsByFilters() { //! CARGA LOS PRODUCTOS EN BASE LOS FILTROS
 
-  var filters = getFiltersParams();
-  if ( filters.filterStatus ) {
-    console.log('Params Exist');
-    console.log(filters);
+  // var filters = getFiltersParams();
+  var filters = chargeFilters();
+
+  console.log(filters);
+
+  if ( filters != undefined ) {
+    getProductos(filters);
   } else {
-    console.log('Not Param Found');
     getProductos();
+  }
+
+}
+
+function chargeFilters() {
+
+  var filterData = {};
+  var filters = Array.from($('#filtros input:not([name=filterStatus])'));
+
+  var filterStatus = false;
+
+
+
+  if ( event.target.name == 'filterStatus' ) {
+    if ( event.target.checked ) {
+      generateFilterData(filterData);
+    }
+  } else {
+    generateFilterData(filterData);
+  }
+
+  function generateFilterData(filterData) { //! RETURN FILTERS
+
+    var droneType = '';
+    var droneSize = '';
+
+    filters.forEach(filter => {
+      if ( filter.checked ) {
+        filterStatus = true;
+
+        switch (filter.name) {
+          case 'droneType':
+            droneType += filter.value + ',';
+            break;
+
+          case 'droneSize':
+            droneSize += filter.value + ',';
+            break;
+        
+          default:
+            break;
+        }
+      }
+    });
+
+    var newObj;
+
+    if (droneType != '') {
+      droneType = droneType.substr(0, droneType.length - 1)
+      newObj = {droneType:droneType}
+      filterData = Object.assign(filterData, newObj);
+    }
+
+    if (droneSize != '') {
+      droneSize = droneSize.substr(0, droneSize.length - 1)
+      newObj = {droneSize:droneSize}
+      filterData = Object.assign(filterData, newObj);
+    }
+
+  }
+
+  if ( filterStatus ) {
+    $('[name=filterStatus]')[0].checked = true;
+    return filterData;
+  } else {
+    $('[name=filterStatus]')[0].checked = false;
   }
 
 }
@@ -93,6 +172,8 @@ function getFiltersParams() { //! RETURN FILTERS
   }
   
   function generateFilterData(filterData) { //! RETURN FILTERS
+    console.log(filterData);
+
     filters.forEach(filter => {
       if ( filter.checked ) {
         filterStatus = true;
