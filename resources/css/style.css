@@ -1193,8 +1193,29 @@ header#header {
     align-items: center;
     justify-content: center;
     height: 50px;
-    width: 18vw;
-    font-size: 1.6vw;
+    width: 25vw;
+    font-size: 2.2vw;
+    color: #000000;
+    border-radius: 3px;
+    text-transform: uppercase;
+    background: rgb(240, 240, 240);
+    margin-bottom: 5px;
+    transition: all 0.3s ease-in-out;
+    margin-left: 5px;
+    margin-right: 5px;
+  }
+}
+
+@media (max-width: 550px) {
+  #banca .banca-flters li {
+    cursor: pointer;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 50px;
+    width: 25vw;
+    font-size: 3vw;
     color: #000000;
     border-radius: 3px;
     text-transform: uppercase;

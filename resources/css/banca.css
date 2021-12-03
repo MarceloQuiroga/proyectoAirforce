@@ -192,6 +192,45 @@
 
 }
 
+
+
+
+.escogeCuenta{
+    margin-bottom: 5px;
+}
+
+
+
+#tablas{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#containerTablas{
+    width: 70%;
+    margin-right: 0px !important;
+    
+}
+
+.tablaPrestamos{
+    margin-top: 130px !important;
+}
+
+#ComparacionTablas{
+    padding: 0%;
+}
+
+
+#tableInfoPrestamo{
+    text-align: center;
+}
+
+table.table{
+    text-align: center;
+}
+
 @media (max-width: 800px) {
 
     #botonesFiltros1 { order: 2; }
@@ -218,39 +257,154 @@
         margin-top: -20px;
     }
 
+    #containerTablas{
+        width: 100%;
+    }
+
+    #tablaMovim{
+        font-size: 2.4vw;
+    }
+
 }
 
 
-.escogeCuenta{
-    margin-bottom: 5px;
+@media (max-width: 660px) {
+
+    #flexrow{
+        display: flex;
+        flex-direction: column;
+        align-content: center;
+        
+    }
+
+    #CuentaBanca {
+        font: 13px/1.5 "Roboto", sans-serif;
+        margin-top: 20px;
+        position: initial;
+        z-index: 20;
+    }
+
+    #breadcrumbs2{
+        align-content: center;
+        align-items: center;
+        height: 260px;
+    }
+
 }
 
 
 
-#tablas{
+/**Pruebas**/
+
+.card {
+    margin: auto;
+    color: black;
+    border-radius: 20 px
+}
+
+p {
+    margin: 0px
+}
+
+.container .h8 {
+    font-size: 30px;
+    font-weight: 800;
+    text-align: center
+}
+
+.btn.btn-primary {
+    width: 100%;
+    height: 70px;
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    text-align: center;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 15px;
+    background-image: linear-gradient(to right, #18d26fc5 0%, #18d26e 51%, #18d26f80 100%);
+    border: none;
+    transition: 0.5s;
+    background-size: 200% auto
 }
 
-#containerTablas{
-    width: 70%;
-    margin-left: 15%;
+.btn.btn.btn-primary:hover {
+    background-position: right center;
+    color: #fff;
+    text-decoration: none
 }
 
-#ComparacionTablas{
-    padding: 0%;
+.btn.btn-primary:hover .fas.fa-arrow-right {
+    transform: translate(15px);
+    transition: transform 0.2s ease-in
 }
 
-.table{
+.form-control2 {
+    color: white;
+    background-color: #ebebeb;
+    border: 2px solid transparent;
+    height: 60px;
+    padding-left: 20px;
+    vertical-align: middle;
     width: 100%;
 }
 
-#tableInfoPrestamo{
-    text-align: center;
+.form-control2:focus {
+    color: white;
+    background-color: #b9e4c4;
+    border: 2px solid #ffffff;
+    box-shadow: none
 }
 
-table.table{
+.text {
+    font-size: 14px;
+    font-weight: 600
+}
+
+::placeholder {
+    font-size: 14px;
+    font-weight: 600
+}
+
+.flexTrans{
+    display: flex;
+    flex-direction: row;
+}
+
+#saldo1{
+    font-weight: bold;
+    color: black;
+    width: 300px;
+    text-align: end;
+    padding-right: 10px;
+}
+
+#saldo2{
+    font-weight: bold;
+    color: black;
+    text-align: end;
+    padding-right: 10px;
+}
+
+#cuenta2form{
+    color: black;
+    width: 400px;
+}
+
+#cuenta1form{
+    color: black;
+}
+
+#importeform{
+    color: black;
+}
+
+#conceptoform{
+    color: black;
+}
+
+#letraTransferir{
+    text-align: center;
+    font-weight: bold;
+}
+
+#botonTransferir{
     text-align: center;
 }

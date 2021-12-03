@@ -3,6 +3,15 @@ document.addEventListener("DOMContentLoaded", function (event) {
   document.getElementById("botonTransferir").onclick=transferir;
   document.getElementById("botonIngresar").onclick=ingresar;
   document.getElementById("botonRetirar").onclick=retirar;
+  $('#saldo1').focus(function(){
+    this.blur();
+  });
+  $('#saldo2').focus(function(){
+    this.blur();
+  });
+  $('#cuenta1form').focus(function(){
+    this.blur();
+  });
 }); 
 
 function loadCuentas()

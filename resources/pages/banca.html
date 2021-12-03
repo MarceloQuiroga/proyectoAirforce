@@ -286,10 +286,12 @@
           </div>
         </div>
         <div class=" banca-item filter-trans">
+          
           <div id="containerTransferencias" class="row container3">
             <div class="banca-item transfDiv filter-reembolso">
               Transferencia de reembolso
             </div>
+            <!--
             <div class="banca-item transfDiv filter-miscuentas">
               <div id="cuenta1">
                 <form id="formCuenta">
@@ -299,7 +301,7 @@
                     <input id="conceptoform" class="w100" type="text" placeholder="Concepto" />
                 </form>
               </div>
-              <div><button id="botonTransferir">Transferir --></button></div>
+              <div><button id="botonTransferir">Transferir </button></div>
               <div id="cuenta2">
                 <form id="formCuenta">
                     <select id="cuenta2form">
@@ -308,6 +310,51 @@
                 </form>
               </div>
             </div>
+            -->
+
+            <div class="banca-item transfDiv filter-miscuentas">
+              <div class="container p-0">
+                <div class="card px-4">
+                    <p class="h8 py-3">Transferencia</p>
+                    <div class="row gx-3">
+                        <div class="col-12">
+                            <div class="d-flex flex-column">
+                                <p class="text mb-1">Cuenta emisora</p>
+                                <div class="flexTrans">
+                                  <input id="cuenta1form" class="form-control2 mb-3" type="text" placeholder="Numero de cuenta" value="" >
+                                  <input id="saldo1" class="form-control2 mb-3" type="text" placeholder=""  />
+                                </div>
+                                
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="d-flex flex-column">
+                                <p class="text mb-1">Cuenta destino</p>
+                                <div class="flexTrans">
+                                  <select class="form-control2 mb-3" id="cuenta2form">
+                                  </select> 
+                                  <input id="saldo2" class="form-control2 mb-3" type="text" placeholder="" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="d-flex flex-column">
+                                <p class="text mb-1">Importe</p> <input id="importeform" class="form-control2 mb-3" type="text" onkeypress="return event.charCode >= 48 && event.keyCode <= 57" min="1" placeholder="€">
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="d-flex flex-column">
+                                <p class="text mb-1">Concepto</p> <input id="conceptoform" class="form-control2 mb-3 pt-2 " type="text" placeholder="Transferencia">
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="btn btn-primary mb-3" id="botonTransferir"> <span id="letraTransferir" class="ps-3">TRANSFERIR</span> <span class="fas fa-arrow-right"></span> </div>
+                        </div>
+                    </div>
+                </div>
+              </div>
+            </div>
+
             <div class="banca-item transfDiv filter-entidad">
               Transferir a otra entidad
             </div>

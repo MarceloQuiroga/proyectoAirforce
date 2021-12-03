@@ -106,7 +106,7 @@ function genTableInfo(datos) {
 
         /******************************VARIABLES***********************************/
         /*txt = document.getElementById("tableInfoPrestamo");*/
-        txt = "<table class='table mt-5>'"
+        txt = "<table class='table mt-5 tablaPrestamos'>"
             +   "<thead>"
             +       "<tr>" 
             +         "<th class='col' style='color:#18d26e;'>N</th>"
@@ -171,7 +171,7 @@ function genTableInfo(datos) {
     } else if (datos["dataType"] == "leasing") { //Bloque de datos procede desde Leasing
 
          /******************************VARIABLES***********************************/
-         txt = "<table class='table mt-5>'"
+         txt = "<table class='table mt-5 tablaPrestamos'>"
             +   "<thead>"
             +       "<tr>" 
             +         "<th class='col' style='color:#18d26e;'>N</th>"
