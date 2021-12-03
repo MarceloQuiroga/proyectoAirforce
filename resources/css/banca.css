@@ -373,14 +373,23 @@ p {
     color: black;
     width: 300px;
     text-align: end;
-    padding-right: 10px;
+}
+
+#euro{
+    font-weight: bold;
+    color: black;
+    width: 50px;
+}
+#euro2{
+    font-weight: bold;
+    color: black;
+    width: 50px;
 }
 
 #saldo2{
     font-weight: bold;
     color: black;
     text-align: end;
-    padding-right: 10px;
 }
 
 #cuenta2form{
