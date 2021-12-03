@@ -8,15 +8,15 @@
             <nav id="navbar" class="navbar">
                 <ul>
                     <li><a class="nav-link scrollto active" id="casaI" href="#hero">Inicio</a></li>
-                    <li><a class="nav-link scrollto" href="#about">About</a></li>
-                    <li><a class="nav-link scrollto" href="#services">Servicios</a></li>
-                    <li><a class="nav-link scrollto " href="#portfolio">Productos</a></li>
-                    <li><a class="nav-link scrollto" href="#team">Equipo</a></li>
+                    <li><a class="nav-link scrollto" href="#about">about</a></li>
+                    <li><a class="nav-link scrollto" href="#services">services</a></li>
+                    <li><a class="nav-link scrollto " href="#portfolio">portfolio</a></li>
+                    <li><a class="nav-link scrollto" href="#team">team</a></li>
 
                     <!--IF LOGEADO Y USUARIO=ADMIN-->
                     <li><a id="btnTienda" class="nav-link d-none">Tienda</a></li>
                     <li><a id="btnBanca" class="nav-link d-none">Banca</a></li>
-                    <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
+                    <li><a class="nav-link scrollto" href="#contact">contact</a></li>
 
 
                     <li id="dropdownLogin" class="dropdown"><a href="#" data-bs-toggle="modal" data-bs-target="#login"><span>Login</span></a>
@@ -32,32 +32,3 @@
         </div>
     </div>
 </div>
-<script>
-    const select = (el, all = false) => {
-        el = el.trim()
-
-        if (all) {
-        return [...document.querySelectorAll(el)]
-        }else if(el){
-        return document.querySelector(el)
-        }
-    }
-
-    const on = (type, el, listener, all = false) => {
-        let selectEl = select(el, all)
-
-        if (selectEl) {
-            if (all) {
-            selectEl.forEach(e => e.addEventListener(type, listener))
-            }else{
-            selectEl.addEventListener(type, listener)
-            }
-        }
-    }
-
-    on('click', '.mobile-nav-toggle', function(e) {
-        select('#navbar').classList.toggle('navbar-mobile')
-        this.classList.toggle('bi-list')
-        this.classList.toggle('bi-x')
-    })
-</script>
