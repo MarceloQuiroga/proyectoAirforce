@@ -19,10 +19,13 @@ function index() {
     switch (getRuta()) {
         case 'banca.html':
         case 'banca.html?':
+        case 'banca.html#':
         case 'tienda.html':
         case 'tienda.html?':
+        case 'tienda.html#':
         case 'error-page.html':
         case 'error-page.html?':
+        case 'error-page.html#':
             index = '../../'
             break;
 
@@ -165,7 +168,7 @@ function loadContent(session) { //GENERA EL COTENIDO EN FUNCION DE LA SESSION
     }
   
 }
-    
+
 function boostrapDropdown() {
     const selectN = (el, all = false) => {
         el = el.trim()
@@ -205,7 +208,7 @@ function logout() {
         request: 'logout'
         },
         success:function(response){
-        console.log(response);
+        console.log('logout');
         document.location.href = index();
         },
         error: function(xhr, textStatus, error){
