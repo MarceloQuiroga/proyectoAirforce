@@ -5,6 +5,7 @@ async function loadComponents(){
     await getSession().then(async function(session) {
         await loadHeaderFooter();
         await loadContent(session);
+        boostrapDropdown();
     })
 
 }
@@ -27,7 +28,6 @@ function index() {
 
         default:
             index = '';
-            indexSection();
             break;
     }
     return index;
@@ -164,6 +164,36 @@ function loadContent(session) { //GENERA EL COTENIDO EN FUNCION DE LA SESSION
 
     }
   
+}
+    
+function boostrapDropdown() {
+    const selectN = (el, all = false) => {
+        el = el.trim()
+
+        if (all) {
+        return [...document.querySelectorAll(el)]
+        }else if(el){
+        return document.querySelector(el)
+        }
+    }
+
+    const on = (type, el, listener, all = false) => {
+        let selectEl = selectN(el, all)
+
+        if (selectEl) {
+            if (all) {
+            selectEl.forEach(e => e.addEventListener(type, listener))
+            }else{
+            selectEl.addEventListener(type, listener)
+            }
+        }
+    }
+
+    on('click', '.mobile-nav-toggle', function(e) {
+        selectN('#navbar').classList.toggle('navbar-mobile')
+        this.classList.toggle('bi-list')
+        this.classList.toggle('bi-x')
+    })
 }
 
 function logout() {

@@ -77,9 +77,9 @@ function drawVisor() {
   animate();
 
   $('#btnHome').on('click',()=>{
-    document.location.href = ruta;
+    document.location.href = index();
   })
 
   $('#btnLogin').on('click',()=>{
-    console.log(ruta);
+    console.log(index());
   })
