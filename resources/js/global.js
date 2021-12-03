@@ -11,26 +11,21 @@ async function loadComponents(){
 }
 
 function getRuta() {
-    return $(location).attr('href').split('/').pop();
+    return $(location).attr('href').split('/').pop().split('.')[0];
 }
 
 function index() {
     var index;
     switch (getRuta()) {
-        case 'banca.html':
-        case 'banca.html?':
-        case 'banca.html#':
-        case 'tienda.html':
-        case 'tienda.html?':
-        case 'tienda.html#':
-        case 'error-page.html':
-        case 'error-page.html?':
-        case 'error-page.html#':
+        case 'banca':
+        case 'tienda':
+        case 'error-page':
             index = '../../'
             break;
 
         default:
             index = '';
+            indexSection()
             break;
     }
     return index;
@@ -64,18 +59,21 @@ async function loadHeaderFooter(){
                             
                         break;
                 
-                        case 'banca.html':
-                        case 'banca.html?':
+                        case 'banca':
                             $('#casaR').attr('href', "../../");
                             $('#casaI').attr('href', "../../");
-                            $(this).removeClass('header-transparent')
+                            $('#casaI').css('color', "white");
+                            $(this).removeClass('header-transparent');
                             $('#logoR').attr('src','../img/LOGO AirForce blanco.png');
                             $('#btnBanca').attr('href', "");
+                            $('#btnBanca').css('color', "#18d26e");
                             $('#btnTienda').attr('href', "../pages/tienda.html");
+                            Array.from($('.scrollto')).forEach(element => {
+                                element.href = '../../#' + element.text;
+                            });
                         break;
 
-                        case 'tienda.html':
-                        case 'tienda.html?':
+                        case 'tienda':
                             $('#casaR').attr('href', "../../");
                             $('#casaI').attr('href', "../../");
                             $(this).removeClass('header-transparent')
@@ -134,7 +132,7 @@ function getSession() { //RECOGE LAS VARIABLES DE SESSION
 function loadContent(session) { //GENERA EL COTENIDO EN FUNCION DE LA SESSION
     
     console.group('SESSION'); 
-        console.log(session); //*VEMOS LA VARIABLE DE SESIÓN*
+        console.log(session); //* VEMOS LA VARIABLE DE SESIÓN
     console.groupEnd();
 
     if (session == null) { //TODO *SIN SESION*

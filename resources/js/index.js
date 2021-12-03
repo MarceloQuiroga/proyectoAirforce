@@ -1,4 +1,4 @@
-async function indexSection() {
+function indexSection() {
   $('nav a.scrollto').on('click', scrolltoAdjustment);
   $('nav a.scrollto').on('click', greenActive); 
   
@@ -11,7 +11,6 @@ function scrolltoAdjustment() {
 }
 
 function greenActive() {
-  
   Array.from($('nav a.scrollto')).forEach(element => {
     if (element.classList.contains('active')) {
       element.classList.remove('active');
