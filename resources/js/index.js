@@ -19,3 +19,13 @@ function greenActive() {
   this.classList.add('active');
 
 }
+
+
+//TODO *Es una chorrada por que voy a quitar algun archivo de la platilla por que no se usa y no sirven para nada*
+$('#contact-message').submit(()=>{
+  $('.error-message').html('Your message has been sent, we will reply as soon as possible.');
+  $('.error-message').css('text-align', 'center');
+  $('.error-message').addClass('d-block');
+  $('.error-message').css('background-color', '#18d36e');
+  return false;
+})
