@@ -365,7 +365,7 @@
                                 <p class="text mb-1">Cuenta emisora</p>
                                 <div class="flexTrans">
                                   <input id="cuenta1form2" class="form-control2 mb-3" type="text" placeholder="Numero de cuenta" value="" >
-                                  <input id="saldo1-2" class="form-control2 mb-3" type="text" placeholder=""  /><input id="euro3" class="form-control2 mb-3" type="text" placeholder=""  />
+                                  <input id="saldo3" class="form-control2 mb-3" type="text" placeholder=""  /><div id="euro3" class="form-control2 mb-3"></div>
                                 </div>
                                 
                             </div>
@@ -374,8 +374,7 @@
                             <div class="d-flex flex-column">
                                 <p class="text mb-1">Cuenta destino</p>
                                 <div class="flexTrans">
-                                  <input id="cuenta2form2" class="form-control2 mb-3" type="text" placeholder="" /> 
-                                  <input id="saldo2-2" class="form-control2 mb-3" type="text" placeholder="" /><input id="euro4" class="form-control2 mb-3" type="text" placeholder=""  />
+                                  <input id="cuenta2form2" class="form-control2 mb-3" type="text" placeholder="" />
                                 </div>
                             </div>
                         </div>
@@ -414,35 +413,54 @@
         
         
         <div class="banca-item filter-ingr">
-          <form id="formCuenta" class="w-50 mx-auto">
-            <div class="form-outline mb-4">
-              <label class="form-label" for="importe2form">Importe</label>
-              <input type="text" id="importe2form" onkeypress="return event.charCode >= 48 && event.keyCode <= 57" min="1" class="form-control" />
+          
+
+          <div class="container p-0">
+            <div class="card px-4">
+                <p class="h8 py-3">INGRESAR</p>
+                <div class="row gx-3">
+                    <div class="col-12">
+                        <div class="d-flex flex-column">
+                            <p class="text mb-1">Importe</p> <input id="importe2form" class="form-control2 mb-3" type="text" onkeypress="return event.charCode >= 48 && event.keyCode <= 57" min="1" placeholder="€">
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="d-flex flex-column">
+                            <p class="text mb-1">Concepto</p> <input id="concepto2form" class="form-control2 mb-3 pt-2 " type="text" placeholder="Ingreso">
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="btn btn-primary mb-3" id="botonIngresar"> <span id="letraTransferir" class="ps-3">INGRESAR</span> <span class="fas fa-arrow-right"></span> </div>
+                    </div>
+                </div>
             </div>
-            <div class="form-outline mb-4">
-              <label class="form-label" for="concepto2form">Concepto</label>
-              <input type="text" id="concepto2form" class="form-control" />
-            </div>
-            <div class="modal-footer">
-              <button type="button" id="botonIngresar" class="btn btn-success w-100">Ingresar</button>
-            </div>
-          </form>
+          </div>
+
         </div>
 
         <div class="banca-item filter-reti">
-          <form id="formCuenta" class="w-50 mx-auto">
-            <div class="form-outline mb-4">
-              <label class="form-label" for="importe2form">Importe</label>
-              <input type="text" id="importe3form" onkeypress="return event.charCode >= 48 && event.keyCode <= 57" min="1" class="form-control" />
+
+          <div class="container p-0">
+            <div class="card px-4">
+                <p class="h8 py-3">RETIRAR</p>
+                <div class="row gx-3">
+                    <div class="col-12">
+                        <div class="d-flex flex-column">
+                            <p class="text mb-1">Importe</p> <input id="importe3form" class="form-control2 mb-3" type="text" onkeypress="return event.charCode >= 48 && event.keyCode <= 57" min="1" placeholder="€">
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="d-flex flex-column">
+                            <p class="text mb-1">Concepto</p> <input id="concepto3form" class="form-control2 mb-3 pt-2 " type="text" placeholder="Retiro">
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="btn btn-primary mb-3" id="botonRetirar"> <span id="letraTransferir" class="ps-3">RETIRAR</span> <span class="fas fa-arrow-right"></span> </div>
+                    </div>
+                </div>
             </div>
-            <div class="form-outline mb-4">
-              <label class="form-label" for="concepto2form">Concepto</label>
-              <input type="text" id="concepto3form" class="form-control" />
-            </div>
-            <div class="modal-footer">
-              <button type="button" id="botonRetirar" class="btn btn-success w-100">Retirar</button>
-            </div>
-          </form>
+          </div>
+
         </div>
 
       </div>
