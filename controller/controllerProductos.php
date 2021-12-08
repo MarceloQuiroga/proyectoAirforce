@@ -18,31 +18,30 @@ if ( isset($_POST['solicitud']) ) {
             $tag = '';
                 
             if (isset($_POST['droneType'])) {
-                $tag = $tag . 'droneType:' . $_POST['droneType'] . ',';
+                $tag = $tag . $_POST['droneType'] . ',';
             }
 
             if (isset($_POST['droneSize'])) {
-                $tag = $tag . 'droneSize:' . $_POST['droneSize'] . ',';
+                $tag = $tag . $_POST['droneSize'] . ',';
             }
 
-            $response['debug'] = substr($tag, 0, -1);
+            $tag = substr($tag, 0, -1);
 
-            // if (isset($_POST['droneType']) || isset($_POST['droneSize'])) {
-
-            //     if (isset($_POST['droneType'])) {
-            //         $droneType = $_POST['droneType'];
-            //     }
-
-            //     if (isset($_POST['droneSize'])) {
-            //         $droneSize = $_POST['droneSize'];;
-            //     }
-
-            // } else {
-            //     $response['error'] = 'Error parametro de filtros no recibido';
-            // }
-
-            // $response['list'] = $productos->getProdutsByFilters();
+            // $response['debug'] = ;
+            $response['list'] = $productos->getProductsByTag($tag);
             $response['error'] = 'No Error';
+            break;
+
+        case 'getProductsBySearch':
+
+            if (isset($_POST['search'])) {
+                $productos = new productoModelo();
+                $search = $_POST['search'];
+                $response['list'] = $productos->getProductsByName($search);
+            } else {
+                $response['error'] = 'Parametro Search perdida';
+            }
+
             break;
         
         default:

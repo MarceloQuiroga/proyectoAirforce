@@ -213,4 +213,55 @@ $('#reset-size').click(()=>{ //! CLEAR SIZE-FILTER AND CALL LOADPRODUCTSBYFILTER
   });
   loadProductsByFilters();
 })
+
+$('#buscador').on('input', getHelpBar);
+function getHelpBar() {
+  // PROXIMAMENTE...  
+}
+
+$('.btn-search').on('click', getProductosBySearch);
+
+function getProductosBySearch() {
+
+  console.log($('input[type="search"]'));
+
+  var search = $('#buscador').val();
+
+  if ( search.length == 0 ) {
+    getProductos();
+  } else {
+    
+    $.ajax({
+      url: index() + "controller/controllerProductos.php",
+      method: "POST",
+      dataType: 'json',
+      data: {
+        solicitud: 'getProductsBySearch',
+        search: $('#buscador').val()
+      },
+      success:function(response){
+  
+        console.group('PRODUCTOS')
+          console.log(response.list)
+        console.groupEnd();
+  
+        loadProducts(response.list)
+          
+        resolve();
+  
+      },
+      error: function(xhr, textStatus, error){
+          console.log(xhr.statusText);
+          console.log(textStatus);
+          console.log(error);
+          reject(error);
+      }
+    })
+
+  }
+
+
+
+}
+
   
