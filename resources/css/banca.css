@@ -369,31 +369,8 @@ p {
     flex-direction: row;
 }
 
-#saldo1{
-    font-weight: bold;
-    color: black;
-    width: 300px;
-    text-align: end;
-}
 
-#euro{
-    font-weight: bold;
-    color: black;
-    width: 50px;
-}
-#euro2{
-    font-weight: bold;
-    color: black;
-    width: 50px;
-}
-
-#saldo2{
-    font-weight: bold;
-    color: black;
-    text-align: end;
-}
-
-#saldo3{
+#saldo3, #saldo1, #saldo2{
     font-weight: bold;
     color: black;
     width: auto;
@@ -401,7 +378,7 @@ p {
     z-index: 10;
 }
 
-#euro3{
+#euro3, #euro, #euro2{
     font-weight: bold;
     color: black;
     width: 70px;
@@ -413,6 +390,10 @@ p {
     margin-left: -30px;
 }
 
+#saldo2{
+    width: 100%;
+}
+
 #cuenta2form{
     color: black;
     width: 400px;
@@ -420,7 +401,6 @@ p {
 
 #cuenta2form2{
     color: black;
-    width: 100%;
 }
 
 #cuenta1form{
@@ -443,6 +423,21 @@ p {
     color: black;
 }
 
+#importe3form{
+    color: black;
+}
+
+#concepto3form{
+    color: black;
+}
+
+#importe2form{
+    color: black;
+}
+
+#concepto2form{
+    color: black;
+}
 
 #conceptoform2{
     color: black;

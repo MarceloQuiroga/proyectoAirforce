@@ -154,7 +154,7 @@ function loadCuenta() {
     document.getElementById("numCuenta").value=result.cuenta.ref;
     document.getElementById("saldo1").value=result.cuenta.saldo;
     document.getElementById("saldo3").value=result.cuenta.saldo;
-    document.getElementById("euro").value=" €";
+    document.getElementById("euro").innerHTML=" €";
     document.getElementById("euro3").innerHTML=" €";
 
     document.getElementById("cuenta1form").value=result.cuenta.ref;
@@ -244,7 +244,7 @@ function loadCuenta2(evt) {
 		console.log(result.cuenta);
    	
     document.getElementById("saldo2").value=result.cuenta.saldo;
-    document.getElementById("euro2").value=" €";
+    document.getElementById("euro2").innerHTML=" €";
 
 	})
 	.catch(error => console.error('Error status:', error));	
