@@ -120,5 +120,33 @@ class productoModelo extends producto_class {
 
      }
 
+     
+     public function getProductsWithOrder($order) {
+
+          $this->OpenConnect();
+
+          $sql = "SELECT * FROM productos ORDER BY $order ";
+          $result = $this->link->query($sql);         
+          $list = array();
+
+          while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+        
+               $newProduct = new productoModelo();
+   
+               $newProduct->cod=$row['cod'];
+               $newProduct->nombre=$row['nombre'];
+               $newProduct->descripcion=$row['descripcion'];
+               $newProduct->precio=$row['precio'];
+               $newProduct->tag=$row['tag'];
+   
+               array_push($list, $newProduct);
+           
+           }
+           mysqli_free_result($result);
+           $this->CloseConnect();
+           return $list;
+
+     }
+
 
 }

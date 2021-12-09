@@ -43,6 +43,15 @@ if ( isset($_POST['solicitud']) ) {
             }
 
             break;
+
+        case 'orderProducts':
+            if (isset($_POST['order'])) {
+                $productos = new productoModelo();
+                $order = $_POST['order'];
+                $response['list'] = $productos->getProductsWithOrder($order);
+            } else {
+                $response['error'] = 'Parametro Search perdida'; 
+            }
         
         default:
             $response['error'] = 'Solicitud No Admitida';
