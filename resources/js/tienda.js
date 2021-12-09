@@ -260,8 +260,32 @@ function getProductosBySearch() {
 
   }
 
-
-
 }
 
-  
+$('.order_by .dropdown-item').on('click',()=>{
+  $.ajax({
+    url: index() + "controller/controllerProductos.php",
+    method: "POST",
+    dataType: 'json',
+    data: {
+      solicitud: 'orderProducts',
+      order: event.target.value
+    },
+    success:function(response){
+
+      console.group('PRODUCTOS')
+        console.log(response.list)
+      console.groupEnd();
+
+      loadProducts(response.list)
+
+    },
+    error: function(xhr, textStatus, error){
+        console.log(xhr.statusText);
+        console.log(textStatus);
+        console.log(error);
+        reject(error);
+    }
+  })
+
+})
